@@ -186,7 +186,27 @@ Display the contact email address set in the configuration file.
   to-be-announced
   {% endif %}
   for more information.
+
+
+{% comment %}
+INDICO
+{% endcomment %}
+<p id="indico">
+  <strong>Indico</strong>: In addition to this workshop page, more information and scheduling can be found on 
+  the indico event page - <a href="https://indico.cern.ch/event/816946/">https://indico.cern.ch/event/816946/</a>.
 </p>
+
+{% comment %}
+MATTERMOST
+{% endcomment %}
+<p id="communication">
+  <strong>Mattermost</strong>: Group discussion will occur using the Mattermost application - <a href="https://mattermost.web.cern.ch/signup_user_complete/?id=qp87x1fco7rj88k44rjhgmmube">Mattermost Invite Link</a>.
+</p>
+
+
+
+
+
 
 <hr/>
 
