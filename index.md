@@ -72,6 +72,8 @@ the pitch.
 {% include lc/intro.html %}
 {% endif %}
 
+<h2 id="nitty-gritty">Nitty Gritty Details</h2>
+
 {% comment %}
 AUDIENCE
 
