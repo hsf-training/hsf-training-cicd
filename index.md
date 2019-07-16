@@ -127,8 +127,8 @@ Modify the block below if there are any special requirements.
 {% endcomment %}
 <p id="requirements">
   <strong>Requirements:</strong> Participants must bring a laptop with a
-  Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) that they have administrative privileges on. They should have a few specific software packages installed (listed <a href="#setup">below</a>). <em><strong><font color="red"> It is highly recommended that you DO NOT choose to use Windows.  If you currently have a windows machine, please make it dual boot with Linux -</font 
-  <a href"https://opensource.com/article/18/5/dual-boot-linux">follow these insturctions</a>.  ></strong></em>
+  Mac, Linux, or Windows operating system (not a tablet, Chromebook, etc.) that they have administrative privileges on. They should have a few specific software packages installed (listed <a href="#setup">below</a>). <em><strong><font color="red"> It is highly recommended that you DO NOT choose to use Windows.  If you currently have a windows machine, please make it dual boot with Linux -</font>
+  <a href"https://opensource.com/article/18/5/dual-boot-linux">follow these insturctions</a>.  </strong></em>
 </p>
 
 {% comment%}
