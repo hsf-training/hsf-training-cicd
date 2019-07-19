@@ -664,8 +664,7 @@ please preview your site before committing, and make sure to run
     <div class="tab-content">
       <article role="tabpanel" class="tab-pane active" id="docker-windows">
         <p>
-          <font color="red">It is highly recommended that you</font> <strong> DO NOT </strong> <font color="red">use Windows.  Few individuals
-          use this OS within the HEP community as most tools are designed for Unix-based systems.
+          <font color="red"> If you already have docker running and are comfortable using it, that is fine.  However, if it is new to you, it is highly recommended that you</font> <strong> DO NOT </strong> <font color="red">use Windows during this bootcamp as the use of docker can pose unique challenges due to permissions on most Windows versions.  Few individuals use this OS within the HEP community as most tools are designed for Unix-based systems.
           If you do have a Windows machine, consider making your computer a dual-boot machine </font>-
           <a href="https://opensource.com/article/18/5/dual-boot-linux">Link to Directions</a>
           <br/>
