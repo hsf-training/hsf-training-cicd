@@ -571,16 +571,6 @@ please preview your site before committing, and make sure to run
     (e.g., 3.6 is fine).
   </p>
 
-  <p>
-    We will teach Python using the <a href="https://jupyter.org/">Jupyter notebook</a>,
-    a programming environment that runs in a web browser. For this to work you will need a reasonably
-    up-to-date browser. The current versions of the Chrome, Safari and
-    Firefox browsers are all
-    <a href="https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatibility">supported</a>
-    (some older browsers, including Internet Explorer version 9
-    and below, are not).
-  </p>
-
   <div>
     <ul class="nav nav-tabs nav-justified" role="tablist">
       <li role="presentation" class="active"><a data-os="windows" href="#python-windows" aria-controls="Windows" role="tab" data-toggle="tab">Windows</a></li>
@@ -648,7 +638,20 @@ please preview your site before committing, and make sure to run
   {% endcomment %}
 </div> {% comment %} End of 'Python' section. {% endcomment %}
 
+  <h3>Docker</h3>
 
+  <p>
+    <a href="https://www.docker.com/">Docker</a> is a powerful tool that allows you
+    to perform a virtualization of your environment but completely in software.  It 
+    allows you to bundle up the installation of tools for use by others in a uniform way
+    and we will be using it throughout this bootcamp.  Installing docker is absolutely
+    necessary and there are directions to do this in each operating system.  For those
+    of you that are using a Windows operating system, if you already have docker running
+    and are comfortable using it, that is fine.  However, if you do not, then be aware
+    that its usage on Windows can be challenging and none of the tutors know how to use
+    such a setup.  Therefore, <strong>we highly reccomend that you reconsider
+    your decision to use the Windows operating system as a high energy physicist.</strong>
+  </p>
 
 <div id="DockerOS"> {% comment %} Start of 'DockerOS' section. {% endcomment %}
   <div>
