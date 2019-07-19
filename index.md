@@ -200,7 +200,7 @@ INDICO
 EGROUP
 {% endcomment %}
 <p id="communication">
-  <strong>EGroup</strong>: Communication with all bootcamp participants and instructors can happen by subscribing to and sending mails to the <em>usatlas-computing-bootcamp-2019@cern.ch</em> egroup - <a href="https://e-groups.cern.ch/e-groups/EgroupsSearch.do">Subscribe Here</a>.
+  <strong>EGroup</strong>: Subscribe and communicate using the email list <em>usatlas-computing-bootcamp-2019@cern.ch</em> egroup - <a href="https://e-groups.cern.ch/e-groups/EgroupsSearch.do">Subscribe Here</a>.
 </p>
 
 {% comment %}
