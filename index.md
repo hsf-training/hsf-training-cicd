@@ -647,3 +647,64 @@ please preview your site before committing, and make sure to run
   </p>
   {% endcomment %}
 </div> {% comment %} End of 'Python' section. {% endcomment %}
+
+
+
+<div id="DockerOS"> {% comment %} Start of 'DockerOS' section. {% endcomment %}
+  <div>
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+      <li role="presentation" class="active"><a data-os="windows" href="#docker-windows" aria-controls="Windows" role="tab" data-toggle="tab">Windows</a></li>
+      <li role="presentation"><a data-os="macos" href="#docker-macos" aria-controls="MacOS" role="tab" data-toggle="tab">MacOS</a></li>
+      <li role="presentation"><a data-os="linux" href="#docker-linux" aria-controls="Linux" role="tab" data-toggle="tab">Linux</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <article role="tabpanel" class="tab-pane active" id="docker-windows">
+        <p>
+          <font color="red">It is highly recommended that you</font> <strong> DO NOT </strong> <font color="red">use Windows.  Few individuals
+          use this OS within the HEP community as most tools are designed for Unix-based systems.
+          If you do have a Windows machine, consider making your computer a dual-boot machine </font>-
+          <a href="https://opensource.com/article/18/5/dual-boot-linux">Link to Directions</a>
+          <br/>
+          <br/>
+          Download Docker for Windows <a href="https://docs.docker.com/docker-for-windows/install/">instructions</a>.<br>
+          <br/>
+          Docker Desktop for Windows is the Community Edition (CE) of Docker for Microsoft Windows. To download Docker Desktop for Windows, head to <a href="https://hub.docker.com/editions/community/docker-ce-desktop-windows">Docker Hub</a>. <br>
+          <br/>
+          Please read the relevant information on these pages, it should take no more than 5 minutes.
+          <br/>
+        </p>
+      </article>
+      <article role="tabpanel" class="tab-pane" id="docker-macos">
+        <p>
+          <br/>
+          Download Docker for MacOS <a href="https://docs.docker.com/docker-for-mac/install/">instructions</a>.<br>
+          <br/>
+          Docker is a full development platform for creating containerized apps, and Docker Desktop for Mac is the best way to get started with Docker on a Mac. To download Docker Desktop for MacOS, head to <a href="https://hub.docker.com/editions/community/docker-ce-desktop-mac">Docker Hub</a>. <br>
+          <br/>
+          Please read the relevant information on these pages, it should take no more than 5 minutes.
+          <br/>
+        </p>
+      </article>
+      <article role="tabpanel" class="tab-pane" id="docker-linux">
+        <p>
+          <br/>
+          Downloading and installing Docker for Linux may be slightly more difficult but please contact the organisers or tutors as soon as possible so they can help with any problems.<br>
+          <br/>
+          Here are the instructions for two popular Linux distributions:
+          <li><a href="https://docs.docker.com/install/linux/docker-ce/CentOS/">CentOS</a></li>
+          <li><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Ubuntu</a></li>
+          <br/>
+          Instructions for other Linux distributions can be found on the Docker docs pages.
+          <br/>
+          <br/>
+          <font color="red">Be sure to read the Docker documentation on post-installation steps for Linux and managing Docker
+          as a </font> <a href="https://docs.docker.com/install/linux/linux-postinstall/">non-root user</a>.
+          <font color="red">This will allow you to edit files when you have started up the Docker container from your image. </font>
+          <br/>
+        </p>
+      </article>
+    </div>
+  </div>
+</div> {% comment %} End of 'shell' section. {% endcomment %}
+
