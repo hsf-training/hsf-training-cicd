@@ -197,11 +197,20 @@ INDICO
 </p>
 
 {% comment %}
+EGROUP
+{% endcomment %}
+<p id="communication">
+  <strong>EGroup</strong>: Communication with all bootcamp participants and instructors can happen by subscribing to and sending mails to the <em>usatlas-computing-bootcamp-2019@cern.ch</em> egroup - <a href="https://e-groups.cern.ch/e-groups/EgroupsSearch.do">Subscribe Here</a>.
+</p>
+
+{% comment %}
 MATTERMOST
 {% endcomment %}
 <p id="communication">
-  <strong>Mattermost</strong>: Group discussion will occur using the Mattermost application - <a href="https://mattermost.web.cern.ch/signup_user_complete/?id=qp87x1fco7rj88k44rjhgmmube">Mattermost Invite Link</a>.
+  <strong>Mattermost</strong>: Group discussion can also occur dynamically using the Mattermost application - <a href="https://mattermost.web.cern.ch/signup_user_complete/?id=qp87x1fco7rj88k44rjhgmmube">Mattermost Invite Link</a>.
 </p>
+
+
 
 
 
