@@ -197,11 +197,20 @@ INDICO
 </p>
 
 {% comment %}
+EGROUP
+{% endcomment %}
+<p id="communication">
+  <strong>EGroup</strong>: Subscribe and communicate using the email list <em>usatlas-computing-bootcamp-2019@cern.ch</em> egroup - <a href="https://e-groups.cern.ch/e-groups/EgroupsSearch.do">Subscribe Here</a>.
+</p>
+
+{% comment %}
 MATTERMOST
 {% endcomment %}
 <p id="communication">
-  <strong>Mattermost</strong>: Group discussion will occur using the Mattermost application - <a href="https://mattermost.web.cern.ch/signup_user_complete/?id=qp87x1fco7rj88k44rjhgmmube">Mattermost Invite Link</a>.
+  <strong>Mattermost</strong>: Group discussion can also occur dynamically using the Mattermost application - <a href="https://mattermost.web.cern.ch/signup_user_complete/?id=qp87x1fco7rj88k44rjhgmmube">Mattermost Invite Link</a>.
 </p>
+
+
 
 
 
@@ -571,16 +580,6 @@ please preview your site before committing, and make sure to run
     (e.g., 3.6 is fine).
   </p>
 
-  <p>
-    We will teach Python using the <a href="https://jupyter.org/">Jupyter notebook</a>,
-    a programming environment that runs in a web browser. For this to work you will need a reasonably
-    up-to-date browser. The current versions of the Chrome, Safari and
-    Firefox browsers are all
-    <a href="https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatibility">supported</a>
-    (some older browsers, including Internet Explorer version 9
-    and below, are not).
-  </p>
-
   <div>
     <ul class="nav nav-tabs nav-justified" role="tablist">
       <li role="presentation" class="active"><a data-os="windows" href="#python-windows" aria-controls="Windows" role="tab" data-toggle="tab">Windows</a></li>
@@ -647,3 +646,76 @@ please preview your site before committing, and make sure to run
   </p>
   {% endcomment %}
 </div> {% comment %} End of 'Python' section. {% endcomment %}
+
+  <h3>Docker</h3>
+
+  <p>
+    <a href="https://www.docker.com/">Docker</a> is a powerful tool that allows you
+    to perform a virtualization of your environment but completely in software.  It 
+    allows you to bundle up the installation of tools for use by others in a uniform way
+    and we will be using it throughout this bootcamp.  Installing docker is absolutely
+    necessary and there are directions to do this in each operating system.  For those
+    of you that are using a Windows operating system, if you already have docker running
+    and are comfortable using it, that is fine.  However, if you do not, then be aware
+    that its usage on Windows can be challenging and none of the tutors know how to use
+    such a setup.  Therefore, <strong>we highly reccomend that you reconsider
+    your decision to use the Windows operating system as a high energy physicist.</strong>
+  </p>
+
+<div id="DockerOS"> {% comment %} Start of 'DockerOS' section. {% endcomment %}
+  <div>
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+      <li role="presentation" class="active"><a data-os="windows" href="#docker-windows" aria-controls="Windows" role="tab" data-toggle="tab">Windows</a></li>
+      <li role="presentation"><a data-os="macos" href="#docker-macos" aria-controls="MacOS" role="tab" data-toggle="tab">MacOS</a></li>
+      <li role="presentation"><a data-os="linux" href="#docker-linux" aria-controls="Linux" role="tab" data-toggle="tab">Linux</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <article role="tabpanel" class="tab-pane active" id="docker-windows">
+        <p>
+          <font color="red"> If you already have docker running and are comfortable using it, that is fine.  However, if it is new to you, it is highly recommended that you</font> <strong> DO NOT </strong> <font color="red">use Windows during this bootcamp as the use of docker can pose unique challenges due to permissions on most Windows versions.  Few individuals use this OS within the HEP community as most tools are designed for Unix-based systems.
+          If you do have a Windows machine, consider making your computer a dual-boot machine </font>-
+          <a href="https://opensource.com/article/18/5/dual-boot-linux">Link to Directions</a>
+          <br/>
+          <br/>
+          Download Docker for Windows <a href="https://docs.docker.com/docker-for-windows/install/">instructions</a>.<br>
+          <br/>
+          Docker Desktop for Windows is the Community Edition (CE) of Docker for Microsoft Windows. To download Docker Desktop for Windows, head to <a href="https://hub.docker.com/editions/community/docker-ce-desktop-windows">Docker Hub</a>. <br>
+          <br/>
+          Please read the relevant information on these pages, it should take no more than 5 minutes.
+          <br/>
+        </p>
+      </article>
+      <article role="tabpanel" class="tab-pane" id="docker-macos">
+        <p>
+          <br/>
+          Download Docker for MacOS <a href="https://docs.docker.com/docker-for-mac/install/">instructions</a>.<br>
+          <br/>
+          Docker is a full development platform for creating containerized apps, and Docker Desktop for Mac is the best way to get started with Docker on a Mac. To download Docker Desktop for MacOS, head to <a href="https://hub.docker.com/editions/community/docker-ce-desktop-mac">Docker Hub</a>. <br>
+          <br/>
+          Please read the relevant information on these pages, it should take no more than 5 minutes.
+          <br/>
+        </p>
+      </article>
+      <article role="tabpanel" class="tab-pane" id="docker-linux">
+        <p>
+          <br/>
+          Downloading and installing Docker for Linux may be slightly more difficult but please contact the organisers or tutors as soon as possible so they can help with any problems.<br>
+          <br/>
+          Here are the instructions for two popular Linux distributions:
+          <li><a href="https://docs.docker.com/install/linux/docker-ce/CentOS/">CentOS</a></li>
+          <li><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">Ubuntu</a></li>
+          <br/>
+          Instructions for other Linux distributions can be found on the Docker docs pages.
+          <br/>
+          <br/>
+          <font color="red">Be sure to read the Docker documentation on post-installation steps for Linux and managing Docker
+          as a </font> <a href="https://docs.docker.com/install/linux/linux-postinstall/">non-root user</a>.
+          <font color="red">This will allow you to edit files when you have started up the Docker container from your image. </font>
+          <br/>
+        </p>
+      </article>
+    </div>
+  </div>
+</div> {% comment %} End of 'shell' section. {% endcomment %}
+
