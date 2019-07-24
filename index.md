@@ -673,7 +673,8 @@ please preview your site before committing, and make sure to run
     <div class="tab-content">
       <article role="tabpanel" class="tab-pane active" id="docker-windows">
         <p>
-          <font color="red"> If you already have docker running and are comfortable using it, that is fine.  However, if it is new to you, it is highly recommended that you</font> <strong> DO NOT </strong> <font color="red">use Windows during this bootcamp as the use of docker can pose unique challenges due to permissions on most Windows versions.  Few individuals use this OS within the HEP community as most tools are designed for Unix-based systems.
+          <font color="red">It is highly recommended that you</font> <strong> DO NOT </strong> <font color="red">use Windows.  Few individuals
+          use this OS within the HEP community as most tools are designed for Unix-based systems.
           If you do have a Windows machine, consider making your computer a dual-boot machine </font>-
           <a href="https://opensource.com/article/18/5/dual-boot-linux">Link to Directions</a>
           <br/>
@@ -694,6 +695,9 @@ please preview your site before committing, and make sure to run
           Docker is a full development platform for creating containerized apps, and Docker Desktop for Mac is the best way to get started with Docker on a Mac. To download Docker Desktop for MacOS, head to <a href="https://hub.docker.com/editions/community/docker-ce-desktop-mac">Docker Hub</a>. <br>
           <br/>
           Please read the relevant information on these pages, it should take no more than 5 minutes.
+          <br/>
+          Another common way to install packages on Mac OSX is via the <a href="https://brew.sh/">homebrew</a> package manager.  In the case of docker, you can easily install
+          docker by setting up homebrew and executing <code>brew cask install docker</code>.
           <br/>
         </p>
       </article>
@@ -717,5 +721,5 @@ please preview your site before committing, and make sure to run
       </article>
     </div>
   </div>
-</div> {% comment %} End of 'shell' section. {% endcomment %}
+</div> {% comment %} End of 'docker' section. {% endcomment %}
 
