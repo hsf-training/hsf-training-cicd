@@ -13,7 +13,11 @@ questions:
   - What exit code should you use?
   - How to ignore exist codes?
 hidden: false
+keypoints:
+  - First key point. (FIXME)
 #https://shapeshed.com/unix-exit-codes/#what-is-an-exit-code-in-the-unix-or-linux-shell
 ---
 
 As we enter the first episode of the Continuous Integration / Continuous Development (CI/CD) session, we learn how to exit.
+
+{% include links.md %}
