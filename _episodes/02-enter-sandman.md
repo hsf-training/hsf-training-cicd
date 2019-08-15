@@ -4,14 +4,12 @@ teaching: 10
 exercises: 5
 objectives:
   - Understand exit codes
+  - How to print exit codes
+  - How to set exit codes in a script
+  - How to ignore exit codes
   - Create a script that terminates in success/error
 questions:
-  - What is an exit code in a shell?
-  - How do you get the exit code of a command?
-  - How do you use exit codes in scripts?
-  - How do you set an exit code?
-  - What exit code should you use?
-  - How to ignore exist codes?
+  - What is an exit code?
 hidden: false
 keypoints:
   - First key point. (FIXME)
@@ -19,5 +17,15 @@ keypoints:
 ---
 
 As we enter the first episode of the Continuous Integration / Continuous Deployment (CI/CD) session, we learn how to exit.
+
+# Start by Exiting
+
+# Printing Exit Codes
+
+# Setting Exit Codes
+
+# Ignoring Exit Codes
+
+# To Be Or Not To Be
 
 {% include links.md %}
