@@ -18,6 +18,6 @@ keypoints:
 #https://shapeshed.com/unix-exit-codes/#what-is-an-exit-code-in-the-unix-or-linux-shell
 ---
 
-As we enter the first episode of the Continuous Integration / Continuous Development (CI/CD) session, we learn how to exit.
+As we enter the first episode of the Continuous Integration / Continuous Deployment (CI/CD) session, we learn how to exit.
 
 {% include links.md %}
