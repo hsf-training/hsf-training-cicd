@@ -5,7 +5,7 @@ exercises: 5
 objectives:
   - 
 questions:
-  - What is the CI specification?
+  - How do I run a simple CI job?
 hidden: false
 keypoints:
   - First key point. (FIXME)

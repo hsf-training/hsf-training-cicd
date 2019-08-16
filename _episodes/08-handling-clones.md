@@ -5,7 +5,7 @@ exercises: 5
 objectives:
   - 
 questions:
-  - What is the CI specification?
+  - How are repositories cloned?
 hidden: false
 keypoints:
   - First key point. (FIXME)

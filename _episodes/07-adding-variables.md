@@ -5,7 +5,7 @@ exercises: 5
 objectives:
   - 
 questions:
-  - What is the CI specification?
+  - How do I include protected information?
 hidden: false
 keypoints:
   - First key point. (FIXME)

@@ -5,7 +5,7 @@ exercises: 5
 objectives:
   - 
 questions:
-  - What is the CI specification?
+  - How can I run multiple jobs in parallel?
 hidden: false
 keypoints:
   - First key point. (FIXME)
