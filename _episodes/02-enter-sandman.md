@@ -12,8 +12,9 @@ questions:
   - What is an exit code?
 hidden: false
 keypoints:
-  - First key point. (FIXME)
-#https://shapeshed.com/unix-exit-codes/#what-is-an-exit-code-in-the-unix-or-linux-shell
+  - Exit codes are used to identify if a command or script executed with errors or not
+  - Not everyone respects exit codes
+
 ---
 
 As we enter the first episode of the Continuous Integration / Continuous Deployment (CI/CD) session, we learn how to exit.
@@ -151,7 +152,7 @@ To finish up this section, one thing you'll notice sometimes in ATLAS is that a 
 ~~~
 {: .source}
 
-Try it out using one of scripts you made in the previous session:
+The `command_1 || command_2` operator means to execute `command_2` only if `command_1` has failed (non-zero exit code). Similarly, the `command_1 && command_2` operator means to execute `command_2` only if `command_1` has succeeded. Try this out using one of scripts you made in the previous session:
 
 ~~~
 > ./python_exit.py goodbye || echo ignore
