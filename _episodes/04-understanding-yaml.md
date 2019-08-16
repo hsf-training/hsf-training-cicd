@@ -1,5 +1,5 @@
 ---
-title: "Yet Another Markup Language"
+title: "Understanding Yet Another Markup Language"
 teaching: 5
 exercises: 5
 objectives:

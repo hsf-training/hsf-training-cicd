@@ -1,5 +1,5 @@
 ---
-title: "YAML and CI"
+title: "Adding Variables"
 teaching: 5
 exercises: 5
 objectives:

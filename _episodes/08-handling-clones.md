@@ -1,5 +1,5 @@
 ---
-title: "YAML and CI"
+title: "Handling Clones"
 teaching: 5
 exercises: 5
 objectives:

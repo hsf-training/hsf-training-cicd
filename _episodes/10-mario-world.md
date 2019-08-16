@@ -1,5 +1,5 @@
 ---
-title: "YAML and CI"
+title: "Mario World"
 teaching: 5
 exercises: 5
 objectives:
