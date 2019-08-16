@@ -95,12 +95,12 @@ As you've seen above, the exit code from the last executed command is stored in 
 >>> import subprocess
 >>> ret = os.system('ls')
 >>> os.WEXITSTATUS(ret)
->>> 0
+0
 >>> ret = os.system('ls nonexistent-file')
 >>> os.WEXITSTATUS(ret)
 1
 ~~~
-{: .source}
+{: .language-python}
 
 One will note that this returned a different exit code than from the command line (indicating there's some internal implementation in Python). All you need to be concerned with is that the exit code was non-zero (there was an error).
 
@@ -122,7 +122,7 @@ else
   exit 59
 fi
 ~~~
-{: .source}
+{: .language-bash}
 
 and then make it exectuable `chmod +x bash_exit.sh`. Now, try running it with `./bash_exit.sh hello` and `./bash_exit.sh goodbye` and see what those exit codes are.
 
@@ -139,7 +139,7 @@ if sys.argv[1] == "hello":
 else:
   sys.exit(59)
 ~~~
-{: .source}
+{: .language-python}
 
 and then make it executable `chmod +x python_exit.py`. Now, try running it with `./python_exit.py hello` and `./python_exit.py goodbye` and see what those exit codes are. Déjà vu?
 
