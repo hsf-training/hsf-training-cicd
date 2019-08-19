@@ -8,6 +8,7 @@ objectives:
 - "Refresh your mind."
 keypoints:
 - You'll be back.
+- They're the jedi of the sea.
 ---
 
 <center>
