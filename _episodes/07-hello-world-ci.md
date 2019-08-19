@@ -8,7 +8,9 @@ questions:
   - How do I run a simple CI job?
 hidden: false
 keypoints:
-  - First key point. (FIXME)
+  - Adding a `.gitlab-ci.yml` is the first step to salvation.
+  - Pipelines are made of stages, stages are made of jobs.
+  - CI Linters are especially useful to check syntax before pushing changes.
 ---
 
 # Adding CI/CD to a project
