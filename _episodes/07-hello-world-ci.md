@@ -1,7 +1,7 @@
 ---
 title: "Hello CI World"
 teaching: 5
-exercises: 5
+exercises: 10
 objectives:
   - Add CI/CD to your project.
 questions:
