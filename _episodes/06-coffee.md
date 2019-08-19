@@ -1,7 +1,7 @@
 ---
 title: "Coffee break!"
-teaching: 15
-exercises: 0
+teaching: 0
+exercises: 15
 questions:
 - "Get up, stretch out, take a short break."
 objectives:
