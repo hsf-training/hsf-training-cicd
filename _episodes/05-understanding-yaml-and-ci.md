@@ -1,6 +1,6 @@
 ---
 title: "YAML and CI"
-teaching: 5
+teaching: 10
 exercises: 0
 objectives:
   - Learn where to find more details about everything for the GitLab CI.
@@ -9,7 +9,9 @@ questions:
   - What is the CI specification?
 hidden: false
 keypoints:
-  - First key point. (FIXME)
+  - You should bookmark the GitLab reference on CI/CD. You'll visit that page often.
+  - A job is defined by a name and a script, at minimum.
+  - Other than job names, reserved keywords are the top-level parameters defined in a YAML file.
 ---
 
 # GitLab CI YAML
