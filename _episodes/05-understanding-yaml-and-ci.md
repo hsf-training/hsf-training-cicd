@@ -1,7 +1,7 @@
 ---
 title: "YAML and CI"
 teaching: 5
-exercises: 5
+exercises: 0
 objectives:
   - Learn where to find more details about everything for the GitLab CI.
   - Understand the structure of the GitLab CI YAML file.
@@ -13,6 +13,31 @@ keypoints:
 ---
 
 # GitLab CI YAML
+
+The GitLab CI configurations are specified using a YAML file called `.gitlab-ci.yml`. Here is an example:
+
+~~~
+image: atlas/analysisbase:latest
+
+before_script:
+  - source /home/atlas/release_setup.sh
+  - mkdir build
+
+build_analysis:
+  script:
+    - cd build
+    - cmake ../src
+    - cmake --build .
+    - source "${AnalysisBase_PLATFORM}/setup.sh"
+~~~
+{: .language-yaml}
+
+This is the simplest possible configuration that will work for most analysis codes using `AnalysisBase` on the latest release:
+
+1. Define one job `build_analysis` (the job names are arbitrary) with different commands to be executed.
+2. Before every job, the commands defined by `before_script` are executed.
+
+The `.gitlab-ci.yml` file defines sets of jobs with constraints of how and when they should be run. The jobs are defined as top-level elements with a name (in our case `build_analysis`) and always have to contain the `script` keyword. Let's explore this structure in more depth.
 
 ## Overall Structure
 

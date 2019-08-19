@@ -70,7 +70,7 @@ Since YAML is a superset of JSON, you can also write JSON-style maps and sequenc
 
 ~~~
 episodes: [1, 2, 3, 4, 5, 6, 7]
-best-jedi: {name: Obi-Wan, side: light} 
+best-jedi: {name: Obi-Wan, side: light}
 ~~~
 {: .language-yaml}
 
@@ -80,7 +80,7 @@ best-jedi: {name: Obi-Wan, side: light}
 requests:
   # first item of `requests` list is just a string
   - http://example.com/
- 
+
   # second item of `requests` list is a dictionary
   - url: http://example.com/
     method: GET
