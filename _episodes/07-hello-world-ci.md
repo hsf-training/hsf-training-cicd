@@ -28,19 +28,19 @@ We've been working on the CMake repository which has a lot of work done, but we 
 
 Now, if you navigate to the GitLab webpage for that project, you'll notice a shiny new button
 
-![CI/CD Configuration Button]({{site.baseurl}}/assets/img/ci-cd-configuration-button.png)
+![CI/CD Configuration Button]({{site.baseurl}}/fig/ci-cd-configuration-button.png)
 
 which will link to the newly added `.gitlab-ci.yml`. But wait a minute, there's also a big red `x` on the page too!
 
-![Commit's CI/CD Failure Example]({{site.baseurl}}/assets/img/ci-cd-commit-failure.png)
+![Commit's CI/CD Failure Example]({{site.baseurl}}/fig/ci-cd-commit-failure.png)
 
 What happened??? Let's find out. Click on the red `x` which takes us to the `pipelines` page for the commit. On this page, we can see that this failed because the YAML was invalid...
 
-![CI/CD Failure YAML Invalid]({{site.baseurl}}/assets/img/ci-cd-commit-failure-yaml-invalid.png)
+![CI/CD Failure YAML Invalid]({{site.baseurl}}/fig/ci-cd-commit-failure-yaml-invalid.png)
 
 We should fix this. If you click through again on the red `x` on the left for the pipeline there, you can get to the detailed page for the given pipeline to find out more information
 
-![CI/CD Failure YAML Invalid Pipeline page]({{site.baseurl}}/assets/img/ci-cd-commit-failure-yaml-invalid-pipeline-page.png)
+![CI/CD Failure YAML Invalid Pipeline page]({{site.baseurl}}/fig/ci-cd-commit-failure-yaml-invalid-pipeline-page.png)
 
 > ## Validating CI/CD YAML Configuration
 >
@@ -63,7 +63,7 @@ hello world:
 
 Before we commit it, since we're still new to CI/CD, let's copy/paste it into the CI linter and make sure it lints correctly
 
-![CI/CD Hello World Lint]({{site.baseurl}}/assets/img/ci-cd-hello-world-lint.png)
+![CI/CD Hello World Lint]({{site.baseurl}}/fig/ci-cd-hello-world-lint.png)
 
 Looks good! Let's stage the changes with `git add .gitlab-ci.yml`, commit it with an appropriate commit message, and push!
 
@@ -72,17 +72,17 @@ Looks good! Let's stage the changes with `git add .gitlab-ci.yml`, commit it wit
 Now we want to make sure that this worked. How can we check the status of commits or pipelines? The GitLab UI has a couple of ways:
 
 - go to the `commits` page of your project and see the pipeline's status for that commit
-  ![CI/CD Commits Page]({{site.baseurl}}/assets/img/ci-cd-commits-page.png)
+  ![CI/CD Commits Page]({{site.baseurl}}/fig/ci-cd-commits-page.png)
 - go to `CI/CD -> Pipelines` of your project, see all pipelines, and find the right one
-  ![CI/CD Pipelines Page]({{site.baseurl}}/assets/img/ci-cd-pipelines-page.png)
+  ![CI/CD Pipelines Page]({{site.baseurl}}/fig/ci-cd-pipelines-page.png)
 - go to `CI/CD -> Jobs` of your project, see all jobs, and find the right one
-  ![CI/CD Jobs Page]({{site.baseurl}}/assets/img/ci-cd-jobs-page.png)
+  ![CI/CD Jobs Page]({{site.baseurl}}/fig/ci-cd-jobs-page.png)
 
 ## Checking Job's Output
 
 From any of these pages, click through until you can find the output for the successful job run which should look like the following
 
-![CI/CD Hello World Success Output]({{site.baseurl}}/assets/img/ci-cd-hello-world-success-output.png)
+![CI/CD Hello World Success Output]({{site.baseurl}}/fig/ci-cd-hello-world-success-output.png)
 
 And that's it! You've successfully run your CI/CD job and you can view the output.
 
