@@ -2,6 +2,7 @@
 # Values for this lesson.
 #------------------------------------------------------------
 
+url: https://kratsg.github.io/
 baseurl: /2019-08-19-usatlas-computing-bootcamp/07-hello-world-ci
 
 # Which carpentry is this ("swc", "dc", "lc", or "cp")?
