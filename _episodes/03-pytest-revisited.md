@@ -1,6 +1,6 @@
 ---
 title: "Being Assertive"
-teaching: 2
+teaching: 5
 exercises: 5
 objectives:
   - Understand how assertions in python correspond to exit codes
