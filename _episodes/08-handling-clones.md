@@ -9,7 +9,9 @@ questions:
   - How are repositories cloned?
 hidden: false
 keypoints:
-  - First key point. (FIXME)
+  - Git cloning strategies are configured with global (or per-job) variables
+  - `GIT_STRATEGY=none` is useful when you don't need any information/files from the repository
+  - Submodules can be cloned normally or recursively as needed
 ---
 
 # Recursive cloning?
