@@ -9,7 +9,10 @@ questions:
   - I have code already in GitLab, how can I add CI to it?
 hidden: false
 keypoints:
-  - First key point. (FIXME)
+  - Setting up CI/CD shouldn't be mind-numbing
+  - Stupid mistakes happen, but telling a computer to do what you mean versus what you say is hard
+  - All defined jobs run in parallel by default
+  - Jobs can be allowed to fail without breaking your CI/CD
 ---
 
 # CMake Revisited
@@ -108,5 +111,55 @@ Let's go ahead and update our `.gitlab-ci.yml` and fix it.
 {: .challenge}
 
 Ok, let's go ahead and update our `.gitlab-ci.yml` again, and it better be fixed or so help me...
+
+# Building multiple versions
+
+Great, so we finally got it working... CI/CD isn't obviously powerful when you're only building one thing. Let's build both the version of the code we're testing and also test that the latest analysis base release (`atlas/analysisbase:latest`) works with our code. Call this new job `build_latest`.
+
+> ## Adding the `build_latest` job
+>
+> What does the `.gitlab-ci.yml` look like now?
+>
+> > ## Solution
+> > ~~~
+> > variables:
+> >   GIT_SUBMODULE_STRATEGY: recursive
+> >
+> > hello world:
+> >   script:
+> >    - echo "Hello World"
+> >    - find . -path ./.git -prune -o -print
+> >
+> > build:
+> >   image: atlas/analysisbase:21.2.85-centos7
+> >   script:
+> >    - source /home/atlas/release_setup.sh
+> >    - mkdir build
+> >    - cd build
+> >    - cmake ../source
+> >    - cmake --build .
+> >
+> > build_latest:
+> >   image: atlas/analysisbase:latest
+> >   script:
+> >    - source /home/atlas/release_setup.sh
+> >    - mkdir build
+> >    - cd build
+> >    - cmake ../source
+> >    - cmake --build .
+> > ~~~
+> > {: .language-yaml}
+> {: .solution}
+{: .challenge}
+
+However, we probably don't want our CI/CD to crash if that happens. So let's also add `:build_latest:allow_failure = true` to our job as well. This allows the job to fail without crashing the CI/CD -- that is, it's an acceptable failure. This indicates to us when we do something in the code that might potentially break the latest release; or indicate when our code will not build in a new release.
+
+~~~
+build_latest
+  image: ...
+  script: [....]
+  allow_failure: yes # or 'true' or 'on'
+~~~
+{: .language-yaml}
 
 {% include links.md %}
