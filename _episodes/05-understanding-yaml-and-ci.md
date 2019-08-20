@@ -61,6 +61,11 @@ job3:
 ~~~
 {: .language-yaml}
 
+> ## Parallel or Serial Execution?
+>
+> Note that by default, all jobs you define run in parallel. If you want them to run in serial, or a mix of parallel and serial, or as a directed acyclic graph, we'll cover this in a later section.
+{: .callout}
+
 What can you not use as job names? There are a few reserved keywords (because these are used as global parameters for configuration, in addition to being job-specific parameters):
 
 - `default`
