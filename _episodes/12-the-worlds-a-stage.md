@@ -106,4 +106,8 @@ Now all jobs in `greeting` run first, before all jobs in `build` (as this is the
 
 That's it. There's nothing more to `stages` apart from that! In fact, everything in terms of parallel/serial as well as job dependencies only make sense in the context of having multiple stages. In all the previous sessions, you've just been using the default `test` stage for all jobs; the jobs all ran in parallel.
 
+> ## Further Reading
+> - [https://docs.gitlab.com/ee/ci/yaml/#stages](https://docs.gitlab.com/ee/ci/yaml/#stages)
+{: .checklist}
+
 {% include links.md %}
