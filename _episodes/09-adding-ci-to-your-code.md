@@ -1,7 +1,7 @@
 ---
 title: "Adding CI to Your Existing Code"
 teaching: 5
-exercises: 5
+exercises: 10
 objectives:
   - Learn how to get your CI/CD Runners to build your code
   - Try and see if the CI/CD can catch problems with our code.
