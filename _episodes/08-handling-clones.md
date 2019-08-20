@@ -14,6 +14,11 @@ keypoints:
   - Submodules can be cloned normally or recursively as needed
 ---
 
+> ## Feature Branch
+>
+> Don't forget that we're working on the `feature/add-ci` branch of our project. Make sure you're still in this branch.
+{: .callout}
+
 # Recursive cloning?
 
 As of now, we only have a simple script that echoes `Hello World`. Presumably, we should have the repository cloned for us, but let's check.
