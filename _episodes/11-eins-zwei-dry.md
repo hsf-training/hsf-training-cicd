@@ -1,7 +1,7 @@
 ---
 title: "Eins Zwei DRY"
 teaching: 5
-exercises: 5
+exercises: 15
 objectives:
   - Don't Repeat Yourself (DRY)
   - Making reusable/flexible CI/CD jobs
