@@ -58,7 +58,7 @@ Lastly, we'll open up a merge request for this branch, since we plan to merge th
 
 > ## Work In Progress?
 >
-> If you expect to be working on a branch for a bit of time while you have a merge request open, it's good habit to mark it as a Work-In-Progress (WIP).
+> If you expect to be working on a branch for a bit of time while you have a merge request open, it's good etiquette to mark it as a Work-In-Progress (WIP).
 > ![Work In Progress]({{site.baseurl}}/fig/work-in-progress.png)
 {: .callout}
 
