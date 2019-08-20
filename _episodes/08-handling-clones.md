@@ -10,7 +10,7 @@ questions:
 hidden: false
 keypoints:
   - Git cloning strategies are configured with global (or per-job) variables
-  - `GIT_STRATEGY=none` is useful when you don't need any information/files from the repository
+  - "`GIT_STRATEGY=none` is useful when you don't need any information/files from the repository"
   - Submodules can be cloned normally or recursively as needed
 ---
 
@@ -89,7 +89,6 @@ The key variables we'll discuss in today's lession are:
 
 - `:variables:GIT_STRATEGY` (`clone`, `fetch`, `none`)
 - `:variables:GIT_SUBMODULE_STATEGY` (`none`, `normal`, `recursive`)
-- `:variables:GIT_DEPTH` (unset or a number)
 
 ## Controlling git strategy
 
