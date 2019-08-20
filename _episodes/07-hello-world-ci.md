@@ -56,6 +56,12 @@ We should fix this. If you click through again on the red `x` on the left for th
 
 Lastly, we'll open up a merge request for this branch, since we plan to merge this back into master when we're happy with the first iteration of the CI/CD.
 
+> ## Work In Progress?
+>
+> If you expect to be working on a branch for a bit of time while you have a merge request open, it's good habit to mark it as a Work-In-Progress (WIP).
+> ![Work In Progress]({{site.baseurl}}/fig/work-in-progress.png)
+{: .callout}
+
 # Hello World
 
 ## Fixing the YAML
