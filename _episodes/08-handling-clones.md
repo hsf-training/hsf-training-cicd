@@ -1,7 +1,7 @@
 ---
 title: "Handling Clones"
 teaching: 5
-exercises: 5
+exercises: 10
 objectives:
   - Learn how GitLab CI/CD clones repositories
   - Get your submodule included/cloned
