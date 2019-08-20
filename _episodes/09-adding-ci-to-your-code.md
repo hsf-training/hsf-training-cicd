@@ -10,7 +10,6 @@ questions:
 hidden: false
 keypoints:
   - Setting up CI/CD shouldn't be mind-numbing
-  - Stupid mistakes happen, but telling a computer to do what you mean versus what you say is hard
   - All defined jobs run in parallel by default
   - Jobs can be allowed to fail without breaking your CI/CD
 ---
