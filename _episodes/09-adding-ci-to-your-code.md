@@ -154,11 +154,23 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 However, we probably don't want our CI/CD to crash if that happens. So let's also add `:build_latest:allow_failure = true` to our job as well. This allows the job to fail without crashing the CI/CD -- that is, it's an acceptable failure. This indicates to us when we do something in the code that might potentially break the latest release; or indicate when our code will not build in a new release.
 
 ~~~
-build_latest
+build_latest:
   image: ...
   script: [....]
   allow_failure: yes # or 'true' or 'on'
 ~~~
 {: .language-yaml}
+
+Finally, we want to clean up the two jobs a little be separating out the `source /home/atlas/release_setup.sh` into a `before_script` parameter since this is actually preparation for setting up our environment -- rather than part of the script we want to test! For example,
+
+~~~
+build_latest:
+  before_script:
+    - source /home/atlas/release_setup.sh
+  ...
+~~~
+{: .language-yaml}
+
+and we're ready for a coffee break.
 
 {% include links.md %}
