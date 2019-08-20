@@ -9,7 +9,8 @@ questions:
   - How can we make job templates?
 hidden: false
 keypoints:
-  - First key point. (FIXME)
+  - Hidden jobs can be used as templates with anchors or the `extends` parameter.
+  - Using job templates allows you to stay DRY!
 ---
 
 <center>
