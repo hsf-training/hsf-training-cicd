@@ -20,13 +20,18 @@ We've been working on the CMake repository which has a lot of work done, but we 
 ~~~
 > cd cmake-repository/
 > touch .gitlab-ci.yml
+> git checkout -b feature/add-ci
 > git add .gitlab-ci.yml
 > git commit -m "my first ci/cd"
-> git push
+> git push -u origin feature/add-ci
 ~~~
 {: .source}
 
-Now, if you navigate to the GitLab webpage for that project, you'll notice a shiny new button
+> ## Feature Branches
+>
+> Since we're adding a new feature (CI/CD) to our project, we'll work in a feature branch. This is just a human-friendly named branch to indicate that it's adding a new feature.
+
+Now, if you navigate to the GitLab webpage for that project and branch, you'll notice a shiny new button
 
 ![CI/CD Configuration Button]({{site.baseurl}}/fig/ci-cd-configuration-button.png)
 
@@ -48,6 +53,8 @@ We should fix this. If you click through again on the red `x` on the left for th
 >
 > This can also be found by going to `CI/CD -> Pipelines` or `CI/CD -> Jobs` page and clicking the `CI Lint` button at the top right.
 {: .callout}
+
+Lastly, we'll open up a merge request for this branch, since we plan to merge this back into master when we're happy with the first iteration of the CI/CD.
 
 # Hello World
 
