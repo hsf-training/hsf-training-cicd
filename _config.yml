@@ -16,7 +16,7 @@ title: "Continuous Integration / Continuous Development (CI/CD)"
 
 # Life cycle stage of the lesson
 # possible values: "pre-alpha", "alpha", "beta", "stable"
-life_cycle: "pre-alpha"
+life_cycle: "alpha"
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
@@ -99,3 +99,7 @@ exclude:
 
 # Turn on built-in syntax highlighting.
 highlighter: rouge
+
+plugins_dir:
+  - jekyll-redirect-from
+  - jekyll-paginate

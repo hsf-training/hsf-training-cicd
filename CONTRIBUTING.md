@@ -128,16 +128,21 @@ repository for reference while revising.
 
 ## Other Resources
 
-General discussion of [Software Carpentry][swc-site] and [Data Carpentry][dc-site]
+General discussion of [Software Carpentry][swc-site], [Data Carpentry][dc-site], and [Library Carpentry][lc-site]
 happens on the [discussion mailing list][discuss-list],
 which everyone is welcome to join.
-You can also [reach us by email][email].
 
-[email]: mailto:admin@software-carpentry.org
+You can also review [this guide](https://docs.carpentries.org/topic_folders/maintainers/contributing.html) developed by a team of The Carpentries Instructors.  It provides instructions for contributing to The Carpentries’ lesson materials using graphical or command line interfaces with Git and GitHub.
+
+Any other questions, you can [reach us by email][email].
+
+
+
+[email]: mailto:team@carpentries.org
 [dc-issues]: https://github.com/issues?q=user%3Adatacarpentry
 [dc-lessons]: http://datacarpentry.org/lessons/
 [dc-site]: http://datacarpentry.org/
-[discuss-list]: http://lists.software-carpentry.org/listinfo/discuss
+[discuss-list]: https://carpentries.topicbox.com/groups/discuss
 [github]: https://github.com
 [github-flow]: https://guides.github.com/introduction/flow/
 [github-join]: https://github.com/join

@@ -1,8 +1,25 @@
 ---
 title: Setup
+questions:
+- "What do I need to start?"
+
 ---
-You should already have Python (and Python testing) working as well as a GitLab account through CERN as this was done on the first day.
+> ## Prerequisites
+>
+> Most of the prerequisites should have been covered if you did the
+> pre-workshop material.
+>
+> At a bare minimum:
+> - You should have git working on your laptop
+> - You should have docker working
+> - We assume that you already have a CERN account
+{: .prereq}
 
-Everything that will be done today will be using python and the built-in [CI/CD on GitLab](https://docs.gitlab.com/ee/ci/).
+To ensure that your gitlab account is active, go to
+[gitlab.cern.ch](gitlab.cern.ch).
 
-{% include links.md %}
+You should find your very own gitlab homepage!
+
+If you're having issues, **please notify your instructor immediately**
+since you won't be able to follow this lesson without access to CERN's
+Gitlab.

@@ -7,7 +7,6 @@ import sys
 import os
 import shutil
 
-
 BOILERPLATE = (
     '.travis.yml',
     'AUTHORS',
@@ -20,7 +19,6 @@ BOILERPLATE = (
     '_extras/discuss.md',
     '_extras/figures.md',
     '_extras/guide.md',
-    'aio.md',
     'index.md',
     'reference.md',
     'setup.md',
