@@ -1,7 +1,7 @@
 ---
 title: "Run Analysis in CI/CD"
 teaching: 5
-exercises: 25
+exercises: 20
 objectives:
   -
 questions:
