@@ -3,12 +3,14 @@ title: "Getting into the Spy Game"
 teaching: 5
 exercises: 5
 objectives:
-  -
+  - Add custom environment variables
+  - Learn how to give your CI/CD Runners access to private information
 questions:
   - How can I give my CI job private information?
 hidden: false
 keypoints:
-  - First key point. (FIXME)
+  - Service accounts provide an extra layer of security between the outside world and your account
+  - Environment variables in GitLab CI/CD allow you to hide protected information from others who can see your code
 ---
 
 So we're nearly done with getting the merge request for the CI/CD up and running but we need to deal with this error:
