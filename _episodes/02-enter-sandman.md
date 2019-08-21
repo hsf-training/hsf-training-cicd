@@ -92,7 +92,7 @@ Try out some other commands on your system, and see what things look like.
 As you've seen above, the exit code from the last executed command is stored in the `$?` environment variable. Accessing from a shell is easy `echo $?`. What about from python? There are many different ways depending on which library you use. Using similar examples above, we can use the (note: deprecated) `os.system` call:
 
 ~~~
->>> import subprocess
+>>> import os,subprocess
 >>> ret = os.system('ls')
 >>> os.WEXITSTATUS(ret)
 0
@@ -115,7 +115,7 @@ Create a file called `bash_exit.sh` with the following content:
 ~~~
 #!/usr/bin/env bash
 
-if [ $1 -eq "hello" ]
+if [ $1 == "hello" ]
 then
   exit 0
 else
