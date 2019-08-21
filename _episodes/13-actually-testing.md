@@ -129,5 +129,144 @@ Ok, so what can we define with `artifacts`?
 - `artifacts:expire_in`: human-readable length of time (default: `30 days`) such as `3 mins 14 seconds`
 - `artifacts:reports` (JUnit tests - expert-mode, will not cover)
 
+Since the build artifacts don't need to exist for more than a day, let's add artifacts to our jobs in `build` that `expire_in = 1 day`.
+
+> ### Adding Artifacts
+>
+> Let's add `artifacts` to our jobs to save the `build/` directory. We'll also make sure the `test` job has the right `dependencies` as well.
+>
+> > ## Solution
+> > ~~~
+> > ...
+> > ...
+> > .build_template:
+> >   stage: build
+> >   before_script:
+> >     - source /home/atlas/release_setup.sh
+> >   script:
+> >     - mkdir build
+> >     - cd build
+> >     - cmake ../source
+> >     - cmake --build .
+> >   artifacts:
+> >     paths:
+> >       - build
+> >     expire_in: 1 day
+> > ...
+> > ...
+> > test:
+> >   stage: test
+> >   image: atlas/analysisbase:21.2.85-centos7
+> >   dependencies:
+> >     - build
+> >   before_script:
+> >     - source /home/atlas/release_setup.sh
+> >     - source build/${AnalysisBase_PLATFORM}/setup.sh
+> >   script:
+> >     - mkdir run
+> >     - cd run
+> >     - AnalysisPayload
+> > ~~~
+> > {: .language-yaml}
+> {: .solution}
+{: .challenge}
+
+Ok, it looks like the CI passed unexpectedly. In fact, it seems we've uncovered an unknown feature of `event.readFrom` where passing in a nullptr doesn't cause the code to error out! We'll deal with that as well.
+
+## Getting Data
+
+So now we've dealt with the first problem of getting the built code available to the `test` job via `artifacts` and `dependencies`. Now we need to think about how to get the data in. We could:
+
+- `wget` the entire ROOT file every time
+- `git commit` the ROOT file into the repo
+  - ok, maybe not our repo, but another repo that you can add as a submodule so you don't have to clone it every time
+- fine, maybe we can make a smaller ROOT file
+- what? we don't have time to cover that? ok, can we use `xrdcp`?
+- yes, I realize it's a big ROOT file but still...
+
+Anyway, there's lots of options. For large (ROOT) files, it's usually preferable to either
+
+- stream the file event-by-event (or chunks of events at a time) and only process a small number of events
+- download a small file that you process entirely
+
+The first option is going to be much easier to deal with, so let's try and edit our code to allow for command-line arguments, and fix the `event.readFrom` bug at the same time.
+
+### Fixing the bug
+
+We only need one more line of code to fix the bug:
+
+~~~
+xAOD::TEvent event;
+std::unique_ptr< TFile > iFile ( TFile::Open(inputFilePath, "READ") );
+if(!iFile) return 1;
+event.readFrom( iFile.get() );
+~~~
+{: .language-c++}
+
+Why does this work? Because the exit code is the return value of the `main()` function! Make the changes, compile, and try it out yourself by running `AnalysisPayload` without the data file locally and then checking the exit code.
+
+### Hardcoded data paths
+
+The first thing is we need to deal with the hard-coded data path. We shouldn't try and keep backwards-compatibility. This is easier than you think with a few tweaks!
+
+We need to change the signature of `main` to accept command-line arguments. In `source/AnalysisPayload/utils/AnalysisPayload.cxx`, we'll change from
+
+~~~
+int main()
+~~~
+{: .language-c++}
+
+to
+
+~~~
+int main(int argc, char** argv)
+~~~
+{: .language-c++}
+
+To be specific, `argc` is the number of command line arguments supplied (including the script name itself `AnalysisPayload`) and `argv` are the individual command line arguments passed in with `argv[0] == 'AnalysisPayload'`. We can then override the hard-coded data path if we supply a file by checking if there are at least 2 arguments passed in:
+
+~~~
+if(argc >= 2) inputFilePath = argv[1];
+~~~
+{: .language-c++}
+
+Put that in the right place. Finally, we might also want to specify how many events to run over as well, instead of running over the full file, if we specify it. So then, we can add lines closer to the top of the code:
+
+~~~
+Long64_t numEntries(-1);
+if(argc >= 3) numEntries  = std::atoi(argv[2]);
+// ...
+// ...
+// get the number of events in the file to loop over
+if(numEntries == -1) numEntries = event.getEntries();
+std::cout << "Processing " << numEntries << " events" << std::endl;
+~~~
+{: .language-c++}
+
+removing the other declaration for `numEntries` further down in the code. Once we've done this, let's commit the changes and check out the CI again. We expect it to fail. Now we can go ahead and fix it.
+
+### Updating the CI to point to the data file
+
+Now, the data file we've used was via `wget` but it's also located in an ATLAS-public `eos` space: `/eos/user/g/gstark/public/DAOD_EXOT27.17882744._000026.pool.root.1`. Depending on which top-level `eos` space we're located in, we have to use different xrootd servers to access files:
+
+- `/eos/user -> eosuser.cern.ch`
+- `/eos/atlas -> eosatlas.cern.ch`
+- `/eos/group -> eosgroup.cern.ch`
+
+By now you should get the idea. Therefore, the xrootd path we use is `root://eosuser.cern.ch//eos/user/g/gstark/public/DAOD_EXOT27.17882744._000026.pool.root.1`. Nicely enough, `TFile::Open` takes in, not only local paths (`file://`), but xrootd paths (`root://`) paths as well [also HTTP and others, but we won't cover that]. Since we've modified the code so we can pass in files instead through the command line:
+
+~~~
+script:
+  - ...
+  - AnalysisPayload root://eosuser.cern.ch//eos/user/g/gstark/public/DAOD_EXOT27.17882744._000026.pool.root.1 1000
+~~~
+{: .language-yaml}
+
+> ### How many events to run over?
+>
+> For CI jobs, we want things to run fast and have fast turnaround time. More especially since everyone at CERN shares a pool of runners for most CI jobs, so we should be courteous about the run time of our CI jobs. I generally suggest running over just enough events for you to be able to test what you want to test - whether cutflow or weights.
+{: .callout}
+
+Let's go ahead and commit those changes and see if the test job succeeded or not.
 
 {% include links.md %}
