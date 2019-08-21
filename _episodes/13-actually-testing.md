@@ -8,7 +8,10 @@ questions:
   - How can I run my code in the CI/CD?
 hidden: false
 keypoints:
-  - First key point. (FIXME)
+  - Making code that is both human-friendly and computer-friendly is not so obvious.
+  - Configurability is the crux of reproducibility.
+  - Sometimes code that we thought was working fine, could use some "freshening" up.
+  - We're way too naive.
 ---
 
 # The Naive Attempt
