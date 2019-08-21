@@ -9,7 +9,7 @@ questions:
   - How can we make job templates?
 hidden: false
 keypoints:
-  - Hidden jobs can be used as templates with anchors or the `extends` parameter.
+  - Hidden jobs can be used as templates with the `extends` parameter.
   - Using job templates allows you to stay DRY!
 ---
 
@@ -37,11 +37,11 @@ but it's much easier to simply write
 ~~~
 {: .language-yaml}
 
-Why is this fun? We should be able to combine it with some other nice features of YAML to build...
+Why is this fun? We should be able to combine it with some other nice features of GitLab's CI YAML to build...
 
 # Job Templates
 
-Remember back in the [YAML lesson, we covered anchors]({{site.baseurl}}/04-understanding-yaml/#anchors)? We can combine this with GitLab's syntax for hidden keys to create these job templates. From the previous lesson, our `.gitlab-ci.yml` looks like
+From the previous lesson, our `.gitlab-ci.yml` looks like
 
 ~~~
 variables:
@@ -75,11 +75,11 @@ build_latest:
 ~~~
 {: .language-yaml}
 
-We've already started to repeat ourselves. How can we combine the two into a single job template called `.build_template`? Let's refactor things a little bit, but it's up to **you** to fill in the last few steps with [anchors]({{site.baseurl}}/04-understanding-yaml/#anchors).
+We've already started to repeat ourselves. How can we combine the two into a single job template called `.build_template`? Let's refactor things a little bit.
 
 > ## Refactoring the code
 >
-> Can you refactor the above code by adding a hidden job containing parameters that `build` and `build_latest` have in common?
+> Can you refactor the above code by adding a hidden job (named `.build_template`) containing parameters that `build` and `build_latest` have in common?
 >
 > > ## Solution
 > > ~~~
@@ -125,45 +125,7 @@ We've already started to repeat ourselves. How can we combine the two into a sin
 > {: .solution}
 {: .challenge}
 
-The idea behind everything for anchors is to merge multiple (job) definitions together, usually a hidden job and a non-hidden job.
-
-> ## Anchors Aweigh
->
-> Using the anchor `&build_definition`, can you use anchors and merge in the definition to `build` and `build_latest`?
->
-> > ## Solution
-> > ~~~
-> > variables:
-> >   GIT_SUBMODULE_STRATEGY: recursive
-> >
-> > hello world:
-> >   script:
-> >     - echo "Hello World"
-> >     - find . -path ./.git -prune -o -print
-> >
-> > .build_template: &build_definition
-> >   before_script:
-> >     - source /home/atlas/release_setup.sh
-> >   script:
-> >     - mkdir build
-> >     - cd build
-> >     - cmake ../source
-> >     - cmake --build .
-> >
-> > build:
-> >   <<: *build_definition
-> >   image: atlas/analysisbase:21.2.85-centos7
-> >
-> > build_latest:
-> >   <<: *build_definition
-> >   image: atlas/analysisbase:latest
-> >   allow_failure: yes
-> > ~~~
-> > {: .language-yaml}
-> {: .solution}
-{: .challenge}
-
-Interestingly enough, GitLab CI/CD also allows for `:job:extends` as an alternative to using anchors. I tend to prefer this syntax as it appears to be "more readable and slightly more flexible" (according to GitLab - but I argue it's simply just more readable and has identical functionality!!!).
+The idea behind not repeating yourself is to merge multiple (job) definitions together, usually a hidden job and a non-hidden job. This is done through a concept of inheritance. Interestingly enough, GitLab CI/CD also allows for `:job:extends` as an alternative to using YAML anchors. I tend to prefer this syntax as it appears to be "more readable and slightly more flexible" (according to GitLab - but I argue it's simply just more readable and has identical functionality!!!).
 
 ~~~
 .only-important:
@@ -206,7 +168,7 @@ Note how `.in-docker` overrides `:rspec:tags` because it's "closest in scope".
 
 > ## Anchors Away?
 >
-> If we do away with anchors (removing `&build_definition`) and use `extends` instead, what does the code look like?
+> If we use `extends` to remove duplicate code, what do we get?
 >
 > > ## Solution
 > > ~~~
