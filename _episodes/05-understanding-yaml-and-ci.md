@@ -1,6 +1,6 @@
 ---
 title: "YAML and CI"
-teaching: 10
+teaching: 5
 exercises: 0
 objectives:
   - Learn where to find more details about everything for the GitLab CI.
