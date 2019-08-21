@@ -105,6 +105,16 @@ As it seems like we have a complete CI/CD that does physics - we should see what
 > {: .solution}
 {: .challenge}
 
+And this allows us to download artifacts from the successfully run job
+
+![CI/CD Artifacts Download]({{site.baseurl}}/fig/ci-cd-artifacts-download.png)
+
+or if you click through to a `run_exotics` job, you can browse the artifacts
+
+![CI/CD Artifacts Browse]({{site.baseurl}}/fig/ci-cd-artifacts-browse.png)
+
+which should just be the `run` directory with the `myOutputFile.root` inside of it.
+
 > ## Further Reading
 > - [https://gitlab.cern.ch/help/ci/variables/README#variables](https://gitlab.cern.ch/help/ci/variables/README#variables)
 > - [https://gitlab.cern.ch/help/ci/variables/predefined_variables.md](https://gitlab.cern.ch/help/ci/variables/predefined_variables.md)
