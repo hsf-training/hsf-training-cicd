@@ -97,27 +97,28 @@ foo: bar # this is a comment, too
 ~~~
 {: .language-yaml}
 
-## Anchors
-
-YAML also has a handy feature called 'anchors', which let you easily duplicate content across your document. Anchors look like references `&` in C/C++ and named anchors can be dereferenced using `*`.
-
-~~~
-anchored_content: &anchor_name This string will appear as the value of two keys.
-other_anchor: *anchor_name
-
-base: &base
-  name: Everyone has same name
-
-foo: &foo
-  <<: *base
-  age: 10
-
-bar: &bar
-  <<: *base
-  age: 20
-~~~
-{: .language-yaml}
-
-The `<<` allows you to merge the items in a dereferenced anchor. Both `bar` and `foo` will have a `name` key.
+> ## Anchors
+>
+> YAML also has a handy feature called 'anchors', which let you easily duplicate content across your document. Anchors look like references `&` in C/C++ and named anchors can be dereferenced using `*`.
+>
+> ~~~
+> anchored_content: &anchor_name This string will appear as the value of two keys.
+> other_anchor: *anchor_name
+>
+> base: &base
+>   name: Everyone has same name
+>
+> foo: &foo
+>   <<: *base
+>   age: 10
+>
+> bar: &bar
+>   <<: *base
+>   age: 20
+> ~~~
+> {: .language-yaml}
+>
+> The `<<` allows you to merge the items in a dereferenced anchor. Both `bar` and `foo` will have a `name` key.
+{: .callout}
 
 {% include links.md %}
