@@ -1,7 +1,7 @@
 ---
 title: "Getting into the Spy Game"
 teaching: 5
-exercises: 5
+exercises: 10
 objectives:
   - Add custom environment variables
   - Learn how to give your CI/CD Runners access to private information
