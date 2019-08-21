@@ -71,20 +71,20 @@ Let's go ahead and add some custom variables to fix up our access control.
 
 # Adding `kinit` for access control
 
-Now it's time to update your CI/CD to use the environment variables you defined by adding `echo $SERVICE_PASS | kinit $CERN_USER` as part of the `before_script` to the `test` job as that's the job that requires access.
+Now it's time to update your CI/CD to use the environment variables you defined by adding `echo $SERVICE_PASS | kinit $CERN_USER` as part of the `before_script` to the `run_exotics` job as that's the job that requires access.
 
 # Adding Artifacts on Success
 
-As it seems like we have a complete CI/CD that does physics - we should see what came out. We just need to add artifacts for the `test` job. This is left as an exercise to you.
+As it seems like we have a complete CI/CD that does physics - we should see what came out. We just need to add artifacts for the `run_exotics` job. This is left as an exercise to you.
 
 > ## Adding Artifacts
 >
-> Let's add `artifacts` to our `test` job to save the `run` directory. Let's have the artifacts expire in a week instead.
+> Let's add `artifacts` to our `run_exotics` job to save the `run` directory. Let's have the artifacts expire in a week instead.
 >
 > > ## Solution
 > > ~~~
-> > test:
-> >   stage: test
+> > run_exotics:
+> >   stage: run
 > >   image: atlas/analysisbase:21.2.85-centos7
 > >   dependencies:
 > >     - build
