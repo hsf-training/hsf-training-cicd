@@ -30,6 +30,7 @@ We've been working on the CMake repository which has a lot of work done, but we 
 > ## Feature Branches
 >
 > Since we're adding a new feature (CI/CD) to our project, we'll work in a feature branch. This is just a human-friendly named branch to indicate that it's adding a new feature.
+{: .callout}
 
 Now, if you navigate to the GitLab webpage for that project and branch, you'll notice a shiny new button
 
