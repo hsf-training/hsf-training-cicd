@@ -1,5 +1,5 @@
 ---
-title: "Handling Clones"
+title: "Handling Your Clones"
 teaching: 5
 exercises: 10
 objectives:
