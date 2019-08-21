@@ -55,8 +55,8 @@ build_latest:
 
 So we need to do two things:
 
-1. add a `test` stage
-2. add a `test` job
+1. add a `run` stage
+2. add a `run_exotics` job
 
 Let's go ahead and do that, so we now have three stages
 
@@ -64,15 +64,15 @@ Let's go ahead and do that, so we now have three stages
 stages:
   - greeting
   - build
-  - test
+  - run
 ~~~
 {: .language-yaml}
 
-and we just need to figure out how to define a test job. Since the code is built, the script needs to source the `${AnalysisBase_PLATFORM}/setup.sh` script, create a `run` directory, and run the `AnalysisPayload` utility we compiled from our code. Seems too easy to be true?
+and we just need to figure out how to define a run job. Since the code is built, the script needs to source the `${AnalysisBase_PLATFORM}/setup.sh` script, create a `run` directory, and run the `AnalysisPayload` utility we compiled from our code. Seems too easy to be true?
 
 ~~~
-test:
-  stage: test
+run_exotics:
+  stage: run
   image: atlas/analysisbase:21.2.85-centos7
   before_script:
     - source /home/atlas/release_setup.sh
@@ -95,7 +95,7 @@ ERROR: Job failed: exit code 1
 
 Ok, fine. That was way too easy. It seems we have a few issues to deal with.
 
-1. The built code in the `build` job (of the `build` stage) isn't in the `test` job by default. We need to use GitLab `artifacts` to copy over this from the right job (and not from `build_latest`).
+1. The built code in the `build` job (of the `build` stage) isn't in the `run_exotics` job by default. We need to use GitLab `artifacts` to copy over this from the right job (and not from `build_latest`).
 2. The data (ROOT file) isn't available to the Runner yet.
 
 ## Artifacts
@@ -136,7 +136,7 @@ Since the build artifacts don't need to exist for more than a day, let's add art
 
 > ### Adding Artifacts
 >
-> Let's add `artifacts` to our jobs to save the `build/` directory. We'll also make sure the `test` job has the right `dependencies` as well.
+> Let's add `artifacts` to our jobs to save the `build/` directory. We'll also make sure the `run_exotics` job has the right `dependencies` as well.
 >
 > > ## Solution
 > > ~~~
@@ -157,8 +157,8 @@ Since the build artifacts don't need to exist for more than a day, let's add art
 > >     expire_in: 1 day
 > > ...
 > > ...
-> > test:
-> >   stage: test
+> > run_exotics:
+> >   stage: run
 > >   image: atlas/analysisbase:21.2.85-centos7
 > >   dependencies:
 > >     - build
@@ -178,7 +178,7 @@ Ok, it looks like the CI passed unexpectedly. In fact, it seems we've uncovered 
 
 ## Getting Data
 
-So now we've dealt with the first problem of getting the built code available to the `test` job via `artifacts` and `dependencies`. Now we need to think about how to get the data in. We could:
+So now we've dealt with the first problem of getting the built code available to the `run_exotics` job via `artifacts` and `dependencies`. Now we need to think about how to get the data in. We could:
 
 - `wget` the entire ROOT file every time
 - `git commit` the ROOT file into the repo
@@ -270,7 +270,7 @@ script:
 > For CI jobs, we want things to run fast and have fast turnaround time. More especially since everyone at CERN shares a pool of runners for most CI jobs, so we should be courteous about the run time of our CI jobs. I generally suggest running over just enough events for you to be able to test what you want to test - whether cutflow or weights.
 {: .callout}
 
-Let's go ahead and commit those changes and see if the test job succeeded or not.
+Let's go ahead and commit those changes and see if the run job succeeded or not.
 
 ~~~
 $ AnalysisPayload root://eosuser.cern.ch//eos/user/g/gstark/public/DAOD_EXOT27.17882744._000026.pool.root.1 1000
