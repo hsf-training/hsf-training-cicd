@@ -272,4 +272,20 @@ script:
 
 Let's go ahead and commit those changes and see if the test job succeeded or not.
 
+~~~
+$ AnalysisPayload root://eosuser.cern.ch//eos/user/g/gstark/public/DAOD_EXOT27.17882744._000026.pool.root.1 1000
+xAOD::Init                INFO    Environment initialised for data access
+TNetXNGFile::Open         ERROR   [ERROR] Server responded with an error: [3010] Unable to give access - user access restricted - unauthorized identity used ; Permission denied
+
+Warning in <xAOD::TReturnCode>:
+Warning in <xAOD::TReturnCode>: Unchecked return codes encountered during the job
+Warning in <xAOD::TReturnCode>: Number of unchecked successes: 1
+Warning in <xAOD::TReturnCode>: To fail on an unchecked code, call xAOD::TReturnCode::enableFailure() at the job's start
+Warning in <xAOD::TReturnCode>:
+ERROR: Job failed: exit code 1
+~~~
+{: .output}
+
+Sigh. Another one. Ok, fine, you know what? Let's just deal with this in the next session, ok?
+
 {% include links.md %}
