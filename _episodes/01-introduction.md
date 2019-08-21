@@ -19,7 +19,7 @@ Continuous Integration (CI) is the concept of literal continuous integration of 
 > ## Catch and Release
 >
 > This is just like a fishing practice for ~~conservation~~ preservation!
-> <center><iframe src="https://giphy.com/embed/e1UDN5In8rg8dXXYwJ" width="480" height="255" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nfl-football-sport-demaryius-thomas-e1UDN5In8rg8dXXYwJ">via GIPHY</a></p></center>
+> <center><iframe src="https://giphy.com/embed/j8080dkr0ux1e" width="385" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/funny-girl-fishing-j8080dkr0ux1e">via GIPHY</a></p></center>
 {: .callout}
 
 ## Breaking Changes
