@@ -46,6 +46,11 @@ date: 2002-12-14
 ~~~
 {: .language-yaml}
 
+> ## Give your colons some breathing room
+>
+> Notice that in the above list, all colons have a space afterwards, `: `. This is important for YAML parsing and is a common mistake.
+{: .callout}
+
 ## Lists and Dictionaries
 
 ~~~
