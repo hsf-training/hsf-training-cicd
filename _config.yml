@@ -2,7 +2,7 @@
 # Values for this lesson.
 #------------------------------------------------------------
 
-baseurl: /2019-08-19-usatlas-computing-bootcamp
+baseurl: /continuous-integration-deployment-gitlab
 
 # Which carpentry is this ("swc", "dc", "lc", or "cp")?
 # swc: Software Carpentry
