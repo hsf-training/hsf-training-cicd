@@ -15,10 +15,10 @@ keypoints:
 
 # Adding CI/CD to a project
 
-We've been working on the CMake repository which has a lot of work done, but we should be good physicists (and people) by adding tests and CI/CD. The first thing we'll do is create a `.gitlab-ci.yml` file in the project.
+We've been working on the analysis code which has a lot of work done, but we should be good physicists (and people) by adding tests and CI/CD. The first thing we'll do is create a `.gitlab-ci.yml` file in the project. You should have two projects, one with the analysis code and one for the statistical fits, which I'll call `awesome-htautau-analysis` and `awesome-htautau-statistics`.
 
 ~~~
-> cd cmake-repository/
+> cd awesome-htautau-analysis/
 > touch .gitlab-ci.yml
 > git checkout -b feature/add-ci
 > git add .gitlab-ci.yml
