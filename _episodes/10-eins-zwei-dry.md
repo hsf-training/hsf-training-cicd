@@ -44,33 +44,25 @@ Why is this fun? We should be able to combine it with some other nice features o
 From the previous lesson, our `.gitlab-ci.yml` looks like
 
 ~~~
-variables:
-  GIT_SUBMODULE_STRATEGY: recursive
-
 hello world:
   script:
-    - echo "Hello World"
-    - find . -path ./.git -prune -o -print
+   - echo "Hello World"
 
-build:
-  image: atlas/analysisbase:21.2.85-centos7
+build_skim:
+  image: rootproject/root-conda:6.18.04
   before_script:
-    - source /home/atlas/release_setup.sh
+   - COMPILER=$(root-config --cxx)
+   - FLAGS=$(root-config --cflags --libs)
   script:
-    - mkdir build
-    - cd build
-    - cmake ../source
-    - cmake --build .
+   - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 
-build_latest:
-  image: atlas/analysisbase:latest
+build_skim_latest:
+  image: rootproject/root-conda:latest
   before_script:
-    - source /home/atlas/release_setup.sh
+   - COMPILER=$(root-config --cxx)
+   - FLAGS=$(root-config --cflags --libs)
   script:
-    - mkdir build
-    - cd build
-    - cmake ../source
-    - cmake --build .
+   - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
   allow_failure: yes
 ~~~
 {: .language-yaml}
@@ -79,46 +71,36 @@ We've already started to repeat ourselves. How can we combine the two into a sin
 
 > ## Refactoring the code
 >
-> Can you refactor the above code by adding a hidden job (named `.build_template`) containing parameters that `build` and `build_latest` have in common?
+> Can you refactor the above code by adding a hidden job (named `.build_template`) containing parameters that `build_skim` and `build_skim_latest` have in common?
 >
 > > ## Solution
 > > ~~~
-> > variables:
-> >   GIT_SUBMODULE_STRATEGY: recursive
-> >
 > > hello world:
 > >   script:
-> >     - echo "Hello World"
-> >     - find . -path ./.git -prune -o -print
+> >    - echo "Hello World"
 > >
 > > .build_template:
 > >   before_script:
-> >     - source /home/atlas/release_setup.sh
+> >    - COMPILER=$(root-config --cxx)
+> >    - FLAGS=$(root-config --cflags --libs)
 > >   script:
-> >     - mkdir build
-> >     - cd build
-> >     - cmake ../source
-> >     - cmake --build .
+> >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > >
-> > build:
-> >   image: atlas/analysisbase:21.2.85-centos7
+> > build_skim:
+> >   image: rootproject/root-conda:6.18.04
 > >   before_script:
-> >     - source /home/atlas/release_setup.sh
+> >    - COMPILER=$(root-config --cxx)
+> >    - FLAGS=$(root-config --cflags --libs)
 > >   script:
-> >     - mkdir build
-> >     - cd build
-> >     - cmake ../source
-> >     - cmake --build .
+> >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > >
-> > build_latest:
-> >   image: atlas/analysisbase:latest
+> > build_skim_latest:
+> >   image: rootproject/root-conda:latest
 > >   before_script:
-> >     - source /home/atlas/release_setup.sh
+> >    - COMPILER=$(root-config --cxx)
+> >    - FLAGS=$(root-config --cflags --libs)
 > >   script:
-> >     - mkdir build
-> >     - cd build
-> >     - cmake ../source
-> >     - cmake --build .
+> >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > >   allow_failure: yes
 > > ~~~
 > > {: .language-yaml}
@@ -172,30 +154,24 @@ Note how `.in-docker` overrides `:rspec:tags` because it's "closest in scope".
 >
 > > ## Solution
 > > ~~~
-> > variables:
-> >   GIT_SUBMODULE_STRATEGY: recursive
-> >
 > > hello world:
 > >   script:
-> >     - echo "Hello World"
-> >     - find . -path ./.git -prune -o -print
+> >    - echo "Hello World"
 > >
 > > .build_template:
 > >   before_script:
-> >     - source /home/atlas/release_setup.sh
+> >    - COMPILER=$(root-config --cxx)
+> >    - FLAGS=$(root-config --cflags --libs)
 > >   script:
-> >     - mkdir build
-> >     - cd build
-> >     - cmake ../source
-> >     - cmake --build .
+> >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > >
-> > build:
+> > build_skim:
 > >   extends: .build_template
-> >   image: atlas/analysisbase:21.2.85-centos7
+> >   image: rootproject/root-conda:6.18.04
 > >
-> > build_latest:
+> > build_skim_latest:
 > >   extends: .build_template
-> >   image: atlas/analysisbase:latest
+> >   image: rootproject/root-conda:latest
 > >   allow_failure: yes
 > > ~~~
 > > {: .language-yaml}
