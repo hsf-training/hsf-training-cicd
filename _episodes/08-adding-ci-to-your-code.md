@@ -14,24 +14,27 @@ keypoints:
   - Jobs can be allowed to fail without breaking your CI/CD
 ---
 
-# CMake Revisited
+# Time To Skim
 
 ## The Naive Attempt
 
 As of right now, your `.gitlab-ci.yml` should look like
 
 ~~~
-variables:
- GIT_SUBMODULE_STRATEGY: recursive
-
 hello world:
   script:
    - echo "Hello World"
-   - find . -path ./.git -prune -o -print
 ~~~
 {: .language-yaml}
 
-Let's go ahead and teach our CI to build our code. Let's add another job (named `build`) that runs in parallel for right now, and runs `cmake` and `make`. Don't forget that we also need to make a `build` directory, and that we would like to do an **out-of-source** build.
+Let's go ahead and teach our CI to build our code. Let's add another job (named `build_skim`) that runs in parallel for right now, and runs the compiler `ROOT` uses. This worked for me on my computer, so we should try it:
+
+```bash
+COMPILER=$(root-config --cxx)
+$COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
+```
+
+which will produce an output binary called `skim`.
 
 > ## Adding a new job
 >
@@ -39,20 +42,14 @@ Let's go ahead and teach our CI to build our code. Let's add another job (named 
 >
 > > ## Solution
 > > ~~~
-> > variables:
-> >   GIT_SUBMODULE_STRATEGY: recursive
-> >
 > > hello world:
 > >   script:
 > >    - echo "Hello World"
-> >    - find . -path ./.git -prune -o -print
 > >
-> > build:
+> > build_skim:
 > >   script:
-> >    - mkdir build
-> >    - cd build
-> >    - cmake ../source
-> >    - cmake --build .
+> >    - COMPILER=$(root-config --cxx)
+> >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
 > > ~~~
 > > {: .language-yaml}
 > {: .solution}
@@ -60,26 +57,35 @@ Let's go ahead and teach our CI to build our code. Let's add another job (named 
 
 ![CI/CD Two Parallel Jobs]({{site.baseurl}}/fig/ci-cd-two-parallel-jobs.png)
 
-## Wrong CMake?
+## No root-config?
 
 Ok, so maybe we were a little naive here. Let's start debugging. You got this error when you tried to build
 
 ~~~
-$ cmake ../source
--- The C compiler identification is GNU 4.8.5
--- The CXX compiler identification is unknown
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
-CMake Error: your CXX compiler: "CMAKE_CXX_COMPILER-NOTFOUND" was not found.   Please set CMAKE_CXX_COMPILER to a valid compiler path or name.
-CMake Error at CMakeLists.txt:6 (cmake_minimum_required):
-  CMake 3.4 or higher is required.  You are running version 2.8.12.2
+Running with gitlab-runner 12.6.0 (ac8e767a)
+  on default-runner-7685f6989c-bzlz8 _yp-6wmD
 
+Using Docker executor with image gitlab-registry.cern.ch/ci-tools/ci-worker:cc7 ...
+WARNING: Container based cache volumes creation is disabled. Will not create volume for "/cache"
+Authenticating with credentials from job payload (GitLab Registry)
+Pulling docker image gitlab-registry.cern.ch/ci-tools/ci-worker:cc7 ...
+Using docker image sha256:262a48c12b0622aabbb9331ef5f7c46b47bd100ac340ec1b076c0e83246bb573 for gitlab-registry.cern.ch/ci-tools/ci-worker:cc7 ...
 
--- Configuring incomplete, errors occurred!
-See also "/builds/usatlas-computing-bootcamp/v6-ci-cd/build/CMakeFiles/CMakeOutput.log".
-See also "/builds/usatlas-computing-bootcamp/v6-ci-cd/build/CMakeFiles/CMakeError.log".
+Running on runner-_yp-6wmD-project-86027-concurrent-0 via default-runner-7685f6989c-bzlz8...
+
+Fetching changes with git depth set to 50...
+ Initialized empty Git repository in /builds/gstark/awesome-htautau-analysis/.git/
+ Created fresh repository.
+ From https://gitlab.cern.ch/gstark/awesome-htautau-analysis
+  * [new ref]         refs/pipelines/1404549 -> refs/pipelines/1404549
+  * [new branch]      master                 -> origin/master
+ Checking out bdd593f1 as master...
+ Skipping Git submodules setup
+
+Authenticating with credentials from job payload (GitLab Registry)
+ $ COMPILER=$(root-config --cxx)
+ /usr/bin/bash: line 87: root-config: command not found
+ ERROR: Job failed: exit code 1
 ~~~
 {: .output}
 
@@ -98,14 +104,25 @@ See also "/builds/usatlas-computing-bootcamp/v6-ci-cd/build/CMakeFiles/CMakeErro
 > {: .solution}
 {: .challenge}
 
-Let's go ahead and update our `.gitlab-ci.yml` and fix it.
+Let's go ahead and update our `.gitlab-ci.yml` and fix it to use a versioned docker image that has `root`: `rootproject/root-conda:6.18.04` from the [rootproject/root-conda](https://hub.docker.com/r/rootproject/root-conda) docker hub page.
 
-> ## Still the wrong cmake???
+> ## Still failed??? What the hell.
 >
 > What happened?
 >
 > > ## Answer
-> > It turns out we just forgot to source `/home/atlas/release_setup.sh`.
+> > It turns out we just forgot the include flags needed for compilation. If you look at the log, you'll see
+> > ~~~
+> >  $ COMPILER=$(root-config --cxx)
+> >  $ $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
+> >  skim.cxx:11:10: fatal error: ROOT/RDataFrame.hxx: No such file or directory
+> >   #include "ROOT/RDataFrame.hxx"
+> >            ^~~~~~~~~~~~~~~~~~~~~
+> >  compilation terminated.
+> >  ERROR: Job failed: exit code 1
+> > ~~~
+> > {: .output}
+> > How do we fix it? We just need to add another variable to add the flags at the end via `$FLAGS` defined as `FLAGS=$(root-config --cflags --libs)`.
 > {: .solution}
 {: .challenge}
 
@@ -113,39 +130,31 @@ Ok, let's go ahead and update our `.gitlab-ci.yml` again, and it better be fixed
 
 # Building multiple versions
 
-Great, so we finally got it working... CI/CD isn't obviously powerful when you're only building one thing. Let's build both the version of the code we're testing and also test that the latest analysis base release (`atlas/analysisbase:latest`) works with our code. Call this new job `build_latest`.
+Great, so we finally got it working... CI/CD isn't obviously powerful when you're only building one thing. Let's build both the version of the code we're testing and also test that the latest ROOT image (`rootproject/root-conda:latest`) works with our code. Call this new job `build_skim_latest`.
 
-> ## Adding the `build_latest` job
+> ## Adding the `build_skim_latest` job
 >
 > What does the `.gitlab-ci.yml` look like now?
 >
 > > ## Solution
 > > ~~~
-> > variables:
-> >   GIT_SUBMODULE_STRATEGY: recursive
-> >
 > > hello world:
 > >   script:
 > >    - echo "Hello World"
-> >    - find . -path ./.git -prune -o -print
 > >
-> > build:
-> >   image: atlas/analysisbase:21.2.85-centos7
+> > build_skim:
+> >   image: rootproject/root-conda:6.18.04
 > >   script:
-> >    - source /home/atlas/release_setup.sh
-> >    - mkdir build
-> >    - cd build
-> >    - cmake ../source
-> >    - cmake --build .
+> >    - COMPILER=$(root-config --cxx)
+> >    - FLAGS=$(root-config --cflags --libs)
+> >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > >
-> > build_latest:
-> >   image: atlas/analysisbase:latest
+> > build_skim_latest:
+> >   image: rootproject/root-conda:latest
 > >   script:
-> >    - source /home/atlas/release_setup.sh
-> >    - mkdir build
-> >    - cd build
-> >    - cmake ../source
-> >    - cmake --build .
+> >    - COMPILER=$(root-config --cxx)
+> >    - FLAGS=$(root-config --cflags --libs)
+> >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > > ~~~
 > > {: .language-yaml}
 > {: .solution}
@@ -161,12 +170,15 @@ build_latest:
 ~~~
 {: .language-yaml}
 
-Finally, we want to clean up the two jobs a little be separating out the `source /home/atlas/release_setup.sh` into a `before_script` parameter since this is actually preparation for setting up our environment -- rather than part of the script we want to test! For example,
+Finally, we want to clean up the two jobs a little by separating out the environment variables being set like `COMPILER=$(root-config --cxx)` into a `before_script` parameter since this is actually preparation for setting up our environment -- rather than part of the script we want to test! For example,
 
 ~~~
-build_latest:
+build_skim_latest:
   before_script:
-    - source /home/atlas/release_setup.sh
+   - COMPILER=$(root-config --cxx)
+   - FLAGS=$(root-config --cflags --libs)
+  script:
+   - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
   ...
 ~~~
 {: .language-yaml}
