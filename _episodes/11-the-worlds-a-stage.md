@@ -52,16 +52,13 @@ Stages allow us to categorize jobs by functionality, such as `build`, or `test`,
 
 > ## Adding Stages
 >
-> Let's add stages to your code. We will define five stages in preparation for the rest of the stuff we want to add: `greeting`, `build`, `run`, `cutflow`, and `plot`. Don't forget to assign those stages to the appropriate jobs (the last three we leave unassigned).
+> Let's add stages to your code. We will define two stages for now: `greeting` and `build`. Don't forget to assign those stages to the appropriate jobs.
 >
 > > ## Solution
 > > ~~~
 > > stages:
 > >   - greeting
 > >   - build
-> >   - run
-> >   - cutflow
-> >   - plot
 > >
 > > hello world:
 > >   stage: greeting
