@@ -49,6 +49,11 @@ So we need to give our CI/CD access to our data. This is actually a good thing. 
 > However, when you're sharing or part of a group, it is much better to use a group's service account or a user's (maybe yours) service account for authentication instead. For today's lesson however, we'll be using your account and show pictures of how to set these environment variables.
 {: .callout}
 
+> ## How to make a service account?
+>
+> Go to [CERN Account Management -> Create New Account](https://account.cern.ch/account/Management/NewAccount.aspx) and click on the `Service` button, then click `Next` and follow the steps.
+{: .callout}
+
 ## Variables
 
 There are two kinds of environment variables:
