@@ -16,7 +16,7 @@ keypoints:
 So we're nearly done with getting the merge request for the CI/CD up and running but we need to deal with this error:
 
 ~~~
-$ ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_higgs.root 19.6 11467.0 0.1
+$ ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
 >>> Process input: root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root
 Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3010] Unable to give access - user access restricted - unauthorized identity used ; Permission denied
 Warning in <TTreeReader::SetEntryBase()>: There was an issue opening the last file associated to the TChain being processed.
@@ -27,7 +27,7 @@ Global scaling: 0.1
 Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3010] Unable to give access - user access restricted - unauthorized identity used ; Permission denied
 terminate called after throwing an instance of 'std::runtime_error'
   what():  GetBranchNames: error in opening the tree Events
-/bin/bash: line 87:    13 Aborted                 (core dumped) ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_higgs.root 19.6 11467.0 0.1
+/bin/bash: line 87:    13 Aborted                 (core dumped) ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
 section_end:1581450227:build_script
 ERROR: Job failed: exit code 1
 ~~~
@@ -80,19 +80,19 @@ Let's go ahead and add some custom variables to fix up our access control.
 
 # Adding `kinit` for access control
 
-Now it's time to update your CI/CD to use the environment variables you defined by adding `echo $SERVICE_PASS | kinit $CERN_USER@CERN.CH` as part of the `before_script` to the `skim_higgs` job as that's the job that requires access.
+Now it's time to update your CI/CD to use the environment variables you defined by adding `echo $SERVICE_PASS | kinit $CERN_USER@CERN.CH` as part of the `before_script` to the `skim_ggH` job as that's the job that requires access.
 
 # Adding Artifacts on Success
 
-As it seems like we have a complete CI/CD that does physics - we should see what came out. We just need to add artifacts for the `skim_higgs` job. This is left as an exercise to you.
+As it seems like we have a complete CI/CD that does physics - we should see what came out. We just need to add artifacts for the `skim_ggH` job. This is left as an exercise to you.
 
 > ## Adding Artifacts
 >
-> Let's add `artifacts` to our `skim_higgs` job to save the `skim_higgs.root` file. Let's have the artifacts expire in a week instead.
+> Let's add `artifacts` to our `skim_ggH` job to save the `skim_ggH.root` file. Let's have the artifacts expire in a week instead.
 >
 > > ## Solution
 > > ~~~
-> > skim_higgs:
+> > skim_ggH:
 > >   stage: run
 > >   dependencies:
 > >    - build_skim
@@ -100,10 +100,10 @@ As it seems like we have a complete CI/CD that does physics - we should see what
 > >   before_script:
 > >     - printf $SERVICE_PASS | base64 -d | kinit $CERN_USER@CERN.CH
 > >   script:
-> >     - ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_higgs.root 19.6 11467.0 0.1
+> >     - ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
 > >   artifacts:
 > >     paths:
-> >       - skim_higgs.root
+> >       - skim_ggH.root
 > >     expire_in: 1 week
 > > ~~~
 > > {: .language-yaml}
@@ -114,11 +114,11 @@ And this allows us to download artifacts from the successfully run job
 
 ![CI/CD Artifacts Download]({{site.baseurl}}/fig/ci-cd-artifacts-download.png)
 
-or if you click through to a `skim_higgs` job, you can browse the artifacts
+or if you click through to a `skim_ggH` job, you can browse the artifacts
 
 ![CI/CD Artifacts Browse]({{site.baseurl}}/fig/ci-cd-artifacts-browse.png)
 
-which should just be the `skim_higgs.root` file you just made.
+which should just be the `skim_ggH.root` file you just made.
 
 > ## Further Reading
 > - [https://gitlab.cern.ch/help/ci/variables/README#variables](https://gitlab.cern.ch/help/ci/variables/README#variables)

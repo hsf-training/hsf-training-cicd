@@ -50,7 +50,7 @@ build_skim_latest:
 So we need to do two things:
 
 1. add a `run` stage
-2. add a `skim_higgs` job to this stage
+2. add a `skim_ggH` job to this stage
 
 Let's go ahead and do that, so we now have three stages
 
@@ -65,7 +65,7 @@ stages:
 and we just need to figure out how to define a run job. Since the skim binary is built, just see if we can run `skim`. Seems too easy to be true?
 
 ~~~
-skim_higgs:
+skim_ggH:
   stage: run
   script:
     - ./skim
@@ -82,7 +82,7 @@ skim_higgs:
 
 Ok, fine. That was way too easy. It seems we have a few issues to deal with.
 
-1. The built code in the `build_skim` job (of the `build` stage) isn't in the `skim_higgs` job by default. We need to use GitLab `artifacts` to copy over this from the right job (and not from `build_skim_latest`).
+1. The built code in the `build_skim` job (of the `build` stage) isn't in the `skim_ggH` job by default. We need to use GitLab `artifacts` to copy over this from the right job (and not from `build_skim_latest`).
 2. The data (ROOT file) isn't available to the Runner yet.
 
 ## Artifacts
@@ -123,7 +123,7 @@ Since the build artifacts don't need to exist for more than a day, let's add art
 
 > ### Adding Artifacts
 >
-> Let's add `artifacts` to our jobs to save the `build/` directory. We'll also make sure the `skim_higgs` job has the right `dependencies` as well.
+> Let's add `artifacts` to our jobs to save the `build/` directory. We'll also make sure the `skim_ggH` job has the right `dependencies` as well.
 >
 > > ## Solution
 > > ~~~
@@ -142,7 +142,7 @@ Since the build artifacts don't need to exist for more than a day, let's add art
 > >     expire_in: 1 day
 > > ...
 > > ...
-> > skim_higgs:
+> > skim_ggH:
 > >   stage: run
 > >   dependencies:
 > >     - build_skim
@@ -157,13 +157,13 @@ Ok, it looks like the CI failed because it couldn't find the shared libraries. W
 
 > ### Set The Right Image
 >
-> Update the `skim_higgs` job to use the same image as the `build_skim` job.
+> Update the `skim_ggH` job to use the same image as the `build_skim` job.
 >
 > > ## Solution
 > > ~~~
 > > ...
 > > ...
-> > skim_higgs:
+> > skim_ggH:
 > >   stage: run
 > >   dependencies:
 > >     - build_skim
@@ -178,7 +178,7 @@ Ok, it looks like the CI failed because it couldn't find the shared libraries. W
 
 ## Getting Data
 
-So now we've dealt with the first problem of getting the built code available to the `skim_higgs` job via `artifacts` and `dependencies`. Now we need to think about how to get the data in. We could:
+So now we've dealt with the first problem of getting the built code available to the `skim_ggH` job via `artifacts` and `dependencies`. Now we need to think about how to get the data in. We could:
 
 - `wget` the entire ROOT file every time
 - `git commit` the ROOT file into the repo
@@ -237,7 +237,7 @@ script:
 Let's go ahead and commit those changes and see if the run job succeeded or not.
 
 ~~~
-$ ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_higgs.root 19.6 11467.0 0.1
+$ ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
 >>> Process input: root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root
 Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3010] Unable to give access - user access restricted - unauthorized identity used ; Permission denied
 Warning in <TTreeReader::SetEntryBase()>: There was an issue opening the last file associated to the TChain being processed.
@@ -248,7 +248,7 @@ Global scaling: 0.1
 Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3010] Unable to give access - user access restricted - unauthorized identity used ; Permission denied
 terminate called after throwing an instance of 'std::runtime_error'
   what():  GetBranchNames: error in opening the tree Events
-/bin/bash: line 87:    13 Aborted                 (core dumped) ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_higgs.root 19.6 11467.0 0.1
+/bin/bash: line 87:    13 Aborted                 (core dumped) ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
 section_end:1581450227:build_script
 ERROR: Job failed: exit code 1
 ~~~
