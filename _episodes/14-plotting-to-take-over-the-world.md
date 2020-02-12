@@ -17,7 +17,6 @@ So in order to make plots, we just need to take the skimmed file `skim_ggH.root`
 
 ```bash
 python histograms.py skim_ggH.root ggH hist_ggH.root
-python plot.py hist_ggH.root hist_ggH.pdf 0.1
 ```
 
 This needs to be added to your `.gitlab-ci.yml` which should look like the following:
@@ -77,7 +76,7 @@ skim_ggH:
 >
 > 1. add a `plot` stage
 > 2. add a `plot_ggH` job
-> 3. save the outputs `hist_ggH.root` and `hist_ggH.pdf` as an artifact (expires in 1 week)
+> 3. save the output `hist_ggH.root` as an artifact (expires in 1 week)
 >
 > You know what? While you're at it, why not delete the `greeting` stage and `hello_world` job too? There's no need for it anymore 🙂.
 >
@@ -97,11 +96,9 @@ skim_ggH:
 > >   image: rootproject/root-conda:6.18.04
 > >   script:
 > >     - python histograms.py skim_ggH.root hist_ggH.root
-> >     - python plot.py hist_ggH.root hist_ggH.pdf 0.1
 > >   artifacts:
 > >     paths:
 > >       - hist_ggH.root
-> >       - hist_ggH.pdf
 > >     expire_in: 1 week
 > > ~~~
 > > {: .language-yaml}
