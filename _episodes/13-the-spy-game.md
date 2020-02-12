@@ -16,22 +16,31 @@ keypoints:
 So we're nearly done with getting the merge request for the CI/CD up and running but we need to deal with this error:
 
 ~~~
-$ AnalysisPayload root://eosuser.cern.ch//eos/user/g/gstark/public/DAOD_EXOT27.17882744._000026.pool.root.1 1000
-xAOD::Init                INFO    Environment initialised for data access
-TNetXNGFile::Open         ERROR   [ERROR] Server responded with an error: [3010] Unable to give access - user access restricted - unauthorized identity used ; Permission denied
-
-Warning in <xAOD::TReturnCode>:
-Warning in <xAOD::TReturnCode>: Unchecked return codes encountered during the job
-Warning in <xAOD::TReturnCode>: Number of unchecked successes: 1
-Warning in <xAOD::TReturnCode>: To fail on an unchecked code, call xAOD::TReturnCode::enableFailure() at the job's start
-Warning in <xAOD::TReturnCode>:
+$ ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_higgs.root 19.6 11467.0 0.1
+>>> Process input: root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root
+Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3010] Unable to give access - user access restricted - unauthorized identity used ; Permission denied
+Warning in <TTreeReader::SetEntryBase()>: There was an issue opening the last file associated to the TChain being processed.
+Number of events: 0
+Cross-section: 19.6
+Integrated luminosity: 11467
+Global scaling: 0.1
+Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3010] Unable to give access - user access restricted - unauthorized identity used ; Permission denied
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  GetBranchNames: error in opening the tree Events
+/bin/bash: line 87:    13 Aborted                 (core dumped) ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_higgs.root 19.6 11467.0 0.1
+section_end:1581450227:build_script
 ERROR: Job failed: exit code 1
 ~~~
 {: .output}
 
 # Access Control
 
-So we need to give our CI/CD access to our data. This is actually a good thing. It means CMS can't just grab it! Anyhow, this is done by pretty much done by executing `echo $SERVICE_PASS | kinit $CERN_USER` assuming that we've set the corresponding environment variables.
+So we need to give our CI/CD access to our data. This is actually a good thing. It means CMS can't just grab it! Anyhow, this is done by pretty much done by executing `printf $SERVICE_PASS | base64 -d | kinit $CERN_USER` assuming that we've set the corresponding environment variables by safely encoding them (`printf "hunter42" | base64`).
+
+> ## Base-64 encoding?
+>
+> Sometimes you have a string that contains certain characters that would be interpreted incorreectly by GitLab's CI system. In order to protect against that, you can safely base-64 encode the string, store it, and then decode it as part of the CI job. This is entirely safe and recommended.
+{: .callout}
 
 > ## Service Account or Not?
 >
@@ -71,34 +80,30 @@ Let's go ahead and add some custom variables to fix up our access control.
 
 # Adding `kinit` for access control
 
-Now it's time to update your CI/CD to use the environment variables you defined by adding `echo $SERVICE_PASS | kinit $CERN_USER` as part of the `before_script` to the `run_exotics` job as that's the job that requires access.
+Now it's time to update your CI/CD to use the environment variables you defined by adding `echo $SERVICE_PASS | kinit $CERN_USER@CERN.CH` as part of the `before_script` to the `skim_higgs` job as that's the job that requires access.
 
 # Adding Artifacts on Success
 
-As it seems like we have a complete CI/CD that does physics - we should see what came out. We just need to add artifacts for the `run_exotics` job. This is left as an exercise to you.
+As it seems like we have a complete CI/CD that does physics - we should see what came out. We just need to add artifacts for the `skim_higgs` job. This is left as an exercise to you.
 
 > ## Adding Artifacts
 >
-> Let's add `artifacts` to our `run_exotics` job to save the `run` directory. Let's have the artifacts expire in a week instead.
+> Let's add `artifacts` to our `skim_higgs` job to save the `skim_higgs.root` file. Let's have the artifacts expire in a week instead.
 >
 > > ## Solution
 > > ~~~
-> > run_exotics:
+> > skim_higgs:
 > >   stage: run
-> >   image: atlas/analysisbase:21.2.85-centos7
 > >   dependencies:
-> >     - build
+> >    - build_skim
+> >   image: rootproject/root-conda:6.18.04
 > >   before_script:
-> >     - source /home/atlas/release_setup.sh
-> >     - source build/${AnalysisBase_PLATFORM}/setup.sh
-> >     - echo "$SERVICE_PASS" | kinit $CERN_USER
+> >     - printf $SERVICE_PASS | base64 -d | kinit $CERN_USER@CERN.CH
 > >   script:
-> >     - mkdir run
-> >     - cd run
-> >     - AnalysisPayload root://eosuser.cern.ch//eos/user/g/gstark/public/DAOD_EXOT27.17882744._000026.pool.root.1 1000
+> >     - ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_higgs.root 19.6 11467.0 0.1
 > >   artifacts:
 > >     paths:
-> >       - run
+> >       - skim_higgs.root
 > >     expire_in: 1 week
 > > ~~~
 > > {: .language-yaml}
@@ -109,11 +114,11 @@ And this allows us to download artifacts from the successfully run job
 
 ![CI/CD Artifacts Download]({{site.baseurl}}/fig/ci-cd-artifacts-download.png)
 
-or if you click through to a `run_exotics` job, you can browse the artifacts
+or if you click through to a `skim_higgs` job, you can browse the artifacts
 
 ![CI/CD Artifacts Browse]({{site.baseurl}}/fig/ci-cd-artifacts-browse.png)
 
-which should just be the `run` directory with the `myOutputFile.root` inside of it.
+which should just be the `skim_higgs.root` file you just made.
 
 > ## Further Reading
 > - [https://gitlab.cern.ch/help/ci/variables/README#variables](https://gitlab.cern.ch/help/ci/variables/README#variables)
