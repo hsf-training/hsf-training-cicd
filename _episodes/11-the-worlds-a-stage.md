@@ -17,30 +17,24 @@ keypoints:
 From the last session, we're starting with
 
 ~~~
-variables:
-  GIT_SUBMODULE_STRATEGY: recursive
-
 hello world:
   script:
-    - echo "Hello World"
-    - find . -path ./.git -prune -o -print
+   - echo "Hello World"
 
 .build_template:
   before_script:
-    - source /home/atlas/release_setup.sh
+   - COMPILER=$(root-config --cxx)
+   - FLAGS=$(root-config --cflags --libs)
   script:
-    - mkdir build
-    - cd build
-    - cmake ../source
-    - cmake --build .
+   - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 
-build:
+build_skim:
   extends: .build_template
-  image: atlas/analysisbase:21.2.85-centos7
+  image: rootproject/root-conda:6.18.04
 
-build_latest:
+build_skim_latest:
   extends: .build_template
-  image: atlas/analysisbase:latest
+  image: rootproject/root-conda:latest
   allow_failure: yes
 ~~~
 {: .language-yaml}
@@ -66,32 +60,26 @@ Stages allow us to categorize jobs by functionality, such as `build`, or `test`,
 > >   - greeting
 > >   - build
 > >
-> > variables:
-> >   GIT_SUBMODULE_STRATEGY: recursive
-> >
 > > hello world:
 > >   stage: greeting
 > >   script:
-> >     - echo "Hello World"
-> >     - find . -path ./.git -prune -o -print
+> >    - echo "Hello World"
 > >
 > > .build_template:
 > >   stage: build
 > >   before_script:
-> >     - source /home/atlas/release_setup.sh
+> >    - COMPILER=$(root-config --cxx)
+> >    - FLAGS=$(root-config --cflags --libs)
 > >   script:
-> >     - mkdir build
-> >     - cd build
-> >     - cmake ../source
-> >     - cmake --build .
+> >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > >
-> > build:
+> > build_skim:
 > >   extends: .build_template
-> >   image: atlas/analysisbase:21.2.85-centos7
+> >   image: rootproject/root-conda:6.18.04
 > >
-> > build_latest:
+> > build_skim_latest:
 > >   extends: .build_template
-> >   image: atlas/analysisbase:latest
+> >   image: rootproject/root-conda:latest
 > >   allow_failure: yes
 > > ~~~
 > > {: .language-yaml}
