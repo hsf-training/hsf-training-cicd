@@ -106,7 +106,7 @@ job one:
 
 job two:
   script:
-    - pytest
+    - python test.py
     - coverage
 ~~~
 {: .language-yaml}
