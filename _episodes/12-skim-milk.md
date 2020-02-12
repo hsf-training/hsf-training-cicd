@@ -3,7 +3,7 @@ title: "A Skimmer Higgs"
 teaching: 5
 exercises: 20
 objectives:
-  -
+  - Learn how to skim code and set up artifacts.
 questions:
   - How can I run my skimming code in the CI/CD?
 hidden: false
