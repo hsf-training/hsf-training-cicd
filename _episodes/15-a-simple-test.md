@@ -10,19 +10,76 @@ questions:
 hidden: false
 keypoints:
   - This kind of test is a regression test, as we're testing assuming the code up to this point was correct.
-  - This is not a unit test. Unit tests would be testing individual pieces of the `atlas/athena` code-base, or specific functionality you wrote into your algorithms.
+  - This is not a unit test. Unit tests would be testing individual pieces of the `atlas/athena` or `CMSSW` code-base, or specific functionality you wrote into your algorithms.
 ---
 
-So at this point, I'm going to be very hands-off, and just explain what you will be doing.
+So at this point, I'm going to be very hands-off, and just explain what you will be doing. Here's where you should be starting from:
+
+~~~
+stages:
+  - build
+  - run
+  - plot
+
+.build_template:
+  stage: build
+  before_script:
+   - COMPILER=$(root-config --cxx)
+   - FLAGS=$(root-config --cflags --libs)
+  script:
+   - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+  artifacts:
+    paths:
+      - skim
+    expire_in: 1 day
+
+build_skim:
+  extends: .build_template
+  image: rootproject/root-conda:6.18.04
+
+build_skim_latest:
+  extends: .build_template
+  image: rootproject/root-conda:latest
+  allow_failure: yes
+
+skim_ggH:
+  stage: run
+  dependencies:
+    - build_skim
+  image: rootproject/root-conda:6.18.04
+  before_script:
+    - printf $SERVICE_PASS | base64 -d | kinit $CERN_USER@CERN.CH
+  script:
+    - ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
+  artifacts:
+    paths:
+      - skim_ggH.root
+      - skim_ggH.log
+    expire_in: 1 week
+
+plot_ggH:
+  stage: plot
+  dependencies:
+    - skim_ggH
+  image: rootproject/root-conda:6.18.04
+  script:
+    - python histograms.py skim_ggH.root ggH hist_ggH.root
+  artifacts:
+    paths:
+      - hist_ggH.root
+    expire_in: 1 week
+~~~
+{: .language-yaml}
 
 > # Adding a regression test
 >
-> 1. Add a `test` stage after the `run` stage.
-> 2. Add a `test_exotics` job that is part of the `test` stage, and depends on `run_exotics`.
->   - this job does not need to clone the repository (change `GIT_STRATEGY`)
-> 3. Create a python file named `test_regression.py` that uses `PyROOT` and `pytest`
->   - you might find the following lines (below) helpful to get `pytest` in the analysisbase image
->   - you might find the following lines (below) helpful to set up `test_regression.py`
+> 1. Add a `test` stage after the `plot` stage.
+> 2. Add a test job, `test_ggH`, part of the `test` stage, and has the right `dependencies`
+>   - Note: `./skim` needs to be updated to produce a `skim_ggH.log` (hint: `./skim .... > skim_ggH.log`)
+>   - We also need the hist_ggH.root file produced by the plot job
+> 3. Create a directory called `tests/` and make two python files in it named `test_cutflow.py` and `test_plot.py` that uses `PyROOT` and `pytest`
+>   - you might find the following lines (below) helpful to get `pytest` in the `rootproject/root-conda` image
+>   - you might find the following lines (below) helpful to set up the tests
 > 4. Write a few different tests of your choosing that tests (and asserts) something about `myOuputFile.root`. Some ideas are:
 >   - check the structure (does `h_njets_raw` exist?)
 >   - check that the integral of a histogram matches a value you expect
@@ -36,37 +93,37 @@ So at this point, I'm going to be very hands-off, and just explain what you will
 > {: .solution}
 {: .challenge}
 
-## PyTest in AB Image
+## PyTest in the image
+
+Add a `before_script` to set up the environment like so:
 
 ~~~
-pip install --user pytest
-export PATH=/home/atlas/.local/bin:$PATH
+before_script:
+  - pip install pytest
 ~~~
 {: .source}
 
-## Template for `test_regression.py`
+## Template for `test_cutflow.py`
 
 ~~~
-import pytest
-import ROOT
+def test_cutflow_ggH():
+    logfile = open('skim_ggH.log', 'r')
+    lines = [line.rstrip() for line in logfile]
 
-@pytest.fixture(scope='module')
-def root_file():
-  """ A module fixture is used to open the ROOT file once for this entire
-  module and then close it when we're done.
-  """
-  f = ROOT.TFile.Open('run/myOutputFile.root')
-  yield f
-  f.Close()
-
-def test_file_structure(root_file):
-  pass
-
-def test_histogram_integral(root_file):
-  pass
-
-def test_histogram_bins(root_file):
-  pass
+    required_lines = [
+       'Number of events: 47696',
+       'Cross-section: 19.6',
+       'Integrated luminosity: 11467',
+       'Global scaling: 0.1',
+       'Passes trigger: pass=3402       all=47696      -- eff=7.13 % cumulative '
+       'nMuon > 0 : pass=3402       all=3402       -- eff=100.00 % cumulative '
+       'nTau > 0  : pass=3401       all=3402       -- eff=99.97 % cumulative '
+       'Event has good taus: pass=846        all=3401       -- eff=24.88 % '
+       'Event has good muons: pass=813        all=846        -- eff=96.10 % '
+       'Valid muon in selected pair: pass=813        all=813        -- eff=100.00 % '
+       'Valid tau in selected pair: pass=813        all=813        -- eff=100.00 % '
+    ]
+    assert all(required_line in lines)
 ~~~
 {: .language-python}
 
