@@ -123,7 +123,7 @@ def test_cutflow_ggH():
        'Valid muon in selected pair: pass=813        all=813        -- eff=100.00 % '
        'Valid tau in selected pair: pass=813        all=813        -- eff=100.00 % '
     ]
-    assert all(required_line in lines)
+    assert all(required_line in lines for required_line in required_lines)
 ~~~
 {: .language-python}
 
