@@ -29,10 +29,11 @@ hello world:
 
 Let's go ahead and teach our CI to build our code. Let's add another job (named `build_skim`) that runs in parallel for right now, and runs the compiler `ROOT` uses. This worked for me on my computer, so we should try it:
 
-```bash
+~~~
 COMPILER=$(root-config --cxx)
 $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
-```
+~~~
+{: .language-bash}
 
 which will produce an output binary called `skim`.
 

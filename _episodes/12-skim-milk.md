@@ -206,7 +206,7 @@ Now, the data file we've used was via `xrdcp` but it's also located in a public 
 > ### What files are in here?
 >
 > By now, you should get the idea of how to explore eos spaces.
-> ```bash
+> ~~~
 > $ xrdfs eospublic.cern.ch ls /eos/root-eos/HiggsTauTauReduced/
 > /eos/root-eos/HiggsTauTauReduced/DYJetsToLL.root
 > /eos/root-eos/HiggsTauTauReduced/GluGluToHToTauTau.root
@@ -217,7 +217,8 @@ Now, the data file we've used was via `xrdcp` but it's also located in a public 
 > /eos/root-eos/HiggsTauTauReduced/W1JetsToLNu.root
 > /eos/root-eos/HiggsTauTauReduced/W2JetsToLNu.root
 > /eos/root-eos/HiggsTauTauReduced/W3JetsToLNu.root
-> ```
+> ~~~
+> {: .language-bash}
 {: .callout}
 
 For the purposes of this tutorial, I've provided a file we should use in a CERN-restricted space here: `/eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root`. Therefore, the xrootd path we use is `root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root`. Nicely enough, `TFile::Open` takes in, not only local paths (`file://`), but xrootd paths (`root://`) paths as well [also HTTP and others, but we won't cover that]. Since we've modified the code so we can pass in files instead through the command line:
