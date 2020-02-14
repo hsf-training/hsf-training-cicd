@@ -75,9 +75,9 @@ Using docker image sha256:262a48c12b0622aabbb9331ef5f7c46b47bd100ac340ec1b076c0e
 Running on runner-_yp-6wmD-project-86027-concurrent-0 via default-runner-7685f6989c-bzlz8...
 
 Fetching changes with git depth set to 50...
- Initialized empty Git repository in /builds/gstark/awesome-htautau-analysis/.git/
+ Initialized empty Git repository in /builds/gstark/awesome-analysis-eventselection/.git/
  Created fresh repository.
- From https://gitlab.cern.ch/gstark/awesome-htautau-analysis
+ From https://gitlab.cern.ch/gstark/awesome-analysis-eventselection
   * [new ref]         refs/pipelines/1404549 -> refs/pipelines/1404549
   * [new branch]      master                 -> origin/master
  Checking out bdd593f1 as master...
@@ -104,6 +104,11 @@ Authenticating with credentials from job payload (GitLab Registry)
 > > How do we fix it? We need to define the image as either a global parameter (`:image`) or as a per-job parameter (`:build:image`). Since we already have another job that doesn't need this image (and we don't want to introduce a regression), it's best practice to define the image we use on a per-job basis.
 > {: .solution}
 {: .challenge}
+
+> ## Docker???
+>
+> Don't panic. We'll learn this in tomorrow's session.
+{: .callout}
 
 Let's go ahead and update our `.gitlab-ci.yml` and fix it to use a versioned docker image that has `root`: `rootproject/root-conda:6.18.04` from the [rootproject/root-conda](https://hub.docker.com/r/rootproject/root-conda) docker hub page.
 

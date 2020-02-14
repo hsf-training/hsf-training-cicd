@@ -79,6 +79,35 @@ best-jedi: {name: Obi-Wan, side: light}
 ~~~
 {: .language-yaml}
 
+### Multiline Strings
+
+In YAML, there are two different ways to handle multiline strings. This is useful, for example, when you have a long code block that you want to format in a pretty way, but don't want to impact the functionality of the underlying CI script. In these cases, multiline strings can help. For an interactive demonstration, you can visit [https://yaml-multiline.info/](https://yaml-multiline.info/).
+
+Put simply, you have two operators you can use to determine whether to keep newlines (`|`, exactly how you wrote it) or to remove newlines (`>`, fold them in). Similarly, you can also choose whether you want a single newline at the end of the multiline string, multiple newlines at the end (`+`), or no newlines at the end (`-`). The below is a summary of some variations:
+
+~~~
+folded_no_ending_newline:
+  script:
+    - >-
+      echo "foo" &&
+      echo "bar" &&
+      echo "baz"
+
+
+    - echo "do something else"
+
+unfolded_ending_single_newline:
+  script:
+    - |
+      echo "foo" && \
+      echo "bar" && \
+      echo "baz"
+
+
+    - echo "do something else"
+~~~
+{: .language-yaml}
+
 ### Nested
 
 ~~~

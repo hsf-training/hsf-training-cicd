@@ -10,7 +10,6 @@ hidden: false
 keypoints:
   - Making jobs aware of each other is pretty easy.
   - Artifacts are pretty neat.
-  - Epstein didn't kill himself.
   - We're too naive.
 ---
 

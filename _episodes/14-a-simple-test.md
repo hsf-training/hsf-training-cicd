@@ -77,15 +77,14 @@ plot_ggH:
 > 2. Add a test job, `test_ggH`, part of the `test` stage, and has the right `dependencies`
 >   - Note: `./skim` needs to be updated to produce a `skim_ggH.log` (hint: `./skim .... > skim_ggH.log`)
 >   - We also need the hist_ggH.root file produced by the plot job
-> 3. Create a directory called `tests/` and make two python files in it named `test_cutflow.py` and `test_plot.py` that uses `PyROOT` and `pytest`
->   - you might find the following lines (below) helpful to get `pytest` in the `rootproject/root-conda` image
+> 3. Create a directory called `tests/` and make two python files in it named `test_cutflow_ggH.py` and `test_plot_ggH.py` that uses `PyROOT` and `pytest`
 >   - you might find the following lines (below) helpful to set up the tests
-> 4. Write a few different tests of your choosing that tests (and asserts) something about `myOuputFile.root`. Some ideas are:
->   - check the structure (does `h_njets_raw` exist?)
+> 4. Write a few different tests of your choosing that tests (and asserts) something about `hist_ggH.root`. Some ideas are:
+>   - check the structure (does `ggH_pt_1` exist?)
 >   - check that the integral of a histogram matches a value you expect
 >   - check that the bins of a histogram matches the values you expect
-> 5. Update your `test_exotics` job to execute `pytest test_regression.py`
-> 6. Try causing your CI/CD to fail on the `test_exotics` job
+> 5. Update your `test_ggH` job to execute `pytest test_regression.py`
+> 6. Try causing your CI/CD to fail on the `test_ggH` job
 >
 > > ## Done?
 > >
@@ -93,38 +92,59 @@ plot_ggH:
 > {: .solution}
 {: .challenge}
 
-## PyTest in the image
-
-Add a `before_script` to set up the environment like so:
+## Template for `test_cutflow_ggH.py`
 
 ~~~
-before_script:
-  - pip install pytest
-~~~
-{: .source}
+import sys
 
-## Template for `test_cutflow.py`
+logfile = open('skim_ggH.log', 'r')
+lines = [line.rstrip() for line in logfile]
 
-~~~
-def test_cutflow_ggH():
-    logfile = open('skim_ggH.log', 'r')
-    lines = [line.rstrip() for line in logfile]
+required_lines = [
+   'Number of events: 47696',
+   'Cross-section: 19.6',
+   'Integrated luminosity: 11467',
+   'Global scaling: 0.1',
+   'Passes trigger: pass=3402       all=47696      -- eff=7.13 % cumulative eff=7.13 %',
+   'nMuon > 0 : pass=3402       all=3402       -- eff=100.00 % cumulative eff=7.13 %',
+   'nTau > 0  : pass=3401       all=3402       -- eff=99.97 % cumulative eff=7.13 %',
+   'Event has good taus: pass=846        all=3401       -- eff=24.88 % cumulative eff=1.77 %',
+   'Event has good muons: pass=813        all=846        -- eff=96.10 % cumulative eff=1.70 %',
+   'Valid muon in selected pair: pass=813        all=813        -- eff=100.00 % cumulative eff=1.70 %',
+   'Valid tau in selected pair: pass=813        all=813        -- eff=100.00 % cumulative eff=1.70 %',
+]
 
-    required_lines = [
-       'Number of events: 47696',
-       'Cross-section: 19.6',
-       'Integrated luminosity: 11467',
-       'Global scaling: 0.1',
-       'Passes trigger: pass=3402       all=47696      -- eff=7.13 % cumulative '
-       'nMuon > 0 : pass=3402       all=3402       -- eff=100.00 % cumulative '
-       'nTau > 0  : pass=3401       all=3402       -- eff=99.97 % cumulative '
-       'Event has good taus: pass=846        all=3401       -- eff=24.88 % '
-       'Event has good muons: pass=813        all=846        -- eff=96.10 % '
-       'Valid muon in selected pair: pass=813        all=813        -- eff=100.00 % '
-       'Valid tau in selected pair: pass=813        all=813        -- eff=100.00 % '
-    ]
-    assert all(required_line in lines for required_line in required_lines)
+print('\n'.join(lines))
+for required_line in required_lines:
+    if not required_line in lines:
+        print(f'Did not find line in log file. {required_line}')
+        sys.exit(1)
 ~~~
 {: .language-python}
+
+## Template for `test_plot_ggH.py`
+
+~~~
+import sys
+import ROOT
+
+f = ROOT.TFile.Open('hist_ggH.root')
+keys = [k.GetName() for k in f.GetListOfKeys()]
+
+required_keys = ['ggH_pt_1', 'ggH_pt_2']
+
+print('\n'.join(keys))
+for required_key in required_keys:
+    if not required_key in keys:
+        print(f'Required key not found. {required_key}')
+        sys.exit(1)
+
+integral = f.ggH_pt_1.Integral()
+if abs(integral - 222.88716647028923) > 0.0001:
+    print(f'Integral of ggH_pt_1 is different: {integral}')
+    sys.exit(1)
+~~~
+{: .language-python}
+
 
 {% include links.md %}
