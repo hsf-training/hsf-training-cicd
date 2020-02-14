@@ -41,6 +41,19 @@ build_skim_latest:
 
 We're going to talk about another global parameter `:stages` (and the associated per-job parameter `:job:stage`. Stages allow us to group up parallel jobs with each group running after the other in the order you define. What have our jobs looked like so far in the pipelines we've been running?
 
+> ## Understanding the Reference
+>
+> One will notice that the reference uses colons like `:job:image:name` to refer to parameter names. This is represented in yaml like:
+> ~~~
+> job:
+>   image:
+>     name: rikorose/gcc-cmake:gcc-6
+> ~~~
+> {: .language-yaml}
+> where the colon refers to a child key.
+{: .callout}
+
+
 ![CI/CD Default Stages in Pipeline]({{site.baseurl}}/fig/ci-cd-default-stages.png)
 
 > ## Default Stage

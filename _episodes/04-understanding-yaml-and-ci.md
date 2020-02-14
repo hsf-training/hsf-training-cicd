@@ -116,7 +116,7 @@ job two:
 
 > ## Understanding the Reference
 >
-> One will notice that the reference uses colons like `image:name` to refer to parameter names. This is represented in yaml like:
+> One will notice that the reference uses colons like `:job:image:name` to refer to parameter names. This is represented in yaml like:
 > ~~~
 > job:
 >   image:
