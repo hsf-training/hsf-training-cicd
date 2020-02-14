@@ -18,12 +18,12 @@ keypoints:
 We've been working on the analysis code which has a lot of work done, but we should be good physicists (and people) by adding tests and CI/CD. The first thing we'll do is create a `.gitlab-ci.yml` file in the project. You should have two projects, one with the analysis code and one for the statistical fits, which I'll call `awesome-analysis-eventselection` and `awesome-analysis-statistics`.
 
 ~~~
-> cd awesome-analysis-eventselection/
-> touch .gitlab-ci.yml
-> git checkout -b feature/add-ci
-> git add .gitlab-ci.yml
-> git commit -m "my first ci/cd"
-> git push -u origin feature/add-ci
+cd awesome-analysis-eventselection/
+touch .gitlab-ci.yml
+git checkout -b feature/add-ci
+git add .gitlab-ci.yml
+git commit -m "my first ci/cd"
+git push -u origin feature/add-ci
 ~~~
 {: .source}
 
