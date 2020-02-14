@@ -55,6 +55,11 @@ We should fix this. If you click through again on the red `x` on the left for th
 > This can also be found by going to `CI/CD -> Pipelines` or `CI/CD -> Jobs` page and clicking the `CI Lint` button at the top right.
 {: .callout}
 
+> ### But what's a linter?
+>
+> From [wikipedia](https://en.wikipedia.org/wiki/Lint_(software)): `lint`, or a linter, is a tool that analyzes source code to flag programming errors, bugs, stylistic errors, and suspicious constructs. The term originates from a Unix utility that examined C language source code.
+{: .callout}
+
 Lastly, we'll open up a merge request for this branch, since we plan to merge this back into master when we're happy with the first iteration of the CI/CD.
 
 > ## Work In Progress?
