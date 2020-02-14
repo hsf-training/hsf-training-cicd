@@ -1,7 +1,7 @@
 ---
 title: "Let's Actually Make A Test (For Real)"
 teaching: 5
-exercises: 25
+exercises: 20
 objectives:
   - Actually add a test on the output of running physics
 questions:

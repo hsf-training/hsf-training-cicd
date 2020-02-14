@@ -1,7 +1,7 @@
 ---
 title: Homework
 teaching: 0
-exercises: 20
+exercises: 30
 objectives:
   - Add testing to the awesome-analysis-statistics repository.
 questions:

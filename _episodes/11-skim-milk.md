@@ -1,7 +1,7 @@
 ---
 title: "A Skimmer Higgs"
 teaching: 5
-exercises: 20
+exercises: 10
 objectives:
   - Learn how to skim code and set up artifacts.
 questions:
