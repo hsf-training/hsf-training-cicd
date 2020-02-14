@@ -19,7 +19,7 @@ permalink: index.html  # Is the only page that doesn't follow the pattern /:path
 Introduction
 ------------
 
-You've have recently learned about CI/CD through GitHub and Travis CI. In ATLAS we use uses GitLab to host our code. GitLab is bundled with a built-in CI/CD system that we'll learn how to develop on to make our code robust to errors, preserved, and reproducible.
+At CERN, we use GitLab to host our code. GitLab is bundled with a built-in CI/CD system that we'll learn how to develop on to make our code robust to errors, preserved, and reproducible.
 
 The aim of this module is to:
 - explore what it means to build a CI/CD workflow
