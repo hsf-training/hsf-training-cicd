@@ -18,12 +18,12 @@ keypoints:
 We've been working on the analysis code which has a lot of work done, but we should be good physicists (and people) by adding tests and CI/CD. The first thing we'll do is create a `.gitlab-ci.yml` file in the project. You should have two projects, one with the analysis code and one for the statistical fits, which I'll call `awesome-analysis-eventselection` and `awesome-analysis-statistics`.
 
 ~~~
-> cd awesome-analysis-eventselection/
-> touch .gitlab-ci.yml
-> git checkout -b feature/add-ci
-> git add .gitlab-ci.yml
-> git commit -m "my first ci/cd"
-> git push -u origin feature/add-ci
+cd awesome-analysis-eventselection/
+echo "hello world" >> .gitlab-ci.yml
+git checkout -b feature/add-ci
+git add .gitlab-ci.yml
+git commit -m "my first ci/cd"
+git push -u origin feature/add-ci
 ~~~
 {: .source}
 
@@ -55,6 +55,11 @@ We should fix this. If you click through again on the red `x` on the left for th
 > This can also be found by going to `CI/CD -> Pipelines` or `CI/CD -> Jobs` page and clicking the `CI Lint` button at the top right.
 {: .callout}
 
+> ### But what's a linter?
+>
+> From [wikipedia](https://en.wikipedia.org/wiki/Lint_(software)): `lint`, or a linter, is a tool that analyzes source code to flag programming errors, bugs, stylistic errors, and suspicious constructs. The term originates from a Unix utility that examined C language source code.
+{: .callout}
+
 Lastly, we'll open up a merge request for this branch, since we plan to merge this back into master when we're happy with the first iteration of the CI/CD.
 
 > ## Work In Progress?
@@ -67,7 +72,7 @@ Lastly, we'll open up a merge request for this branch, since we plan to merge th
 
 ## Fixing the YAML
 
-Now, our YAML is currently invalid, but this makes sense because we didn't actually define any jobs to run. Let's go ahead and create our first job that simply echoes "Hello World".
+Now, our YAML is currently invalid, but this makes sense because we didn't actually define any script to run. Let's go ahead and update our first job that simply echoes "Hello World".
 
 ~~~
 hello world:

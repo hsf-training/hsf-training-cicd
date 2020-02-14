@@ -46,8 +46,8 @@ Don't just limit yourself to thinking of CI/CD as primarily for testing changes,
 
 Now, obviously, we're not going to make our own fully-fledged CI/CD solution. Plenty exist in the wild today, and below are just a popular few:
 
-- [Native GitLab CI/CD](https://about.gitlab.com/)
-- (beta) [Native GitHub CI/CD](https://github.blog/2019-08-08-github-actions-now-supports-ci-cd/)
+- [Native GitLab CI/CD](https://docs.gitlab.com/ee/ci/)
+- [Native GitHub CI/CD](https://github.com/features/actions)
 - [Travis CI](https://travis-ci.org/)
 - [Circle CI](https://circleci.com/)
 - [TeamCity](https://www.jetbrains.com/teamcity/)

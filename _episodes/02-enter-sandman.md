@@ -91,6 +91,13 @@ Try out some other commands on your system, and see what things look like.
 
 As you've seen above, the exit code from the last executed command is stored in the `$?` environment variable. Accessing from a shell is easy `echo $?`. What about from python? There are many different ways depending on which library you use. Using similar examples above, we can use the (note: deprecated) `os.system` call:
 
+> ## Snake Charming
+>
+> To enter the Python interpreter, simply type `python` in your command line.
+>
+> Once inside the Python interpreter, simply type `exit()` then press enter, to exit.
+{: .callout}
+
 ~~~
 >>> import os,subprocess
 >>> ret = os.system('ls')
@@ -145,10 +152,10 @@ and then make it executable `chmod +x python_exit.py`. Now, try running it with 
 
 # Ignoring Exit Codes
 
-To finish up this section, one thing you'll notice sometimes in ATLAS is that a script you run doesn't seem to respect exit codes. A notable example is the use of `setupATLAS` which returns non-zero exit status codes even though it runs successfully! This can be very annoying when you start development with the assumption that exit status codes are meaningful (such as with CI). In these cases, you'll need to ignore the exit code. An easy way to do this is to execute a second command that always gives `exit 0` if the first command doesn't, like so:
+To finish up this section, one thing you'll notice sometimes (in ATLAS or CMS) is that a script you run doesn't seem to respect exit codes. A notable example in ATLAS is the use of `setupATLAS` which returns non-zero exit status codes even though it runs successfully! This can be very annoying when you start development with the assumption that exit status codes are meaningful (such as with CI). In these cases, you'll need to ignore the exit code. An easy way to do this is to execute a second command that always gives `exit 0` if the first command doesn't, like so:
 
 ~~~
-> setupATLAS || echo ignore setupATLAS
+> :(){ return 1; };: || echo ignore failure
 ~~~
 {: .source}
 

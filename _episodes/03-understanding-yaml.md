@@ -14,12 +14,12 @@ keypoints:
 
 # YAML
 
-YAML is Yet Another Markup Language that is usually the modus operandi for CI systems. We'll cover, briefly, some of the native types involved and what the structure looks like.
+YAML is Yet Another Markup Language is a human-readable data-serialization language. It is commonly used for configuration files and in applications where data is being stored or transmitted. CI systems' modus operandi typically rely on YAML for configuration. We'll cover, briefly, some of the native types involved and what the structure looks like.
 
 > ## Tabs or Spaces?
 >
 > We strongly suggest you use spaces for a YAML document. Indentation is done
-> with one or more spaces, howver **two spaces** is the unofficial standard
+> with one or more spaces, however **two spaces** is the unofficial standard
 > commonly used.
 {: .callout}
 
