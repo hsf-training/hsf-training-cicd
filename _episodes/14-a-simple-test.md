@@ -114,6 +114,7 @@ required_lines = [
    'Valid tau in selected pair: pass=813        all=813        -- eff=100.00 % cumulative eff=1.70 %',
 ]
 
+print('\n'.join(lines))
 for required_line in required_lines:
     if not required_line in lines:
         print(f'Did not find line in log file. {required_line}')
@@ -132,10 +133,15 @@ keys = [k.GetName() for k in f.GetListOfKeys()]
 
 required_keys = ['ggH_pt_1', 'ggH_pt_2']
 
-if not all(required_key in keys for required_key in required_keys):
-    sys.exit(1)
+print('\n'.join(keys))
+for required_key in required_keys:
+    if not required_key in keys:
+        print(f'Required key not found. {required_key}')
+        sys.exit(1)
 
-if abs(f.ggH_pt_1.Integral() - 222.88716647028923) > 0.0001:
+integral = f.ggH_pt_1.Integral()
+if abs(integral - 222.88716647028923) > 0.0001:
+    print(f'Integral of ggH_pt_1 is different: {integral}')
     sys.exit(1)
 ~~~
 {: .language-python}
