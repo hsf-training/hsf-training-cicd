@@ -19,18 +19,16 @@ keypoints:
 The GitLab CI configurations are specified using a YAML file called `.gitlab-ci.yml`. Here is an example:
 
 ~~~
-image: atlas/analysisbase:latest
+image: rikorose/gcc-cmake
 
 before_script:
-  - source /home/atlas/release_setup.sh
   - mkdir build
 
-build_analysis:
+build_code:
   script:
     - cd build
     - cmake ../src
     - cmake --build .
-    - source "${AnalysisBase_PLATFORM}/setup.sh"
 ~~~
 {: .language-yaml}
 
@@ -39,12 +37,12 @@ build_analysis:
 > Sometimes, `script` commands will need to be wrapped in single or double quotes. For example, commands that contain a colon (`:`) need to be wrapped in quotes so that the YAML parser knows to interpret the whole thing as a string rather than a “key: value” pair. Be careful when using special characters: `:`, `{`, `}`, `[`, `]`, `,`, `&`, `*`, `#`, `?`, `|`, `-`, `<`, `>`, `=`, `!`, `%`, `@`, `\``.
 {: .callout}
 
-This is the simplest possible configuration that will work for most analysis codes using `AnalysisBase` on the latest release:
+This is the simplest possible configuration that will work for most code using minimal dependencies with `cmake` and `make`:
 
-1. Define one job `build_analysis` (the job names are arbitrary) with different commands to be executed.
+1. Define one job `build_code` (the job names are arbitrary) with different commands to be executed.
 2. Before every job, the commands defined by `before_script` are executed.
 
-The `.gitlab-ci.yml` file defines sets of jobs with constraints of how and when they should be run. The jobs are defined as top-level elements with a name (in our case `build_analysis`) and always have to contain the `script` keyword. Let's explore this structure in more depth.
+The `.gitlab-ci.yml` file defines sets of jobs with constraints of how and when they should be run. The jobs are defined as top-level elements with a name (in our case `build_code`) and always have to contain the `script` keyword. Let's explore this structure in more depth.
 
 ## Overall Structure
 
@@ -86,7 +84,7 @@ What can you not use as job names? There are a few reserved keywords (because th
 Global parameters mean that you can set parameters at the top-level of the YAML file. What does that actually mean? Here's another example:
 
 ~~~
-image: atlas/analysisbase:21.2.62
+image: rikorose/gcc-cmake
 
 stages: [build, test, deploy]
 
@@ -94,7 +92,7 @@ job1:
   script: make
 
 job2:
-  image: atlas/analysisbase:21.2.72
+  image: rikorose/gcc-cmake:gcc-6
   script: make
 ~~~
 {: .language-yaml}
@@ -122,7 +120,7 @@ job two:
 > ~~~
 > job:
 >   image:
->     name: atlas/analysisbase:21.2.62
+>     name: rikorose/gcc-cmake:gcc-6
 > ~~~
 > {: .language-yaml}
 > where the colon refers to a child key.
