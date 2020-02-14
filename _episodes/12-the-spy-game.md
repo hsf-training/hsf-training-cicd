@@ -37,6 +37,15 @@ ERROR: Job failed: exit code 1
 
 So we need to give our CI/CD access to our data. This is actually a good thing. It means CMS can't just grab it! Anyhow, this is done by pretty much done by executing `printf $SERVICE_PASS | base64 -d | kinit $CERN_USER` assuming that we've set the corresponding environment variables by safely encoding them (`printf "hunter42" | base64`).
 
+> ## Running examples with variables
+>
+> Sometimes you'll run into a code example here that you might want to run locally but relies on variables you might not have set? Sure, simply do the following
+> ~~~
+> SERVICE_PASS=hunter42 CERN_USER=GoodWill printf $SERVICE_PASS | base64 -d | kinit $CERN_USER
+> ~~~
+> {: .language-bash}
+{: .callout}
+
 > ## Base-64 encoding?
 >
 > Sometimes you have a string that contains certain characters that would be interpreted incorreectly by GitLab's CI system. In order to protect against that, you can safely base-64 encode the string, store it, and then decode it as part of the CI job. This is entirely safe and recommended.
