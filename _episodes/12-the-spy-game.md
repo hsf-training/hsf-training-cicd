@@ -85,7 +85,7 @@ Let's go ahead and add some custom variables to fix up our access control.
 
 # Adding `kinit` for access control
 
-Now it's time to update your CI/CD to use the environment variables you defined by adding `echo $SERVICE_PASS | kinit $CERN_USER@CERN.CH` as part of the `before_script` to the `skim_ggH` job as that's the job that requires access.
+Now it's time to update your CI/CD to use the environment variables you defined by adding `printf $SERVICE_PASS | base64 -d | kinit $CERN_USER@CERN.CH` as part of the `before_script` to the `skim_ggH` job as that's the job that requires access.
 
 # Adding Artifacts on Success
 
