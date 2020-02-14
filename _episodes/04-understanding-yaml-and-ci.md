@@ -34,6 +34,11 @@ build_analysis:
 ~~~
 {: .language-yaml}
 
+> ## `script` commands
+>
+> Sometimes, `script` commands will need to be wrapped in single or double quotes. For example, commands that contain a colon (`:`) need to be wrapped in quotes so that the YAML parser knows to interpret the whole thing as a string rather than a “key: value” pair. Be careful when using special characters: `:`, `{`, `}`, `[`, `]`, `,`, `&`, `*`, `#`, `?`, `|`, `-`, `<`, `>`, `=`, `!`, `%`, `@`, `\``.
+{: .callout}
+
 This is the simplest possible configuration that will work for most analysis codes using `AnalysisBase` on the latest release:
 
 1. Define one job `build_analysis` (the job names are arbitrary) with different commands to be executed.
