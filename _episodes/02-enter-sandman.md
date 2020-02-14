@@ -152,10 +152,10 @@ and then make it executable `chmod +x python_exit.py`. Now, try running it with 
 
 # Ignoring Exit Codes
 
-To finish up this section, one thing you'll notice sometimes in ATLAS is that a script you run doesn't seem to respect exit codes. A notable example is the use of `setupATLAS` which returns non-zero exit status codes even though it runs successfully! This can be very annoying when you start development with the assumption that exit status codes are meaningful (such as with CI). In these cases, you'll need to ignore the exit code. An easy way to do this is to execute a second command that always gives `exit 0` if the first command doesn't, like so:
+To finish up this section, one thing you'll notice sometimes (in ATLAS or CMS) is that a script you run doesn't seem to respect exit codes. A notable example in ATLAS is the use of `setupATLAS` which returns non-zero exit status codes even though it runs successfully! This can be very annoying when you start development with the assumption that exit status codes are meaningful (such as with CI). In these cases, you'll need to ignore the exit code. An easy way to do this is to execute a second command that always gives `exit 0` if the first command doesn't, like so:
 
 ~~~
-> setupATLAS || echo ignore setupATLAS
+> :(){ return 1; };: || echo ignore failure
 ~~~
 {: .source}
 
