@@ -91,6 +91,13 @@ Try out some other commands on your system, and see what things look like.
 
 As you've seen above, the exit code from the last executed command is stored in the `$?` environment variable. Accessing from a shell is easy `echo $?`. What about from python? There are many different ways depending on which library you use. Using similar examples above, we can use the (note: deprecated) `os.system` call:
 
+> ## Snake Charming
+>
+> To enter the Python interpreter, simply type `python` in your command line.
+>
+> Once inside the Python interpreter, simply type `exit()` then press enter, to exit.
+{: .callout}
+
 ~~~
 >>> import os,subprocess
 >>> ret = os.system('ls')
