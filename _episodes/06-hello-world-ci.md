@@ -19,7 +19,7 @@ We've been working on the analysis code which has a lot of work done, but we sho
 
 ~~~
 cd awesome-analysis-eventselection/
-touch .gitlab-ci.yml
+echo "hello world" >> .gitlab-ci.yml
 git checkout -b feature/add-ci
 git add .gitlab-ci.yml
 git commit -m "my first ci/cd"
@@ -72,7 +72,7 @@ Lastly, we'll open up a merge request for this branch, since we plan to merge th
 
 ## Fixing the YAML
 
-Now, our YAML is currently invalid, but this makes sense because we didn't actually define any jobs to run. Let's go ahead and create our first job that simply echoes "Hello World".
+Now, our YAML is currently invalid, but this makes sense because we didn't actually define any script to run. Let's go ahead and update our first job that simply echoes "Hello World".
 
 ~~~
 hello world:
