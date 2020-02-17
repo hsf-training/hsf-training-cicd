@@ -225,7 +225,7 @@ For the purposes of this tutorial, I've provided a file we should use in a CERN-
 ~~~
 script:
   - ...
-  - ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root 19.6 11467.0 0.1
+  - ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
 ~~~
 {: .language-yaml}
 
