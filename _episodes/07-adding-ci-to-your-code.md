@@ -191,4 +191,24 @@ build_skim_latest:
 
 and we're ready for a coffee break.
 
+> ## Building new image only on changes?
+>
+> Sometimes you might find that certain jobs don't need to be run when unrelated files change. For example, in this example, our job depends only on `skim.cxx`. While there is no native `Makefile`-like solution (with targets) for GitLab CI/CD (or CI/CD in general), you can emulate this with the `:job:only:changes` flag like so
+> ~~~
+> build_skim:
+>   image: rootproject/root-conda:6.18.04
+>   script:
+>    - COMPILER=$(root-config --cxx)
+>    - FLAGS=$(root-config --cflags --libs)
+>    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+>   only:
+>     changes:
+>       - skim.cxx
+> ~~~
+> {: .language-yaml}
+>
+> and this will build a new image with `./skim` only if the `skim.cxx` file changes. In this case, it works since downstream jobs rely on the docker image that exists in the GitLab registry. There's plenty more one can do with this that doesn't fit in the limited time for the sessions today, so feel free to try it out on your own time.
+{: .callout}
+
+
 {% include links.md %}
