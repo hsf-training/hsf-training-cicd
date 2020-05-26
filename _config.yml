@@ -2,7 +2,7 @@
 # Values for this lesson.
 #------------------------------------------------------------
 
-baseurl: /continuous-integration-deployment-gitlab
+baseurl: /hsf-training-cicd
 
 # Which carpentry is this ("swc", "dc", "lc", or "cp")?
 # swc: Software Carpentry
