@@ -27,7 +27,7 @@ Gitlab.
 
 ## Repo Permissions
 
-Following the [setup for the payload](https://awesome-workshop.github.io/awesome-htautau-analysis/setup.html) to download a tarballof the files needed, you'll want to [create new projects](https://gitlab.cern.ch/projects/new) on your personal gitlab account called `awesome-htautau-analysis` and `awesome-htautau-statistics`. Please make sure to set the visibility level to **Public**.
+Following the [setup for the payload](https://hsf-training.github.io/hsf-training-cms-analysis-webpage/setup.html) to download a tarballof the files needed, you'll want to [create new projects](https://gitlab.cern.ch/projects/new) on your personal gitlab account called `virtual-pipelines-eventselection`. Please make sure to set the visibility level to **Public**.
 
 > ### Visibility Level
 >
