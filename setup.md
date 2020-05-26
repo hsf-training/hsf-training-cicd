@@ -11,9 +11,8 @@ questions:
 >
 > At a bare minimum:
 > - You should have git working on your laptop
-> - You should have docker working
-> - We assume that you already have a CERN account
-> - We assume you have access to the payload tarball
+> - We assume that you already have a CERN account or access to a GitLab instance
+> - We assume you have access to the payload tarball (see below)
 {: .prereq}
 
 To ensure that your gitlab account is active, go to
@@ -21,9 +20,9 @@ To ensure that your gitlab account is active, go to
 
 You should find your very own gitlab homepage!
 
-If you're having issues, **please notify your instructor immediately**
-since you won't be able to follow this lesson without access to CERN's
-Gitlab.
+If you're having issues, **please let us know immediately**
+since you won't be able to follow this lesson without access to a GitLab
+instance.
 
 ## Repo Permissions
 
