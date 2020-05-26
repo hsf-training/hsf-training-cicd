@@ -220,7 +220,10 @@ Now, the data file we've used was via `xrdcp` but it's also located in a public 
 > {: .language-bash}
 {: .callout}
 
-For the purposes of this tutorial, I've provided a file we should use in a CERN-restricted space here: `/eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root`. Therefore, the xrootd path we use is `root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root`. Nicely enough, `TFile::Open` takes in, not only local paths (`file://`), but xrootd paths (`root://`) paths as well [also HTTP and others, but we won't cover that]. Since we've modified the code so we can pass in files instead through the command line:
+- **For those of you with CERN accounts**, I've provided a file we should use in a CERN-restricted space here: `/eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root`. Therefore, the xrootd path we use is `root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root`.
+- **For those of you without CERN accounts**, we have provided a file wes hould use in a public space here: `/eos/root-eos/HiggsTauTauReduced/GluGluToHToTauTau.root`. Therefore, the xrootd path we use is `root://eospublic.cern.ch//eos/root-eos/HiggsTauTauReduced/GluGluToHToTauTau.root`.
+
+Nicely enough, `TFile::Open` takes in, not only local paths (`file://`), but xrootd paths (`root://`) paths as well [also HTTP and others, but we won't cover that]. Since we've modified the code so we can pass in files instead through the command line:
 
 ~~~
 script:
@@ -235,6 +238,9 @@ script:
 {: .callout}
 
 Let's go ahead and commit those changes and see if the run job succeeded or not.
+
+- If you use the file in a public space, your job will succeed.
+- If you use the file in a CERN-restricted space, your job will fail with a similar error below:
 
 ~~~
 $ ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1

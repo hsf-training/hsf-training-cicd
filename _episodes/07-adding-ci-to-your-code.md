@@ -107,7 +107,7 @@ Authenticating with credentials from job payload (GitLab Registry)
 
 > ## Docker???
 >
-> Don't panic. We'll learn this in tomorrow's session.
+> Don't panic. You do not need to understand docker to be able to use it.
 {: .callout}
 
 Let's go ahead and update our `.gitlab-ci.yml` and fix it to use a versioned docker image that has `root`: `rootproject/root-conda:6.18.04` from the [rootproject/root-conda](https://hub.docker.com/r/rootproject/root-conda) docker hub page.
