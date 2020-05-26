@@ -3,7 +3,7 @@ title: Homework
 teaching: 0
 exercises: 30
 objectives:
-  - Add testing to the awesome-analysis-statistics repository.
+  - Add more testing, perhaps to statistics.
 questions:
   - If you have any, ask on mattermost!
 hidden: false
@@ -80,16 +80,9 @@ test_ggH:
 ~~~
 {: .language-yaml}
 
-In your `awesome-analysis-statistics` repository, you need to:
+In your `virtual-pipelines-eventselection` repository, you need to:
 
-1. Add a `.gitlab-ci.yml` file
-2. Add a single stage called `fit` with a single job called `fit_simple`.
-3. Use the same docker images we've used for the `awesome-analysis-eventselection` CI/CD
-4. Create a script that does the following:
-  - makes an output directory for the fit outputs, likely called `fit_outputs`
-  - runs `python fit.py histograms.root fit_outputs`
-5. Make sure that the `fit_outputs` is stored as an artifact as part of the pipeline that expires in a week.
-
-In order to get the histograms into your CI/CD, you will need to `xrdcp` the `histograms.root` file from your EOS user-space. Remember that anything under `/eos/user` is accessible via `eosuser.cern.ch`. This can be copied over in your CI/CD via something like `xrdcp root://eosuser.cern.ch//eos/user/a/abc/awesome-analysis/histograms/histograms.root histograms.root` as long as you have your kerberos session set-up.
+1. Add more tests for physics
+2. Go wild!
 
 {% include links.md %}

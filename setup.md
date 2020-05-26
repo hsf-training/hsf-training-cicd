@@ -26,7 +26,9 @@ instance.
 
 ## Repo Permissions
 
-Following the [setup for the payload](https://hsf-training.github.io/hsf-training-cms-analysis-webpage/setup.html) to download a tarballof the files needed, you'll want to [create new projects](https://gitlab.cern.ch/projects/new) on your personal gitlab account called `virtual-pipelines-eventselection`. Please make sure to set the visibility level to **Public**.
+Following the [setup for the payload](https://hsf-training.github.io/hsf-training-cms-analysis-webpage/setup.html) to download a tarball of the files needed, you'll want to [create new projects](https://gitlab.cern.ch/projects/new) on your personal gitlab account called `virtual-pipelines-eventselection`. Please make sure to set the visibility level to **Public**.
+
+If you have not set this payload up yet, you can clone it from [github](https://github.com/hsf-training/hsf-training-cms-analysis) and push it to your project.
 
 > ### Visibility Level
 >

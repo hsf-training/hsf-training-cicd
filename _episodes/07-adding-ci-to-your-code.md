@@ -75,9 +75,9 @@ Using docker image sha256:262a48c12b0622aabbb9331ef5f7c46b47bd100ac340ec1b076c0e
 Running on runner-_yp-6wmD-project-86027-concurrent-0 via default-runner-7685f6989c-bzlz8...
 
 Fetching changes with git depth set to 50...
- Initialized empty Git repository in /builds/gstark/awesome-analysis-eventselection/.git/
+ Initialized empty Git repository in /builds/gstark/virtual-pipelines-eventselection/.git/
  Created fresh repository.
- From https://gitlab.cern.ch/gstark/awesome-analysis-eventselection
+ From https://gitlab.cern.ch/gstark/virtual-pipelines-eventselection
   * [new ref]         refs/pipelines/1404549 -> refs/pipelines/1404549
   * [new branch]      master                 -> origin/master
  Checking out bdd593f1 as master...
