@@ -6,7 +6,7 @@ objectives:
   - Add custom environment variables
   - Learn how to give your CI/CD Runners access to private information
 questions:
-  - How can I give my CI job private information?
+  - How can I give my GitLab CI job private information?
 hidden: false
 keypoints:
   - Service accounts provide an extra layer of security between the outside world and your account

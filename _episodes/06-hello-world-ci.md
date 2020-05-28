@@ -5,7 +5,7 @@ exercises: 10
 objectives:
   - Add CI/CD to your project.
 questions:
-  - How do I run a simple CI job?
+  - How do I run a simple GitLab CI job?
 hidden: false
 keypoints:
   - Adding a `.gitlab-ci.yml` is the first step to salvation.

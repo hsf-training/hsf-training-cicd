@@ -15,18 +15,16 @@ questions:
 > - We assume you have access to the payload tarball (see below)
 {: .prereq}
 
-To ensure that your gitlab account is active, go to
-[gitlab.cern.ch](https://gitlab.cern.ch).
-
-You should find your very own gitlab homepage!
+You should find your way to your very own GitLab homepage!
+For CERN this is [gitlab.cern.ch](https://gitlab.cern.ch).
 
 If you're having issues, **please let us know immediately**
 since you won't be able to follow this lesson without access to a GitLab
 instance.
 
-## Repo Permissions
+## Creating a New Project
 
-Following the [setup for the payload](https://hsf-training.github.io/hsf-training-cms-analysis-webpage/setup.html) to download a tarball of the files needed, you'll want to [create new projects](https://gitlab.cern.ch/projects/new) on your personal gitlab account called `virtual-pipelines-eventselection`. Please make sure to set the visibility level to **Public**.
+Following the [setup for the payload](https://hsf-training.github.io/hsf-training-cms-analysis-webpage/setup.html) to download a tarball of the files needed, you'll want to create new projects (e.g. [at CERNs](https://gitlab.cern.ch/projects/new)) on your personal gitlab account called `virtual-pipelines-eventselection`. Please make sure to set the visibility level to **Public**.
 
 If you have not set this payload up yet, you can clone it from [github](https://github.com/hsf-training/hsf-training-cms-analysis) and push it to your project.
 

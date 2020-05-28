@@ -5,7 +5,7 @@ exercises: 10
 objectives:
   - Learn how to skim code and set up artifacts.
 questions:
-  - How can I run my skimming code in the CI/CD?
+  - How can I run my skimming code in the GitLab CI/CD?
 hidden: false
 keypoints:
   - Making jobs aware of each other is pretty easy.

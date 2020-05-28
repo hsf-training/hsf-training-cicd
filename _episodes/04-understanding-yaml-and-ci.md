@@ -6,7 +6,7 @@ objectives:
   - Learn where to find more details about everything for the GitLab CI.
   - Understand the structure of the GitLab CI YAML file.
 questions:
-  - What is the CI specification?
+  - What is the GitLab CI specification?
 hidden: false
 keypoints:
   - You should bookmark the GitLab reference on CI/CD. You'll visit that page often.
