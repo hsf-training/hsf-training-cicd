@@ -96,7 +96,7 @@ skim_ggH:
 > >     - skim_ggH
 > >   image: rootproject/root-conda:6.18.04
 > >   script:
-> >     - python histograms.py skim_ggH.root hist_ggH.root
+> >     - python histograms.py skim_ggH.root ggH hist_ggH.root
 > >   artifacts:
 > >     paths:
 > >       - hist_ggH.root
