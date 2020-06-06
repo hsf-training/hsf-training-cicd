@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/carpentries/lesson-example.svg?branch=gh-pages)](https://travis-ci.org/carpentries/lesson-example)
+[![Build Status](hhttps://travis-ci.org/hsf-training/hsf-training-cicd.svg?branch=gh-page)](https://travis-ci.org/carpentries/lesson-example)
 
 lesson-example
 ==============
