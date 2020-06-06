@@ -221,7 +221,7 @@ Now, the data file we've used was via `xrdcp` but it's also located in a public 
 {: .callout}
 
 - **For those of you with CERN accounts**, I've provided a file we should use in a CERN-restricted space here: `/eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root`. Therefore, the xrootd path we use is `root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root`.
-- **For those of you without CERN accounts**, we have provided a file wes hould use in a public space here: `/eos/root-eos/HiggsTauTauReduced/GluGluToHToTauTau.root`. Therefore, the xrootd path we use is `root://eospublic.cern.ch//eos/root-eos/HiggsTauTauReduced/GluGluToHToTauTau.root`.
+- **For those of you without CERN accounts**, we have provided a file we should use in a public space here: `/eos/root-eos/HiggsTauTauReduced/GluGluToHToTauTau.root`. Therefore, the xrootd path we use is `root://eospublic.cern.ch//eos/root-eos/HiggsTauTauReduced/GluGluToHToTauTau.root`.
 
 Nicely enough, `TFile::Open` takes in, not only local paths (`file://`), but xrootd paths (`root://`) paths as well [also HTTP and others, but we won't cover that]. Since we've modified the code so we can pass in files instead through the command line:
 

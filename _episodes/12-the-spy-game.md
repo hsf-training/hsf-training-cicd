@@ -48,7 +48,7 @@ So we need to give our CI/CD access to our data. This is actually a good thing. 
 
 > ## Base-64 encoding?
 >
-> Sometimes you have a string that contains certain characters that would be interpreted incorreectly by GitLab's CI system. In order to protect against that, you can safely base-64 encode the string, store it, and then decode it as part of the CI job. This is entirely safe and recommended.
+> Sometimes you have a string that contains certain characters that would be interpreted incorrectly by GitLab's CI system. In order to protect against that, you can safely base-64 encode the string, store it, and then decode it as part of the CI job. This is entirely safe and recommended.
 {: .callout}
 
 > ## Service Account or Not?

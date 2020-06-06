@@ -131,7 +131,7 @@ fi
 ~~~
 {: .language-bash}
 
-and then make it exectuable `chmod +x bash_exit.sh`. Now, try running it with `./bash_exit.sh hello` and `./bash_exit.sh goodbye` and see what those exit codes are.
+and then make it executable `chmod +x bash_exit.sh`. Now, try running it with `./bash_exit.sh hello` and `./bash_exit.sh goodbye` and see what those exit codes are.
 
 ## Python
 
