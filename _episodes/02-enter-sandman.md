@@ -26,7 +26,7 @@ How does a general task know whether or not a script finished correctly or not? 
 ~~~
 ls nonexistent-file
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 ls: cannot access 'nonexistent-file': No such file or directory
@@ -39,13 +39,13 @@ But every command outputs something differently. Instead, scripts also have an (
 ls nonexistent-file
 echo $?
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 ls: cannot access 'nonexistent-file': No such file or directory
 2
 ~~~
-{: .output}
+{: .language-bash}
 
 The exit code is `2` indicating failure. What about on success? The exit code is `0` like so:
 
@@ -53,7 +53,7 @@ The exit code is `2` indicating failure. What about on success? The exit code is
 echo
 echo $?
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 
@@ -67,7 +67,7 @@ But this works for any command you run on the command line! For example, if I mi
 git stauts
 echo $?
 ~~~
-{: .source}
+{: .language-bash}
 
 ~~~
 git: 'stauts' is not a git command. See 'git --help'.
@@ -169,14 +169,14 @@ To finish up this section, one thing you'll notice sometimes (in ATLAS or CMS) i
 ~~~
 :(){ return 1; };: || echo ignore failure
 ~~~
-{: .source}
+{: .language-bash}
 
 The `command_1 || command_2` operator means to execute `command_2` only if `command_1` has failed (non-zero exit code). Similarly, the `command_1 && command_2` operator means to execute `command_2` only if `command_1` has succeeded. Try this out using one of scripts you made in the previous session:
 
 ~~~
 ./python_exit.py goodbye || echo ignore
 ~~~
-{: .source}
+{: .language-bash}
 
 What does that give you?
 
