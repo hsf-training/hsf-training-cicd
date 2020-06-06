@@ -24,7 +24,7 @@ As we enter the first episode of the Continuous Integration / Continuous Deploym
 How does a general task know whether or not a script finished correctly or not? You could parse (`grep`) the output:
 
 ~~~
-> ls nonexistent-file
+ls nonexistent-file
 ~~~
 {: .source}
 
@@ -36,8 +36,8 @@ ls: cannot access 'nonexistent-file': No such file or directory
 But every command outputs something differently. Instead, scripts also have an (invisible) exit code:
 
 ~~~
-> ls nonexistent-file
-> echo $?
+ls nonexistent-file
+echo $?
 ~~~
 {: .source}
 
@@ -50,8 +50,8 @@ ls: cannot access 'nonexistent-file': No such file or directory
 The exit code is `2` indicating failure. What about on success? The exit code is `0` like so:
 
 ~~~
-> echo
-> echo $?
+echo
+echo $?
 ~~~
 {: .source}
 
@@ -64,8 +64,8 @@ The exit code is `2` indicating failure. What about on success? The exit code is
 But this works for any command you run on the command line! For example, if I mistyped `git status`:
 
 ~~~
-> git stauts
-> echo $?
+git stauts
+echo $?
 ~~~
 {: .source}
 
@@ -99,15 +99,27 @@ As you've seen above, the exit code from the last executed command is stored in 
 {: .callout}
 
 ~~~
->>> import os,subprocess
->>> ret = os.system('ls')
->>> os.WEXITSTATUS(ret)
-0
->>> ret = os.system('ls nonexistent-file')
->>> os.WEXITSTATUS(ret)
-1
+import os, subprocess
+ret = os.system('ls')
+os.WEXITSTATUS(ret)
 ~~~
 {: .language-python}
+
+~~~
+0
+~~~
+{: .output}
+
+~~~
+ret = os.system('ls nonexistent-file')
+os.WEXITSTATUS(ret)
+~~~
+{: .language-python}
+
+~~~
+1
+~~~
+{: .output}
 
 One will note that this returned a different exit code than from the command line (indicating there's some internal implementation in Python). All you need to be concerned with is that the exit code was non-zero (there was an error).
 
@@ -155,14 +167,14 @@ and then make it executable `chmod +x python_exit.py`. Now, try running it with 
 To finish up this section, one thing you'll notice sometimes (in ATLAS or CMS) is that a script you run doesn't seem to respect exit codes. A notable example in ATLAS is the use of `setupATLAS` which returns non-zero exit status codes even though it runs successfully! This can be very annoying when you start development with the assumption that exit status codes are meaningful (such as with CI). In these cases, you'll need to ignore the exit code. An easy way to do this is to execute a second command that always gives `exit 0` if the first command doesn't, like so:
 
 ~~~
-> :(){ return 1; };: || echo ignore failure
+:(){ return 1; };: || echo ignore failure
 ~~~
 {: .source}
 
 The `command_1 || command_2` operator means to execute `command_2` only if `command_1` has failed (non-zero exit code). Similarly, the `command_1 && command_2` operator means to execute `command_2` only if `command_1` has succeeded. Try this out using one of scripts you made in the previous session:
 
 ~~~
-> ./python_exit.py goodbye || echo ignore
+./python_exit.py goodbye || echo ignore
 ~~~
 {: .source}
 
