@@ -9,7 +9,8 @@ baseurl: /hsf-training-cicd
 # dc: Data Carpentry
 # lc: Library Carpentry
 # cp: Carpentries (to use for instructor traning for instance)
-carpentry: "swc"
+# hsf: HSF training
+carpentry: "hsf"
 
 # Overall title for pages.
 title: "Continuous Integration / Continuous Development (CI/CD)"
