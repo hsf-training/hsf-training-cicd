@@ -12,6 +12,7 @@ keypoints:
   - Service accounts provide an extra layer of security between the outside world and your account
   - Environment variables in GitLab CI/CD allow you to hide protected information from others who can see your code
 ---
+<iframe width="420" height="263" src="https://www.youtube.com/embed/XNhi1dw6jxI?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 So we're nearly done with getting the merge request for the CI/CD up and running but we need to deal with this error:
 

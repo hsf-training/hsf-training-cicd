@@ -22,6 +22,7 @@ If you're having issues, **please let us know immediately**
 since you won't be able to follow this lesson without access to a GitLab
 instance.
 
+<iframe width="420" height="263" src="https://www.youtube.com/embed/NcVGX8zWzQY?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ## Creating a New Project
 
 Following the [setup for the payload](https://hsf-training.github.io/hsf-training-cms-analysis-webpage/setup.html) to download a tarball of the files needed, you'll want to create new projects (e.g. [at CERNs](https://gitlab.cern.ch/projects/new)) on your personal gitlab account called `virtual-pipelines-eventselection`. Please make sure to set the visibility level to **Public**.

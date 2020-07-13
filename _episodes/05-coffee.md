@@ -12,8 +12,6 @@ keypoints:
 ---
 
 <center>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/pQY7FTTbTYM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/dP2lyc53qtI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </center>
 

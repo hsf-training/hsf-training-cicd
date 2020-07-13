@@ -12,7 +12,7 @@ keypoints:
   - Pipelines are made of stages, stages are made of jobs.
   - CI Linters are especially useful to check syntax before pushing changes.
 ---
-
+<iframe width="420" height="263" src="https://www.youtube.com/embed/LqeJzIYJCwc?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 # Adding CI/CD to a project
 
 We've been working on the analysis code which has a lot of work done, but we should be good physicists (and people) by adding tests and CI/CD. The first thing we'll do is create a `.gitlab-ci.yml` file in the project.

@@ -12,7 +12,7 @@ keypoints:
   - Artifacts are pretty neat.
   - We're too naive.
 ---
-
+<iframe width="420" height="263" src="https://www.youtube.com/embed/omYX4uRxCKI?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 # The First Naive Attempt
 
 Let's just attempt to try and get the code working as it is. Since it worked for us already locally, surely the CI/CD must be able to run it??? As a reminder of what we've ended with from the last session:
