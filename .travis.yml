@@ -10,7 +10,8 @@ before_install:
   - gem install json kramdown jekyll bundler
 
 install:
-  - sudo -H pip3 install -U pyyaml
+  - python3 -m pip install -U pyyaml
+
 script:
   - bundle config build.nokogiri --use-system-libraries
   - bundle install
