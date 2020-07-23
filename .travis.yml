@@ -1,21 +1,24 @@
+dist: bionic
+language: python
+python: "3.7"
+
 before_install:
   - sudo apt-get update -y
   - sudo apt-get install libgit2-dev libudunits2-dev
   - sudo apt-get install python3-setuptools python3-pip
-  - rvm install 2.5.3
-  - rvm 2.5.3 do ruby -S gem install bundle
-  - R -q -e 'install.packages(c("remotes", "curl"))'
-  - R -q -e 'remotes::install_github("hadley/requirements")'
+  - rvm default
+  - gem install json kramdown jekyll bundler
+
 install:
   - sudo -H pip3 install -U pyyaml
 script:
+  - bundle config build.nokogiri --use-system-libraries
   - bundle install
   - make lesson-check-all
   - make --always-make site
 
 
 # Header
-language: r
 sudo: false
 cache: packages
 latex: false
@@ -25,19 +28,13 @@ branches:
   - gh-pages
   - /.*/
 
-#env
-env:
-  global:
-  - _R_CHECK_FORCE_SUGGESTS_=false
-  #- MAKEFLAGS="-j 2"
-
 # Add spellchecking for PRs
 jobs:
   include:
     - stage: spelling
       language: python
       sudo: true
-      python: "3.6"
+      python: "3.7"
       # The default before_install step is slow
       before_install:
       # Use codespell for spell checking
