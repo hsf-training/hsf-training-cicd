@@ -32,7 +32,7 @@ kind: "lesson"
 repository: <USERNAME>/<PROJECT>
 
 # Email address, no mailto:
-email: "gstark@cern.ch"
+email: "hsf-training-wg@googlegroups.com"
 
 # Sites.
 amy_site: "https://amy.software-carpentry.org/workshops"
