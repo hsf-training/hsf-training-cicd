@@ -1,3 +1,5 @@
+[![HSF Training Center](https://img.shields.io/badge/HSF%20Training%20Center-browse-ff69b4)](https://hepsoftwarefoundation.org/training/curriculum.html)
+
 HSF Training CI/CD
 ==============
 
