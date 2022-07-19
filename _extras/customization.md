@@ -157,7 +157,7 @@ such as the installation instructions having become disconnected
 with the current lesson material,
 you need to get changes from this repository
 into the clone of it with your workshop page,
-please follow the steps bellow:
+please follow the steps below:
 
 1.  Add the workshop-template repository as upstream:
 
