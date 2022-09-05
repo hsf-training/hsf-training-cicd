@@ -83,7 +83,7 @@ and there, the exit code is non-zero -- a failure.
 
 > ## Exit Code is not a Boolean
 >
-> You've probably trained your intuition to think of `0` as falsy. However, exit code of `0` means there was no error. If you feel queasy about remembering this, imagine that the question asked is "Was there an error in executing the command?" `0` means "no" and non-zero (`1`, `2`, ...) means "yes".
+> You've probably trained your intuition to think of `0` as false. However, exit code of `0` means there was no error. If you feel queasy about remembering this, imagine that the question asked is "Was there an error in executing the command?" `0` means "no" and non-zero (`1`, `2`, ...) means "yes".
 {: .callout}
 
 Try out some other commands on your system, and see what things look like.
