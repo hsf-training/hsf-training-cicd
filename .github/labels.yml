@@ -1,0 +1,66 @@
+- color: 92D48E
+  description: ''
+  name: episode 1
+- color: 92D48E
+  description: ''
+  name: episode 2
+- color: 92D48E
+  description: ''
+  name: episode 3
+- color: 92D48E
+  description: ''
+  name: episode 4
+- color: 92D48E
+  description: ''
+  name: episode 5
+- color: 92D48E
+  description: ''
+  name: episode 6
+- color: 92D48E
+  description: ''
+  name: episode 7
+- color: FBCA04
+  description: Good for newcomers
+  name: good first issue
+- color: 2DBA49
+  description: Extra attention is needed
+  name: help wanted
+- color: 2DBA49
+  description: ''
+  name: needs-discussion
+- color: DB1F2E
+  description: ''
+  name: prio:high
+- color: 05CEED
+  description: ''
+  name: prio:low
+- color: C953C0
+  description: Further information is requested
+  name: question
+- color: FCFAFC
+  description: ''
+  name: stale
+- color: 38C977
+  description: ''
+  name: status:wip
+- color: DB1F2E
+  description: Something isn't working
+  name: type:bug
+- color: DED6D5
+  description: This issue or pull request already exists
+  name: type:duplicate
+- color: 35E6F2
+  description: New feature or request
+  name: type:enhancement
+- color: EDCD9A
+  description: ''
+  name: type:extension
+- color: BD985C
+  description: ''
+  name: type:framework
+- color: EDDF1A
+  description: This doesn't seem right
+  name: type:invalid
+- color: FCFAFC
+  description: This will not be worked on
+  name: wontfix
