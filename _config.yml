@@ -105,3 +105,6 @@ highlighter: rouge
 plugins_dir:
   - jekyll-redirect-from
   - jekyll-paginate
+
+
+remote_theme: hsf-training/hsf-training-theme
