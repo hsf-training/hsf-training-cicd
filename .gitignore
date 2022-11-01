@@ -15,4 +15,4 @@ vendor/
 .docker-vendor/
 Gemfile.lock
 .*history
-
+.jekyll-metadata
