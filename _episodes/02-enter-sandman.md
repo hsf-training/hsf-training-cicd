@@ -1,5 +1,5 @@
 ---
-title: "Exit (light) Codes"
+title: "Exit Codes"
 teaching: 10
 exercises: 10
 objectives:
