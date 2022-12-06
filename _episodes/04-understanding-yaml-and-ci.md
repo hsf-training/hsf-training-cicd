@@ -32,6 +32,8 @@ build_code:
 ~~~
 {: .language-yaml}
 
+In the above example, `image: rikorose/gcc-cmake` is a docker image. This image is an extension of the official gcc image and includes cmake.  
+
 > ## `script` commands
 >
 > Sometimes, `script` commands will need to be wrapped in single or double quotes. For example, commands that contain a colon (`:`) need to be wrapped in quotes so that the YAML parser knows to interpret the whole thing as a string rather than a “key: value” pair. Be careful when using special characters: `:`, `{`, `}`, `[`, `]`, `,`, `&`, `*`, `#`, `?`, `|`, `-`, `<`, `>`, `=`, `!`, `%`, `@`, `\``.
