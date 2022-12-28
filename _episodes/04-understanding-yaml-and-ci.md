@@ -32,7 +32,7 @@ build_code:
 ~~~
 {: .language-yaml}
 
-In the above example, `image: rikorose/gcc-cmake` is a docker image. This image is an extension of the official gcc image and includes cmake.
+In the above example, `image: rikorose/gcc-cmake` is a Docker image. This image is an extension of the official gcc image and includes cmake.
 
 > ## `script` commands
 >
