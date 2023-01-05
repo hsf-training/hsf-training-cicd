@@ -49,7 +49,7 @@ hello world:
    - echo "Hello World"
 
 build_skim:
-  image: rootproject/root-conda:6.18.04
+  image: rootproject/root:6.26.10-conda
   before_script:
    - COMPILER=$(root-config --cxx)
    - FLAGS=$(root-config --cflags --libs)
@@ -87,7 +87,7 @@ We've already started to repeat ourselves. How can we combine the two into a sin
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > >
 > > build_skim:
-> >   image: rootproject/root-conda:6.18.04
+> >   image: rootproject/root:6.26.10-conda
 > >   before_script:
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
@@ -167,7 +167,7 @@ Note how `.in-docker` overrides `:rspec:tags` because it's "closest in scope".
 > >
 > > build_skim:
 > >   extends: .build_template
-> >   image: rootproject/root-conda:6.18.04
+> >   image: rootproject/root:6.26.10-conda
 > >
 > > build_skim_latest:
 > >   extends: .build_template

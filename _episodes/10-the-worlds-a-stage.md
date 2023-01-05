@@ -30,7 +30,7 @@ hello world:
 
 build_skim:
   extends: .build_template
-  image: rootproject/root-conda:6.18.04
+  image: rootproject/root:6.26.10-conda
 
 build_skim_latest:
   extends: .build_template
@@ -88,7 +88,7 @@ Stages allow us to categorize jobs by functionality, such as `build`, or `test`,
 > >
 > > build_skim:
 > >   extends: .build_template
-> >   image: rootproject/root-conda:6.18.04
+> >   image: rootproject/root:6.26.10-conda
 > >
 > > build_skim_latest:
 > >   extends: .build_template

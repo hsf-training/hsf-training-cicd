@@ -48,7 +48,7 @@ hello world:
 
 build_skim:
   extends: .build_template
-  image: rootproject/root-conda:6.18.04
+  image: rootproject/root:6.26.10-conda
 
 build_skim_latest:
   extends: .build_template
@@ -59,7 +59,7 @@ skim_ggH:
   stage: run
   dependencies:
     - build_skim
-  image: rootproject/root-conda:6.18.04
+  image: rootproject/root:6.26.10-conda
   before_script:
     - printf $SERVICE_PASS | base64 -d | kinit $CERN_USER@CERN.CH
   script:
@@ -94,7 +94,7 @@ skim_ggH:
 > >   stage: plot
 > >   dependencies:
 > >     - skim_ggH
-> >   image: rootproject/root-conda:6.18.04
+> >   image: rootproject/root:6.26.10-conda
 > >   script:
 > >     - python histograms.py skim_ggH.root ggH hist_ggH.root
 > >   artifacts:

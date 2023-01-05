@@ -110,7 +110,7 @@ Authenticating with credentials from job payload (GitLab Registry)
 > Don't panic. You do not need to understand docker to be able to use it.
 {: .callout}
 
-Let's go ahead and update our `.gitlab-ci.yml` and fix it to use a versioned docker image that has `root`: `rootproject/root-conda:6.18.04` from the [rootproject/root-conda](https://hub.docker.com/r/rootproject/root-conda) docker hub page.
+Let's go ahead and update our `.gitlab-ci.yml` and fix it to use a versioned docker image that has `root`: `rootproject/root:6.26.10-conda` from the [rootproject/root-conda](https://hub.docker.com/r/rootproject/root-conda) docker hub page.
 
 > ## Still failed??? What the hell.
 >
@@ -149,7 +149,7 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 > >    - echo "Hello World"
 > >
 > > build_skim:
-> >   image: rootproject/root-conda:6.18.04
+> >   image: rootproject/root:6.26.10-conda
 > >   script:
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
@@ -196,7 +196,7 @@ and we're ready for a coffee break.
 > Sometimes you might find that certain jobs don't need to be run when unrelated files change. For example, in this example, our job depends only on `skim.cxx`. While there is no native `Makefile`-like solution (with targets) for GitLab CI/CD (or CI/CD in general), you can emulate this with the `:job:only:changes` flag like so
 > ~~~
 > build_skim:
->   image: rootproject/root-conda:6.18.04
+>   image: rootproject/root:6.26.10-conda
 >   script:
 >    - COMPILER=$(root-config --cxx)
 >    - FLAGS=$(root-config --cflags --libs)
