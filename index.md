@@ -12,8 +12,6 @@ permalink: index.html  # Is the only page that doesn't follow the pattern /:path
 >
 > 1. How to execute custom shell scripts
 > 2. How to run python scripts
->
-> as well as having gone through all previous sessions in this workshop.
 {: .prereq}
 
 Introduction
