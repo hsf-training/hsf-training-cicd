@@ -37,7 +37,7 @@ hello world:
 
 build_skim:
   extends: .build_template
-  image: rootproject/root-conda:6.18.04
+  image: rootproject/root:6.26.10-conda
 
 build_skim_latest:
   extends: .build_template
@@ -166,7 +166,7 @@ Ok, it looks like the CI failed because it couldn't find the shared libraries. W
 > >   stage: run
 > >   dependencies:
 > >     - build_skim
-> >   image: rootproject/root-conda:6.18.04
+> >   image: rootproject/root:6.26.10-conda
 > >   script:
 > >     - ./skim
 > > ~~~

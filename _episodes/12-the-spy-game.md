@@ -111,7 +111,7 @@ As it seems like we have a complete CI/CD that does physics - we should see what
 > >   stage: run
 > >   dependencies:
 > >    - build_skim
-> >   image: rootproject/root-conda:6.18.04
+> >   image: rootproject/root:6.26.10-conda
 > >   before_script:
 > >     - printf $SERVICE_PASS | base64 -d | kinit $CERN_USER@CERN.CH
 > >   script:
