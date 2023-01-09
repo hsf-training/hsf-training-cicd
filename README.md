@@ -5,7 +5,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/hsf-training/hsf-training-cicd/main.svg)](https://results.pre-commit.ci/latest/github/hsf-training/hsf-training-cicd/main)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/hsf-training/hsf-training-cicd/gh-pages.svg)](https://results.pre-commit.ci/latest/github/hsf-training/hsf-training-cicd/gh-pages)
 [![pages-build-deployment](https://github.com/hsf-training/hsf-training-cicd/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/hsf-training/hsf-training-cicd/actions/workflows/pages/pages-build-deployment)
 
 # HSF Training CI/CD -- GitLab Edition
@@ -13,12 +13,12 @@
 > **Note**
 > Click [here](https://hsf-training.github.io/hsf-training-cicd/) for the training website!
 
-
-This is a package
+The aim of this module is to explore what it means to build a CI/CD workflow and expand on concepts unique to GitLab’s CI/CD.
 
 ## 📅 Past events and videos
 
-* 🎥 [Fixme Sample event Dec 1 - 13, 2022](indico.cern.ch/)
+* [June 2020](https://indico.cern.ch/event/904759/)
+* [Feb 2020](https://indico.cern.ch/event/854880/)
 
 Emoji key: 🎥 (full video recordings availabile), ⛏️ (hackathon)
 
