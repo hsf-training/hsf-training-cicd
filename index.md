@@ -17,11 +17,7 @@ permalink: index.html  # Is the only page that doesn't follow the pattern /:path
 Introduction
 ------------
 
-At CERN, we use GitLab to host our code. GitLab is bundled with a built-in CI/CD system that we'll learn how to develop on to make our code robust to errors, preserved, and reproducible.
-
-The aim of this module is to:
-- explore what it means to build a CI/CD workflow
-- expand on concepts unique to GitLab's CI/CD which is essential to anyone working in ATLAS
+GitLab is a git platform used for code hosting and collaboration. It can be used to automatically run checks and other code or workflows on GitLab’s servers. We’ll learn how to use this to make our code robust to errors, preserved, and reproducible.
 
 > ## The skills we'll focus on:
 >
