@@ -8,7 +8,7 @@
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/hsf-training/hsf-training-cicd/main.svg)](https://results.pre-commit.ci/latest/github/hsf-training/hsf-training-cicd/main)
 [![pages-build-deployment](https://github.com/hsf-training/hsf-training-cicd/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/hsf-training/hsf-training-cicd/actions/workflows/pages/pages-build-deployment)
 
-# HSF Training CI/CD
+# HSF Training CI/CD -- GitLab Edition
 
 > **Note**
 > Click [here](https://hsf-training.github.io/hsf-training-cicd/) for the training website!
