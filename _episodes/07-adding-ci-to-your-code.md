@@ -110,7 +110,7 @@ Authenticating with credentials from job payload (GitLab Registry)
 > Don't panic. You do not need to understand docker to be able to use it.
 {: .callout}
 
-Let's go ahead and update our `.gitlab-ci.yml` and fix it to use a versioned docker image that has `root`: `rootproject/root:6.26.10-conda` from the [rootproject/root-conda](https://hub.docker.com/r/rootproject/root-conda) docker hub page.
+Let's go ahead and update our `.gitlab-ci.yml` and fix it to use a versioned docker image that has `root`: `rootproject/root:6.26.10-conda` from the [rootproject/root](https://hub.docker.com/r/rootproject/root) docker hub page.
 
 > ## Still failed??? What the hell.
 >
@@ -136,7 +136,7 @@ Ok, let's go ahead and update our `.gitlab-ci.yml` again, and it better be fixed
 
 # Building multiple versions
 
-Great, so we finally got it working... CI/CD isn't obviously powerful when you're only building one thing. Let's build both the version of the code we're testing and also test that the latest ROOT image (`rootproject/root-conda:latest`) works with our code. Call this new job `build_skim_latest`.
+Great, so we finally got it working... CI/CD isn't obviously powerful when you're only building one thing. Let's build both the version of the code we're testing and also test that the latest ROOT image (`rootproject/root:latest`) works with our code. Call this new job `build_skim_latest`.
 
 > ## Adding the `build_skim_latest` job
 >
@@ -156,7 +156,7 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > >
 > > build_skim_latest:
-> >   image: rootproject/root-conda:latest
+> >   image: rootproject/root:latest
 > >   script:
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)

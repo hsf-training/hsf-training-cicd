@@ -34,7 +34,7 @@ build_skim:
 
 build_skim_latest:
   extends: .build_template
-  image: rootproject/root-conda:latest
+  image: rootproject/root:latest
   allow_failure: yes
 ~~~
 {: .language-yaml}
@@ -92,7 +92,7 @@ Stages allow us to categorize jobs by functionality, such as `build`, or `test`,
 > >
 > > build_skim_latest:
 > >   extends: .build_template
-> >   image: rootproject/root-conda:latest
+> >   image: rootproject/root:latest
 > >   allow_failure: yes
 > > ~~~
 > > {: .language-yaml}
