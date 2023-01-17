@@ -5,17 +5,6 @@ permalink: index.html  # Is the only page that doesn't follow the pattern /:path
 ---
 {% include gh_variables.html %}
 
-> ## Prerequisites
->
-> This assumes that you'll have some basic background with your command line, for example:
->
-> 1. How to execute custom shell scripts
-> 2. How to run python scripts
-{: .prereq}
-
-Introduction
-------------
-
 GitLab is a git platform used for code hosting and collaboration. It can be used to automatically run checks and other code or workflows on GitLab’s servers. We’ll learn how to use this to make our code robust to errors, preserved, and reproducible.
 
 > ## The skills we'll focus on:
@@ -26,6 +15,16 @@ GitLab is a git platform used for code hosting and collaboration. It can be used
 > 4.  The GitLab permissions model
 > 5.  Protecting secret information while allowing jobs to run
 {: .checklist}
+
+
+> ## Prerequisites
+>
+> This assumes that you'll have some basic background with your command line, for example:
+>
+> 1. How to execute custom shell scripts (if you are not familiar with the shell, click [here](https://swcarpentry.github.io/shell-novice/))
+> 2. How to run python scripts (if you are not familiar with python, click [here](https://swcarpentry.github.io/python-novice-inflammation/))
+> 3. How to interact with remotes in git (if you are not familiar with git, click [here](https://swcarpentry.github.io/git-novice/))
+{: .prereq}
 
 {% include curriculum.html %}
 
