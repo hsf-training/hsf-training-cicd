@@ -89,7 +89,7 @@ Ok, fine. That was way too easy. It seems we have a few issues to deal with.
 `artifacts` is used to specify a list of files and directories which should be attached to the job when it succeeds, fails, or always. The artifacts will be sent to GitLab after the job finishes and will be available for download in the GitLab UI.
 
 > ## More Reading
-> - [https://docs.gitlab.com/ee/user/project/pipelines/job_artifacts.html](https://docs.gitlab.com/ee/user/project/pipelines/job_artifacts.html)
+> - [https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html](https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html)
 {: .checklist}
 
 > ## Default Behavior
