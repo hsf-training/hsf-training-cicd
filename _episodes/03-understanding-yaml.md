@@ -29,7 +29,7 @@ YAML (Yet Another Markup Language or sometimes popularly referred to as YAML Ain
 
 ~~~
 number-value: 42
-floating-point-value: 3.141592
+floating-point-value: 3.1415920 # YAML will truncate the trailing 0 -- 3.141592
 boolean-value: true # on, yes -- also work
 # strings can be both 'single-quoted` and "double-quoted"
 string-value: 'Bonjour'
@@ -50,6 +50,15 @@ date: 2002-12-14
 > ## Give your colons some breathing room
 >
 > Notice that in the above list, all colons have a space afterwards, `: `. This is important for YAML parsing and is a common mistake.
+{: .callout}
+
+> ## Where did the `0` disappear
+>
+> YAML truncates trailing zeroes from a floating point number, which means that `version: [3.9, 3.10, 3.11]` will automatically
+> be converted to `version: [3.9, 3.1, 3.11]` (notice `3.1` instead of `3.10`). The conversion will lead to unexpected failures
+> as your CI will be running on a version not specified by you. This behavior resulted in several failed jobs after the release
+> of Python 3.10 on GitHub Actions. The conversion (and the build failure) can be avoided by converting the floating point number
+> to strings - `version: ['3.9', '3.10', '3.11']`.
 {: .callout}
 
 ## Lists and Dictionaries
