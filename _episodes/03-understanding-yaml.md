@@ -53,7 +53,7 @@ date: 2002-12-14
 > Notice that in the above list, all colons have a space afterwards, `: `. This is important for YAML parsing and is a common mistake.
 {: .callout}
 
-> ## YAML and trailing zeroes
+> ## YAML and trailing floating point zeroes
 >
 > YAML truncates trailing zeroes from a floating point number, which means that `python-version: 3.10` will automatically
 > be converted to `python-version: 3.1` (notice `3.1` instead of `3.10`). The conversion will lead to unexpected failures
