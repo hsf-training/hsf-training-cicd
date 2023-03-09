@@ -104,16 +104,3 @@ Instead, all regular contributors are listed on our [HSF Training Community page
 [schools-badge]: https://img.shields.io/badge/upcoming%20events-browse-ff69b4
 [twitter-badge]: https://img.shields.io/twitter/follow/hsftraining?style=social
 [twitter]: https://twitter.com/hsftraining
-
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
