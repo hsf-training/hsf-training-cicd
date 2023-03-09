@@ -65,9 +65,17 @@ Look for the tag [![good_first_issue]][gfi-badge], which marks particularly simp
 <!-- END CENTRALLY MAINTAINED SECTION -->
 ## 💖 Authors
 
-<!-- If we have a primary author/maintainer, who kicked off the whole lessen etc, he should get a dedicated shoutout here -->
+This lesson was written by
 
-Thanks goes to these wonderful people ([emoji key][allcontrib-emoji-key]) who contributed to
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://giordonstark.com/"><img src="https://avatars.githubusercontent.com/u/761483?v=4?s=100" width="100px;" alt="Giordon Stark"/><br /><sub><b>Giordon Stark</b></sub></a><br /><a href="#content-kratsg" title="Content">🖋</a></td>
+    </tr>
+  </tbody>
+</table>
+
+Additional thanks goes to these wonderful people ([emoji key][allcontrib-emoji-key]) who contributed to
 the content of the lesson:
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
