@@ -1,4 +1,7 @@
 [![HSF Training Center][training-center-badge]][hsf-training-center]
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![Upcoming Events][schools-badge]][schools]
 [![Twitter Follow][twitter-badge]][twitter]
 
@@ -70,6 +73,14 @@ the content of the lesson:
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://saransh-cpp.github.io/"><img src="https://avatars.githubusercontent.com/u/74055102?v=4?s=100" width="100px;" alt="Saransh Chopra"/><br /><sub><b>Saransh Chopra</b></sub></a><br /><a href="#content-Saransh-cpp" title="Content">🖋</a></td>
+    </tr>
+  </tbody>
+</table>
+
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
