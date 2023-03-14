@@ -28,7 +28,7 @@ Continuous Integration (CI) is the concept of literal continuous integration of 
 What does it even mean to "break" something? The idea of "breaking" something is pretty contextual. If you're working on C++ code, then you probably want to make sure things compile and run without segfaulting at the bare minimum. If it's python code, maybe you have some tests with `pytest` that you want to make sure pass ("exit successfully"). Or if you're working on a paper draft, you might check for grammar, misspellings, and that the document compiles from LaTeX. Whatever the use-case is, integration is about **catching** breaking changes.
 
 > ## Don't know `pytest` ?
-> To learn more about `pytest` visit this [page](https://pytest.org/)
+> To learn more about `pytest` visit this [page](https://pytest.org/) and also see [Carpentry Module](http://carpentries-incubator.github.io/python-testing/)
 {: .callout}
 
 
