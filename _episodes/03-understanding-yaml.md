@@ -33,6 +33,7 @@ floating-point-value: 3.141592
 boolean-value: true # on, yes -- also work
 # strings can be both 'single-quoted` and "double-quoted"
 string-value: 'Bonjour'
+python-version: "3.10"
 unquoted-string: Hello World
 hexadecimal: 0x12d4
 scientific: 12.3015e+05
@@ -50,6 +51,15 @@ date: 2002-12-14
 > ## Give your colons some breathing room
 >
 > Notice that in the above list, all colons have a space afterwards, `: `. This is important for YAML parsing and is a common mistake.
+{: .callout}
+
+> ## YAML and trailing floating point zeroes
+>
+> YAML truncates trailing zeroes from a floating point number, which means that `python-version: 3.10` will automatically
+> be converted to `python-version: 3.1` (notice `3.1` instead of `3.10`). The conversion will lead to unexpected failures
+> as your CI will be running on a version not specified by you. This behavior resulted in several failed jobs after the release
+> of Python 3.10 on CI services. The conversion (and the build failure) can be avoided by converting the floating point numbers
+> to strings - `python-version: "3.10"`.
 {: .callout}
 
 ## Lists and Dictionaries
