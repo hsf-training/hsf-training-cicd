@@ -63,50 +63,6 @@ which will produce an output binary called `skim`.
 Ok, so maybe we were a little naive here. Let's start debugging. You got this error when you tried to build
 
 ~~~
-Running with gitlab-runner 16.7.1 (3eda8038)
-
-on runners-k8s-default-runners-699db8b9cc-7l4sv cMz2L-3y, system ID: r_fWkCk3SCPl9H
-
-feature flags: FF_USE_ADVANCED_POD_SPEC_CONFIGURATION:true
-
-Resolving secrets 00:00
-
-Preparing the "kubernetes" executor 00:00
-
-Using Kubernetes namespace: gitlab
-
-Using Kubernetes executor with image gitlab-registry.cern.ch/linuxsupport/rpmci/builder-al9:latest ...
-
-Using attach strategy to execute scripts...
-
-Preparing environment 00:07
-
-Using FF_USE_POD_ACTIVE_DEADLINE_SECONDS, the Pod activeDeadlineSeconds will be set to the job timeout: 1h0m0s...
-
-WARNING: Advanced Pod Spec configuration enabled, merging the provided PodSpec to the generated one. This is an alpha feature and is subject to change. Feedback is collected in this issue: https://gitlab.com/gitlab-org/gitlab-runner/-/issues/29659 ...
-
-Waiting for pod gitlab/runner-cmz2l-3y-project-178677-concurrent-1-0xkse5cc to be running, status is Pending
-
-Waiting for pod gitlab/runner-cmz2l-3y-project-178677-concurrent-1-0xkse5cc to be running, status is Pending
-
-ContainersNotReady: "containers with unready status: [build helper]"
-
-ContainersNotReady: "containers with unready status: [build helper]"
-
-Running on runner-cmz2l-3y-project-178677-concurrent-1-0xkse5cc via runners-k8s-default-runners-699db8b9cc-7l4sv...
-
-Getting source from Git repository 00:01
-
-Fetching changes with git depth set to 20...
-
-Initialized empty Git repository in /builds/sharmari/virtual-pipelines-eventselection/.git/
-
-Created fresh repository.
-
-Checking out a38a66ae as detached HEAD (ref is master)...
-
-Skipping Git submodules setup
-
 Executing "step_script" stage of the job script 00:00
 
 $ # INFO: Lowering limit of file descriptors for backwards compatibility. ffi: https://cern.ch/gitlab-runners-limit-file-descriptors # collapsed multi-line command
@@ -141,9 +97,9 @@ ERROR: Job failed: command terminated with exit code 1
 > >     - eval "$(~/miniconda/bin/conda shell.bash hook)"
 > >     - conda init
 > >     - conda install root
-> >     - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
 > >     - COMPILER=$(root-config --cxx)
 > >     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
+> >     - FLAGS=$(root-config --cflags --libs)
 > > ~~~
 > {: .solution}
 {: .challenge}

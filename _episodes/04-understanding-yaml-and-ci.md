@@ -121,6 +121,7 @@ where `stages` is the global parameter being used.
 >
 > Additionally, note that all jobs are defined with a default (unnamed) stage unless explicitly specified. Therefore, all jobs you define will run in parallel by default. When you care about execution order (such as building before you test), then we need to consider multiple stages and job dependencies.
 {: .callout}
+where `stages` is the global parameter being used.
 
 ## Job Parameters
 
@@ -136,9 +137,7 @@ job two:
     - coverage
 ~~~
 {: .language-yaml}
-
-<!--
-> ## Understanding the Reference
+## Understanding the Reference
 >
 > One will notice that the reference uses colons like `:job:image:name` to refer to parameter names. This is represented in yaml like:
 > ~~~
@@ -149,8 +148,8 @@ job two:
 > {: .language-yaml}
 > where the colon refers to a child key.
 {: .callout}
--->
-## Reference
+
+## Documentation
 
 The reference guide for all GitLab CI/CD pipeline configurations is found at [https://docs.gitlab.com/ee/ci/yaml/](https://docs.gitlab.com/ee/ci/yaml/). This contains all the different parameters you can assign to a job.
 
