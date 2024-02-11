@@ -98,8 +98,8 @@ ERROR: Job failed: command terminated with exit code 1
 > >     - conda init
 > >     - conda install root
 > >     - COMPILER=$(root-config --cxx)
-> >     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
 > >     - FLAGS=$(root-config --cflags --libs)
+> >     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > > ~~~
 > {: .solution}
 {: .challenge}
