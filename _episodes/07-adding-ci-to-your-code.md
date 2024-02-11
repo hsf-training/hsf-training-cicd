@@ -218,7 +218,7 @@ However, we probably don't want our CI/CD to crash if that happens. So let's als
 build_latest:
   image: ...
   script: [....]
-  allow_failure: yes # or 'true' or 'on'
+  allow_failure: true
 ~~~
 {: .language-yaml}
 
