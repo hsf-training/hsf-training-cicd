@@ -19,20 +19,24 @@ keypoints:
 The GitLab CI configurations are specified using a YAML file called `.gitlab-ci.yml`. Here is an example:
 
 ~~~
-image: rikorose/gcc-cmake
+stages:
+  - build
 
-before_script:
-  - mkdir build
-
-build_code:
+job_1:
+  stage: build
   script:
-    - cd build
-    - cmake ../src
-    - cmake --build .
+    - echo "This is the first step of my first job"
 ~~~
 {: .language-yaml}
 
-In the above example, `image: rikorose/gcc-cmake` is a Docker image. This image is an extension of the official gcc image and includes cmake.
+This is a minimal example used to introduce the basic structure of a GitLab CI/CD pipeline. The provided YAML configuration sets up a single-stage pipeline with one job named job_1. Let's break down the key components:
+
+ - The `stages` section defines the different stages in the pipeline. In this example, there is a single stage named `build`.
+
+ - The `job_1` section specifies a job within the `build` stage. The `script` section contains the commands to be executed as part of the job. In this case, the job simply prints the message "This is the first step of my first job."
+
+This YAML configuration represents a basic GitLab CI/CD pipeline with one stage (`build`) and one job (`job_1`). The job executes a simple script that echoes a message to the console. In more complex scenarios, jobs can include various tasks such as building, testing, and deploying code. Understanding this foundational structure is essential for creating more advanced and customized CI/CD pipelines in GitLab.
+
 
 > ## `script` commands
 >
@@ -86,20 +90,29 @@ What can you not use as job names? There are a few reserved keywords (because th
 Global parameters mean that you can set parameters at the top-level of the YAML file. What does that actually mean? Here's another example:
 
 ~~~
-image: rikorose/gcc-cmake
-
 stages: [build, test, deploy]
 
-job1:
-  script: make
+<workflow_name>:
+  stage: build
+  script:
+    - echo "This is the script for the workflow."
 
-job2:
-  image: rikorose/gcc-cmake:gcc-6
-  script: make
+job_1:
+  stage: test
+  script:
+    - echo "Commands for the first job - Step 1"
+    - echo "Commands for the first job - Step 2"
+
+job_2:
+  stage: test
+  script:
+    - echo "Commands for the second job - Step 1"
+    - echo "Commands for the second job - Step 2"
+
 ~~~
 {: .language-yaml}
 
-where `image` and `stages` are global parameters being used. Note that `job2:image` overrides `:image`.
+where `stages` is the global parameter being used.
 
 ## Job Parameters
 
@@ -116,6 +129,7 @@ job two:
 ~~~
 {: .language-yaml}
 
+<!--
 > ## Understanding the Reference
 >
 > One will notice that the reference uses colons like `:job:image:name` to refer to parameter names. This is represented in yaml like:
@@ -127,7 +141,7 @@ job two:
 > {: .language-yaml}
 > where the colon refers to a child key.
 {: .callout}
-
+-->
 ## Reference
 
 The reference guide for all GitLab CI/CD pipeline configurations is found at [https://docs.gitlab.com/ee/ci/yaml/](https://docs.gitlab.com/ee/ci/yaml/). This contains all the different parameters you can assign to a job.

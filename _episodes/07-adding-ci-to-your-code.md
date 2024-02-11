@@ -63,30 +63,62 @@ which will produce an output binary called `skim`.
 Ok, so maybe we were a little naive here. Let's start debugging. You got this error when you tried to build
 
 ~~~
-Running with gitlab-runner 12.6.0 (ac8e767a)
-  on default-runner-7685f6989c-bzlz8 _yp-6wmD
+Running with gitlab-runner 16.7.1 (3eda8038)
 
-Using Docker executor with image gitlab-registry.cern.ch/ci-tools/ci-worker:cc7 ...
-WARNING: Container based cache volumes creation is disabled. Will not create volume for "/cache"
-Authenticating with credentials from job payload (GitLab Registry)
-Pulling docker image gitlab-registry.cern.ch/ci-tools/ci-worker:cc7 ...
-Using docker image sha256:262a48c12b0622aabbb9331ef5f7c46b47bd100ac340ec1b076c0e83246bb573 for gitlab-registry.cern.ch/ci-tools/ci-worker:cc7 ...
+on runners-k8s-default-runners-699db8b9cc-7l4sv cMz2L-3y, system ID: r_fWkCk3SCPl9H
 
-Running on runner-_yp-6wmD-project-86027-concurrent-0 via default-runner-7685f6989c-bzlz8...
+feature flags: FF_USE_ADVANCED_POD_SPEC_CONFIGURATION:true
 
-Fetching changes with git depth set to 50...
- Initialized empty Git repository in /builds/gstark/virtual-pipelines-eventselection/.git/
- Created fresh repository.
- From https://gitlab.cern.ch/gstark/virtual-pipelines-eventselection
-  * [new ref]         refs/pipelines/1404549 -> refs/pipelines/1404549
-  * [new branch]      master                 -> origin/master
- Checking out bdd593f1 as master...
- Skipping Git submodules setup
+Resolving secrets 00:00
 
-Authenticating with credentials from job payload (GitLab Registry)
- $ COMPILER=$(root-config --cxx)
- /usr/bin/bash: line 87: root-config: command not found
- ERROR: Job failed: exit code 1
+Preparing the "kubernetes" executor 00:00
+
+Using Kubernetes namespace: gitlab
+
+Using Kubernetes executor with image gitlab-registry.cern.ch/linuxsupport/rpmci/builder-al9:latest ...
+
+Using attach strategy to execute scripts...
+
+Preparing environment 00:07
+
+Using FF_USE_POD_ACTIVE_DEADLINE_SECONDS, the Pod activeDeadlineSeconds will be set to the job timeout: 1h0m0s...
+
+WARNING: Advanced Pod Spec configuration enabled, merging the provided PodSpec to the generated one. This is an alpha feature and is subject to change. Feedback is collected in this issue: https://gitlab.com/gitlab-org/gitlab-runner/-/issues/29659 ...
+
+Waiting for pod gitlab/runner-cmz2l-3y-project-178677-concurrent-1-0xkse5cc to be running, status is Pending
+
+Waiting for pod gitlab/runner-cmz2l-3y-project-178677-concurrent-1-0xkse5cc to be running, status is Pending
+
+ContainersNotReady: "containers with unready status: [build helper]"
+
+ContainersNotReady: "containers with unready status: [build helper]"
+
+Running on runner-cmz2l-3y-project-178677-concurrent-1-0xkse5cc via runners-k8s-default-runners-699db8b9cc-7l4sv...
+
+Getting source from Git repository 00:01
+
+Fetching changes with git depth set to 20...
+
+Initialized empty Git repository in /builds/sharmari/virtual-pipelines-eventselection/.git/
+
+Created fresh repository.
+
+Checking out a38a66ae as detached HEAD (ref is master)...
+
+Skipping Git submodules setup
+
+Executing "step_script" stage of the job script 00:00
+
+$ # INFO: Lowering limit of file descriptors for backwards compatibility. ffi: https://cern.ch/gitlab-runners-limit-file-descriptors # collapsed multi-line command
+
+$ COMPILER=$(root-config --cxx)
+
+/scripts-178677-36000934/step_script: line 152: root-config: command not found
+
+Cleaning up project directory and file based variables 00:01
+
+ERROR: Job failed: command terminated with exit code 1
+
 ~~~
 {: .output}
 
@@ -95,22 +127,26 @@ Authenticating with credentials from job payload (GitLab Registry)
 > What happened?
 >
 > > ## Answer
-> > It turns out we had the wrong docker image for our build. If you look at the log, you'll see
+> > It turns out we didn't have ROOT installed.
+> > How do we fix it? We need to download and install the miniforge installer. The -b -p options specify a batch mode installation without user interaction, and the installation path is set to $HOME/miniconda. Setup the conda environment and initialize conda. Then install ROOT with conda and verify the installation with a python script.
+> > ## Solution
 > > ~~~
-> > Pulling docker image gitlab-registry.cern.ch/ci-tools/ci-worker:cc7 ...
-> > Using docker image sha256:7c63dfc66bc408978481404a95f21bbb60a9e183d5c4122a4cf29a177d3e7375 for gitlab-registry.cern.ch/ci-tools/ci-worker:cc7 ...
+> > hello_world:
+> >   script:
+> >     - echo "Hello World"
+> > build_skim:
+> >   script:
+> >     - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
+> >     - bash ~/miniconda.sh -b -p $HOME/miniconda
+> >     - eval "$(~/miniconda/bin/conda shell.bash hook)"
+> >     - conda init
+> >     - conda install root
+> >     - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
+> >     - COMPILER=$(root-config --cxx)
+> >     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
 > > ~~~
-> > {: .output}
-> > How do we fix it? We need to define the image as either a global parameter (`:image`) or as a per-job parameter (`:build:image`). Since we already have another job that doesn't need this image (and we don't want to introduce a regression), it's best practice to define the image we use on a per-job basis.
 > {: .solution}
 {: .challenge}
-
-> ## Docker???
->
-> Don't panic. You do not need to understand docker to be able to use it.
-{: .callout}
-
-Let's go ahead and update our `.gitlab-ci.yml` and fix it to use a versioned docker image that has `root`: `rootproject/root:6.26.10-conda` from the [rootproject/root](https://hub.docker.com/r/rootproject/root) docker hub page.
 
 > ## Still failed??? What the hell.
 >
@@ -132,11 +168,11 @@ Let's go ahead and update our `.gitlab-ci.yml` and fix it to use a versioned doc
 > {: .solution}
 {: .challenge}
 
-Ok, let's go ahead and update our `.gitlab-ci.yml` again, and it better be fixed or so help me...
+Ok, let's go ahead and update our `.gitlab-ci.yml` again. It works!
 
 # Building multiple versions
 
-Great, so we finally got it working... CI/CD isn't obviously powerful when you're only building one thing. Let's build both the version of the code we're testing and also test that the latest ROOT image (`rootproject/root:latest`) works with our code. Call this new job `build_skim_latest`.
+Great, so we finally got it working... CI/CD isn't obviously powerful when you're only building one thing. Let's build the code both with the latest ROOT image and also with a specific root version. Let's name the two jobs `build_skim` and `build_skim_latest`.
 
 > ## Adding the `build_skim_latest` job
 >
@@ -149,15 +185,25 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 > >    - echo "Hello World"
 > >
 > > build_skim:
-> >   image: rootproject/root:6.26.10-conda
-> >   script:
+> >  script:
+> >    - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
+> >    - bash ~/miniconda.sh -b -p $HOME/miniconda
+> >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
+> >    - conda init
+> >    - conda install root=6.28
+> >    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > >
 > > build_skim_latest:
-> >   image: rootproject/root:latest
-> >   script:
+> >  script:
+> >    - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
+> >    - bash ~/miniconda.sh -b -p $HOME/miniconda
+> >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
+> >    - conda init
+> >    - conda install root
+> >    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
@@ -166,13 +212,13 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 > {: .solution}
 {: .challenge}
 
-However, we probably don't want our CI/CD to crash if that happens. So let's also add `:build_latest:allow_failure = true` to our job as well. This allows the job to fail without crashing the CI/CD -- that is, it's an acceptable failure. This indicates to us when we do something in the code that might potentially break the latest release; or indicate when our code will not build in a new release.
+However, we probably don't want our CI/CD to crash if one of the jobs fails. So let's also add `:build_skim_latest:allow_failure = true` to our job as well. This allows the job to fail without crashing the CI/CD -- that is, it's an acceptable failure. This indicates to us when we do something in the code that might potentially break the latest release; or indicate when our code will not build in a new release.
 
 ~~~
-build_latest:
+build_skim_latest:
   image: ...
   script: [....]
-  allow_failure: yes # or 'true' or 'on'
+  allow_failure: true
 ~~~
 {: .language-yaml}
 
@@ -196,8 +242,13 @@ and we're ready for a coffee break.
 > Sometimes you might find that certain jobs don't need to be run when unrelated files change. For example, in this example, our job depends only on `skim.cxx`. While there is no native `Makefile`-like solution (with targets) for GitLab CI/CD (or CI/CD in general), you can emulate this with the `:job:only:changes` flag like so
 > ~~~
 > build_skim:
->   image: rootproject/root:6.26.10-conda
 >   script:
+>    - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
+>    - bash ~/miniconda.sh -b -p $HOME/miniconda
+>    - eval "$(~/miniconda/bin/conda shell.bash hook)"
+>    - conda init
+>    - conda install conda-forge::root
+>    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
 >    - COMPILER=$(root-config --cxx)
 >    - FLAGS=$(root-config --cflags --libs)
 >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS

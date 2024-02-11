@@ -16,3 +16,4 @@ vendor/
 Gemfile.lock
 .*history
 .jekyll-metadata
+.ruby-version

@@ -29,7 +29,7 @@ Following the [setup for the payload](https://hsf-training.github.io/hsf-trainin
 
 If you have not set this payload up yet, you can clone it from [github](https://github.com/hsf-training/hsf-training-cms-analysis) and push it to your project.
 
-> ### Visibility Level
+> ## Visibility Level
 >
 > Make sure you click Public for the visibility level of the new project so that everyone can see your awesome work
 > (and it will also make things easier when we get to working with containers).
