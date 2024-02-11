@@ -143,8 +143,8 @@ ERROR: Job failed: command terminated with exit code 1
 > >     - conda install root
 > >     - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
 > >     - COMPILER=$(root-config --cxx)
-> >     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
 > >     - FLAGS=$(root-config --cflags --libs)
+> >     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > > ~~~
 > {: .solution}
 {: .challenge}
