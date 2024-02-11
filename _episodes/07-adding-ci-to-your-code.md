@@ -98,8 +98,7 @@ ERROR: Job failed: command terminated with exit code 1
 > >     - conda init
 > >     - conda install root
 > >     - COMPILER=$(root-config --cxx)
-> >     - FLAGS=$(root-config --cflags --libs)
-> >     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+> >     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
 > > ~~~
 > {: .solution}
 {: .challenge}
@@ -147,7 +146,6 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 > >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
 > >    - conda init
 > >    - conda install root=6.28
-> >    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
@@ -159,7 +157,6 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 > >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
 > >    - conda init
 > >    - conda install root
-> >    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
