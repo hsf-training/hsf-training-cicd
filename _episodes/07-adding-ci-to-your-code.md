@@ -172,9 +172,9 @@ Ok, let's go ahead and update our `.gitlab-ci.yml` again. It works!
 
 # Building multiple versions
 
-Great, so we finally got it working... CI/CD isn't obviously powerful when you're only building one thing. Let's build the code both with the latest ROOT image and also with a specific root version. Call this new job `build_skim_version`.
+Great, so we finally got it working... CI/CD isn't obviously powerful when you're only building one thing. Let's build the code both with the latest ROOT image and also with a specific root version. Let's name the two jobs `build_skim` and `build_skim_latest`.
 
-> ## Adding the `build_skim_version` job
+> ## Adding the `build_skim_latest` job
 >
 > What does the `.gitlab-ci.yml` look like now?
 >
@@ -190,19 +190,19 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 > >    - bash ~/miniconda.sh -b -p $HOME/miniconda
 > >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
 > >    - conda init
-> >    - conda install conda-forge::root
+> >    - conda install root=6.28
 > >    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > >
-> > build_skim_version:
+> > build_skim_latest:
 > >  script:
 > >    - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
 > >    - bash ~/miniconda.sh -b -p $HOME/miniconda
 > >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
 > >    - conda init
-> >    - conda install conda-forge::root=6.26.10 #FIXME
+> >    - conda install root
 > >    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
@@ -212,10 +212,10 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 > {: .solution}
 {: .challenge}
 
-However, we probably don't want our CI/CD to crash if that happens. So let's also add `:build_latest:allow_failure = true` to our job as well. This allows the job to fail without crashing the CI/CD -- that is, it's an acceptable failure. This indicates to us when we do something in the code that might potentially break the latest release; or indicate when our code will not build in a new release.
+However, we probably don't want our CI/CD to crash if one of the jobs fails. So let's also add `:build_skim_latest:allow_failure = true` to our job as well. This allows the job to fail without crashing the CI/CD -- that is, it's an acceptable failure. This indicates to us when we do something in the code that might potentially break the latest release; or indicate when our code will not build in a new release.
 
 ~~~
-build_latest:
+build_skim_latest:
   image: ...
   script: [....]
   allow_failure: true
