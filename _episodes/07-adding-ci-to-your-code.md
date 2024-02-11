@@ -143,18 +143,38 @@ ERROR: Job failed: command terminated with exit code 1
 > >     - conda install root
 > >     - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
 > >     - COMPILER=$(root-config --cxx)
-> >     - FLAGS=$(root-config --cflags --libs)
-> >     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+> >     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
 > > ~~~
 > {: .solution}
 {: .challenge}
 
+> ## Still failed??? What the hell.
+>
+> What happened?
+>
+> > ## Answer
+> > It turns out we just forgot the include flags needed for compilation. If you look at the log, you'll see
+> > ~~~
+> >  $ COMPILER=$(root-config --cxx)
+> >  $ $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
+> >  skim.cxx:11:10: fatal error: ROOT/RDataFrame.hxx: No such file or directory
+> >   #include "ROOT/RDataFrame.hxx"
+> >            ^~~~~~~~~~~~~~~~~~~~~
+> >  compilation terminated.
+> >  ERROR: Job failed: exit code 1
+> > ~~~
+> > {: .output}
+> > How do we fix it? We just need to add another variable to add the flags at the end via `$FLAGS` defined as `FLAGS=$(root-config --cflags --libs)`.
+> {: .solution}
+{: .challenge}
+
+Ok, let's go ahead and update our `.gitlab-ci.yml` again. It works!
 
 # Building multiple versions
 
-Great, so we finally got it working... CI/CD isn't obviously powerful when you're only building one thing. Let's build both the version of the code we're testing and also test that the latest ROOT image (`rootproject/root:latest`) works with our code. Call this new job `build_skim_latest`.
+Great, so we finally got it working... CI/CD isn't obviously powerful when you're only building one thing. Let's build the code both with the latest ROOT image and also with a specific root version. Call this new job `build_skim_version`.
 
-> ## Adding the `build_skim_latest` job
+> ## Adding the `build_skim_version` job
 >
 > What does the `.gitlab-ci.yml` look like now?
 >
@@ -165,15 +185,25 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 > >    - echo "Hello World"
 > >
 > > build_skim:
-> >   image: rootproject/root:6.26.10-conda
-> >   script:
+> >  script:
+> >    - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
+> >    - bash ~/miniconda.sh -b -p $HOME/miniconda
+> >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
+> >    - conda init
+> >    - conda install conda-forge::root
+> >    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > >
-> > build_skim_latest:
-> >   image: rootproject/root:latest
-> >   script:
+> > build_skim_version:
+> >  script:
+> >    - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
+> >    - bash ~/miniconda.sh -b -p $HOME/miniconda
+> >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
+> >    - conda init
+> >    - conda install conda-forge::root=6.26.10 #FIXME
+> >    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
@@ -212,8 +242,13 @@ and we're ready for a coffee break.
 > Sometimes you might find that certain jobs don't need to be run when unrelated files change. For example, in this example, our job depends only on `skim.cxx`. While there is no native `Makefile`-like solution (with targets) for GitLab CI/CD (or CI/CD in general), you can emulate this with the `:job:only:changes` flag like so
 > ~~~
 > build_skim:
->   image: rootproject/root:6.26.10-conda
 >   script:
+>    - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
+>    - bash ~/miniconda.sh -b -p $HOME/miniconda
+>    - eval "$(~/miniconda/bin/conda shell.bash hook)"
+>    - conda init
+>    - conda install conda-forge::root
+>    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
 >    - COMPILER=$(root-config --cxx)
 >    - FLAGS=$(root-config --cflags --libs)
 >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
