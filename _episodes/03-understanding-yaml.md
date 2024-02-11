@@ -80,6 +80,14 @@ jedi:
 ~~~
 {: .language-yaml}
 
+> ## List/Dictionary syntax
+>
+> Just like scalars, list and dictionaries require a space at the `- `,`: `.  Notice that there is indentation below the name of the list or the dictionary.
+>
+> Finally, all elements have to be at the same indentation level for the entire list or dictionary.
+{: .callout}
+
+
 ### Inline-Syntax
 
 Since YAML is a superset of JSON, you can also write JSON-style maps and sequences.
