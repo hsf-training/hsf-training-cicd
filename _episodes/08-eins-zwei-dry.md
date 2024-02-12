@@ -44,26 +44,36 @@ Why is this fun? We should be able to combine it with some other nice features o
 From the previous lesson, our `.gitlab-ci.yml` looks like
 
 ~~~
-hello world:
+hello_world:
   script:
-   - echo "Hello World"
+    - echo "Hello World"
 
 build_skim:
-  image: rootproject/root:6.26.10-conda
   before_script:
-   - COMPILER=$(root-config --cxx)
-   - FLAGS=$(root-config --cflags --libs)
+    - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
+    - bash ~/miniconda.sh -b -p $HOME/miniconda
+    - eval "$(~/miniconda/bin/conda shell.bash hook)"
+    - conda init
+    - conda install root=6.28
+    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
+    - COMPILER=$(root-config --cxx)
+    - FLAGS=$(root-config --cflags --libs)
   script:
-   - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 
 build_skim_latest:
-  image: rootproject/root:latest
   before_script:
-   - COMPILER=$(root-config --cxx)
-   - FLAGS=$(root-config --cflags --libs)
+    - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
+    - bash ~/miniconda.sh -b -p $HOME/miniconda
+    - eval "$(~/miniconda/bin/conda shell.bash hook)"
+    - conda init
+    - conda install root
+    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
+    - COMPILER=$(root-config --cxx)
+    - FLAGS=$(root-config --cflags --libs)
   script:
-   - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
-  allow_failure: yes
+    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+  allow_failure: true
 ~~~
 {: .language-yaml}
 
@@ -71,7 +81,7 @@ We've already started to repeat ourselves. How can we combine the two into a sin
 
 > ## Refactoring the code
 >
-> Can you refactor the above code by adding a hidden job (named `.build_template`) containing parameters that `build_skim` and `build_skim_latest` have in common?
+> Can you refactor the above code by adding a hidden job (named `.build_template`) containing parameters that `build_skim` and `build_skim_version` have in common?
 >
 > > ## Solution
 > > ~~~
