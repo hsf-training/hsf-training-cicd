@@ -121,11 +121,5 @@ If all the jobs in a stage:
 - Succeed, the pipeline moves on to the next stage.
 - Fail, the next stage is not (usually) executed and the pipeline ends early.
 
-> ## Stages???
->
-> Ok, ok, yes, there are also stages. You can think of it like putting on a show. A pipeline is composed of stages. Stages are composed of jobs. All jobs in a stage perform at the same time, run in parallel. You can only perform on one stage at a time, like in broadway. We'll cover stages and serial/parallel execution in a later lesson when we add more complexity to our CI/CD.
->
-> Additionally, note that all jobs are defined with a default (unnamed) stage unless explicitly specified. Therefore, all jobs you define will run in parallel by default. When you care about execution order (such as building before you test), then we need to consider multiple stages and job dependencies.
-{: .callout}
 
 {% include links.md %}
