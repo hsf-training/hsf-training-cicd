@@ -137,7 +137,8 @@ job two:
     - coverage
 ~~~
 {: .language-yaml}
-## Understanding the Reference
+
+> ## Understanding the Reference
 >
 > One will notice that the reference uses colons like `:job:image:name` to refer to parameter names. This is represented in yaml like:
 > ~~~

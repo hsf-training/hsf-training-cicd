@@ -62,24 +62,9 @@ which will produce an output binary called `skim`.
 
 Ok, so maybe we were a little naive here. Let's start debugging. You got this error when you tried to build
 
-~~~
-Executing "step_script" stage of the job script 00:00
-
-$ # INFO: Lowering limit of file descriptors for backwards compatibility. ffi: https://cern.ch/gitlab-runners-limit-file-descriptors # collapsed multi-line command
-
-$ COMPILER=$(root-config --cxx)
-
-/scripts-178677-36000934/step_script: line 152: root-config: command not found
-
-Cleaning up project directory and file based variables 00:01
-
-ERROR: Job failed: command terminated with exit code 1
-
-~~~
-{: .output}
 
 > ## Broken Build
->
+>```
 > Initialized empty Git repository in /builds/sharmari/virtual-pipelines-eventselection/.git/
 >
 > Created fresh repository.
