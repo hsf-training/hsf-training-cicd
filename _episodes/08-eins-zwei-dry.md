@@ -164,25 +164,36 @@ Note how `.in-docker` overrides `:rspec:tags` because it's "closest in scope".
 >
 > > ## Solution
 > > ~~~
-> > hello world:
-> >   script:
-> >    - echo "Hello World"
+
+> > hello_world:
+> > script:
+> >  - echo "Hello World"
 > >
-> > .build_template:
-> >   before_script:
-> >    - COMPILER=$(root-config --cxx)
-> >    - FLAGS=$(root-config --cflags --libs)
-> >   script:
-> >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+> > template_build:
+> > before_script:
+> >  - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
+> >  - bash ~/miniconda.sh -b -p $HOME/miniconda
+> >  - eval "$(~/miniconda/bin/conda shell.bash hook)"
+> >  - conda init
+> > script:
 > >
-> > build_skim:
-> >   extends: .build_template
-> >   image: rootproject/root:6.26.10-conda
+> > uild_skim:
+> > extends: .template_build
+> > script:
+> >  - conda install root=6.28 --yes
+> >  - COMPILER=$(root-config --cxx)
+> >  - FLAGS=$(root-config --cflags --libs)
+> >  - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+> > allow_failure : true
 > >
 > > build_skim_latest:
-> >   extends: .build_template
-> >   image: rootproject/root:latest
-> >   allow_failure: yes
+> > extends: .template_build
+> > script:
+> >  - conda install root --yes
+> >  - COMPILER=$(root-config --cxx)
+> >  - FLAGS=$(root-config --cflags --libs)
+> >  - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+> >  allow_failure: true
 > > ~~~
 > > {: .language-yaml}
 > {: .solution}
