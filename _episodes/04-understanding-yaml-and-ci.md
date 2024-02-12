@@ -114,6 +114,15 @@ job_2:
 
 where `stages` is the global parameter being used.
 
+
+> ## Stages???
+>
+> Ok, ok, yes, there are also stages. You can think of it like putting on a show. A pipeline is composed of stages. Stages are composed of jobs. All jobs in a stage perform at the same time, run in parallel. You can only perform on one stage at a time, like in broadway. We'll cover stages and serial/parallel execution in a later lesson when we add more complexity to our CI/CD.
+>
+> Additionally, note that all jobs are defined with a default (unnamed) stage unless explicitly specified. Therefore, all jobs you define will run in parallel by default. When you care about execution order (such as building before you test), then we need to consider multiple stages and job dependencies.
+{: .callout}
+where `stages` is the global parameter being used.
+
 ## Job Parameters
 
 What are some of the parameters that can be used in a job? Rather than copy/pasting from the reference (linked below in this session), we'll go to the [Configuration parameters](https://docs.gitlab.com/ee/ci/yaml/#configuration-parameters) section in the GitLab docs. The most important parameter, and the only one needed to define a job, is `script`
@@ -129,7 +138,6 @@ job two:
 ~~~
 {: .language-yaml}
 
-<!--
 > ## Understanding the Reference
 >
 > One will notice that the reference uses colons like `:job:image:name` to refer to parameter names. This is represented in yaml like:
@@ -141,13 +149,10 @@ job two:
 > {: .language-yaml}
 > where the colon refers to a child key.
 {: .callout}
--->
-## Reference
+
+## Documentation
 
 The reference guide for all GitLab CI/CD pipeline configurations is found at [https://docs.gitlab.com/ee/ci/yaml/](https://docs.gitlab.com/ee/ci/yaml/). This contains all the different parameters you can assign to a job.
 
-> ## Further Reading
-> - [https://docs.gitlab.com/ee/ci/yaml/](https://docs.gitlab.com/ee/ci/yaml/)
-{: .checklist}
 
 {% include links.md %}

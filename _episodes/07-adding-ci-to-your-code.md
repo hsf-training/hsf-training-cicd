@@ -62,91 +62,54 @@ which will produce an output binary called `skim`.
 
 Ok, so maybe we were a little naive here. Let's start debugging. You got this error when you tried to build
 
-~~~
-Running with gitlab-runner 16.7.1 (3eda8038)
-
-on runners-k8s-default-runners-699db8b9cc-7l4sv cMz2L-3y, system ID: r_fWkCk3SCPl9H
-
-feature flags: FF_USE_ADVANCED_POD_SPEC_CONFIGURATION:true
-
-Resolving secrets 00:00
-
-Preparing the "kubernetes" executor 00:00
-
-Using Kubernetes namespace: gitlab
-
-Using Kubernetes executor with image gitlab-registry.cern.ch/linuxsupport/rpmci/builder-al9:latest ...
-
-Using attach strategy to execute scripts...
-
-Preparing environment 00:07
-
-Using FF_USE_POD_ACTIVE_DEADLINE_SECONDS, the Pod activeDeadlineSeconds will be set to the job timeout: 1h0m0s...
-
-WARNING: Advanced Pod Spec configuration enabled, merging the provided PodSpec to the generated one. This is an alpha feature and is subject to change. Feedback is collected in this issue: https://gitlab.com/gitlab-org/gitlab-runner/-/issues/29659 ...
-
-Waiting for pod gitlab/runner-cmz2l-3y-project-178677-concurrent-1-0xkse5cc to be running, status is Pending
-
-Waiting for pod gitlab/runner-cmz2l-3y-project-178677-concurrent-1-0xkse5cc to be running, status is Pending
-
-ContainersNotReady: "containers with unready status: [build helper]"
-
-ContainersNotReady: "containers with unready status: [build helper]"
-
-Running on runner-cmz2l-3y-project-178677-concurrent-1-0xkse5cc via runners-k8s-default-runners-699db8b9cc-7l4sv...
-
-Getting source from Git repository 00:01
-
-Fetching changes with git depth set to 20...
-
-Initialized empty Git repository in /builds/sharmari/virtual-pipelines-eventselection/.git/
-
-Created fresh repository.
-
-Checking out a38a66ae as detached HEAD (ref is master)...
-
-Skipping Git submodules setup
-
-Executing "step_script" stage of the job script 00:00
-
-$ # INFO: Lowering limit of file descriptors for backwards compatibility. ffi: https://cern.ch/gitlab-runners-limit-file-descriptors # collapsed multi-line command
-
-$ COMPILER=$(root-config --cxx)
-
-/scripts-178677-36000934/step_script: line 152: root-config: command not found
-
-Cleaning up project directory and file based variables 00:01
-
-ERROR: Job failed: command terminated with exit code 1
-
-~~~
-{: .output}
 
 > ## Broken Build
+>```
+> Initialized empty Git repository in /builds/sharmari/virtual-pipelines-eventselection/.git/
 >
-> What happened?
+> Created fresh repository.
 >
-> > ## Answer
-> > It turns out we didn't have ROOT installed.
-> > How do we fix it? We need to download and install the miniforge installer. The -b -p options specify a batch mode installation without user interaction, and the installation path is set to $HOME/miniconda. Setup the conda environment and initialize conda. Then install ROOT with conda and verify the installation with a python script.
-> > ## Solution
-> > ~~~
-> > hello_world:
-> >   script:
-> >     - echo "Hello World"
-> > build_skim:
-> >   script:
-> >     - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
-> >     - bash ~/miniconda.sh -b -p $HOME/miniconda
-> >     - eval "$(~/miniconda/bin/conda shell.bash hook)"
-> >     - conda init
-> >     - conda install root
-> >     - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
-> >     - COMPILER=$(root-config --cxx)
-> >     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
-> > ~~~
-> {: .solution}
-{: .challenge}
+> Checking out a38a66ae as detached HEAD (ref is master)...
+>
+> Skipping Git submodules setup
+>
+> Executing "step_script" stage of the job script 00:00
+>
+> $ # INFO: Lowering limit of file descriptors for backwards compatibility. ffi: https://cern.ch/gitlab-runners-limit-file-descriptors # collapsed multi-line command
+>
+> $ COMPILER=$(root-config --cxx)
+>
+> /scripts-178677-36000934/step_script: line 152: root-config: command not found
+>
+> Cleaning up project directory and file based variables 00:01
+>
+> ERROR: Job failed: command terminated with exit code 1
+> ```
+> {: .output}
+{: .solution}
+
+ We have a broken build. What happened?
+
+> ## Answer
+>  It turns out we didn't have ROOT installed.
+>  How do we fix it? We need to download and install the miniforge installer. The `-b -p` options specify a batch mode installation without user interaction, and the installation path is set to `$HOME/miniconda`. Setup the conda environment and initialize conda. Then install ROOT with conda and verify the installation with a python script.
+>
+> ```yml
+> hello_world:
+>   script:
+>     - echo "Hello World"
+> build_skim:
+>   script:
+>     - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
+>     - bash ~/miniconda.sh -b -p $HOME/miniconda
+>     - eval "$(~/miniconda/bin/conda shell.bash hook)"
+>     - conda init
+>     - conda install root
+>     - COMPILER=$(root-config --cxx)
+>     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
+> ```
+{: .solution}
+
 
 > ## Still failed??? What the hell.
 >
@@ -190,8 +153,7 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 > >    - bash ~/miniconda.sh -b -p $HOME/miniconda
 > >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
 > >    - conda init
-> >    - conda install root=6.28
-> >    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
+> >    - conda install root=6.28 --yes
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
@@ -202,8 +164,7 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 > >    - bash ~/miniconda.sh -b -p $HOME/miniconda
 > >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
 > >    - conda init
-> >    - conda install root
-> >    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
+> >    - conda install root --yes
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
@@ -216,22 +177,28 @@ However, we probably don't want our CI/CD to crash if one of the jobs fails. So 
 
 ~~~
 build_skim_latest:
-  image: ...
+
   script: [....]
   allow_failure: true
 ~~~
 {: .language-yaml}
 
-Finally, we want to clean up the two jobs a little by separating out the environment variables being set like `COMPILER=$(root-config --cxx)` into a `before_script` parameter since this is actually preparation for setting up our environment -- rather than part of the script we want to test! For example,
+Finally, we want to clean up the two jobs a little by separating out the  miniconda download into a `before_script` and initialization  since this is actually preparation for setting up our environment -- rather than part of the script we want to test! For example,
 
 ~~~
 build_skim_latest:
   before_script:
+   - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
+   - bash ~/miniconda.sh -b -p $HOME/miniconda
+   - eval "$(~/miniconda/bin/conda shell.bash hook)"
+   - conda init
+
+  script:
+   - conda install root --yes
    - COMPILER=$(root-config --cxx)
    - FLAGS=$(root-config --cflags --libs)
-  script:
    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
-  ...
+
 ~~~
 {: .language-yaml}
 
@@ -242,13 +209,13 @@ and we're ready for a coffee break.
 > Sometimes you might find that certain jobs don't need to be run when unrelated files change. For example, in this example, our job depends only on `skim.cxx`. While there is no native `Makefile`-like solution (with targets) for GitLab CI/CD (or CI/CD in general), you can emulate this with the `:job:only:changes` flag like so
 > ~~~
 > build_skim:
->   script:
+>   before_script:
 >    - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
 >    - bash ~/miniconda.sh -b -p $HOME/miniconda
 >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
 >    - conda init
->    - conda install conda-forge::root
->    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
+>   script:
+>    - conda install root=6.28 --yes
 >    - COMPILER=$(root-config --cxx)
 >    - FLAGS=$(root-config --cflags --libs)
 >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS

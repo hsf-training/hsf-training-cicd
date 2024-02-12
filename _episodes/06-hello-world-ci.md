@@ -50,12 +50,12 @@ We should fix this. If you click through again on the red `x` on the left for th
 
 > ## Validating CI/CD YAML Configuration
 >
-> Every single project you make on GitLab comes with a linter for the YAML you write. This linter can be found at `<project-url>/-/ci/lint`. For example, if I have a project at [https://gitlab.cern.ch/MultiBJets/MBJ_Analysis](https://gitlab.cern.ch/MultiBJets/MBJ_Analysis), then the linter is at [https://gitlab.cern.ch/MultiBJets/MBJ_Analysis/-/ci/lint](https://gitlab.cern.ch/MultiBJets/MBJ_Analysis/-/ci/lint).
+> Every single project you make on GitLab comes with a linter for the YAML you write. This linter can be found at `<project-url>/-/ci/lint`. For example, if I have a project at <https://gitlab.cern.ch/gfidalgo/ci-testing>, then the linter is at <https://gitlab.cern.ch/gfidalgo/ci-testing/-/ci/lint>.
 >
 > This can also be found by going to `CI/CD -> Pipelines` or `CI/CD -> Jobs` page and clicking the `CI Lint` button at the top right.
 {: .callout}
 
-> ### But what's a linter?
+> ## But what's a linter?
 >
 > From [wikipedia](https://en.wikipedia.org/wiki/Lint_(software)): `lint`, or a linter, is a tool that analyzes source code to flag programming errors, bugs, stylistic errors, and suspicious constructs. The term originates from a Unix utility that examined C language source code.
 {: .callout}
@@ -121,11 +121,5 @@ If all the jobs in a stage:
 - Succeed, the pipeline moves on to the next stage.
 - Fail, the next stage is not (usually) executed and the pipeline ends early.
 
-> ## Stages???
->
-> Ok, ok, yes, there are also stages. You can think of it like putting on a show. A pipeline is composed of stages. Stages are composed of jobs. All jobs in a stage perform at the same time, run in parallel. You can only perform on one stage at a time, like in broadway. We'll cover stages and serial/parallel execution in a later lesson when we add more complexity to our CI/CD.
->
-> Additionally, note that all jobs are defined with a default (unnamed) stage unless explicitly specified. Therefore, all jobs you define will run in parallel by default. When you care about execution order (such as building before you test), then we need to consider multiple stages and job dependencies.
-{: .callout}
 
 {% include links.md %}
