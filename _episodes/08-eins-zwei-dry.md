@@ -54,11 +54,10 @@ build_skim:
     - bash ~/miniconda.sh -b -p $HOME/miniconda
     - eval "$(~/miniconda/bin/conda shell.bash hook)"
     - conda init
+  script:
     - conda install root=6.28
-    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
     - COMPILER=$(root-config --cxx)
     - FLAGS=$(root-config --cflags --libs)
-  script:
     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 
 build_skim_latest:
@@ -67,11 +66,10 @@ build_skim_latest:
     - bash ~/miniconda.sh -b -p $HOME/miniconda
     - eval "$(~/miniconda/bin/conda shell.bash hook)"
     - conda init
+  script:
     - conda install root
-    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
     - COMPILER=$(root-config --cxx)
     - FLAGS=$(root-config --cflags --libs)
-  script:
     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
   allow_failure: true
 ~~~

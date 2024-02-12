@@ -198,31 +198,38 @@ build_skim_latest:
 ~~~
 {: .language-yaml}
 
-<!-- Finally, we want to clean up the two jobs a little by separating out the environment variables being set like `COMPILER=$(root-config --cxx)` into a `before_script` parameter since this is actually preparation for setting up our environment -- rather than part of the script we want to test! For example,
+Finally, we want to clean up the two jobs a little by separating out the  miniconda download into a `before_script` and initialization  since this is actually preparation for setting up our environment -- rather than part of the script we want to test! For example,
 
 ~~~
 build_skim_latest:
   before_script:
+   - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
+   - bash ~/miniconda.sh -b -p $HOME/miniconda
+   - eval "$(~/miniconda/bin/conda shell.bash hook)"
+   - conda init
+
+  script:
+   - conda install root --yes
    - COMPILER=$(root-config --cxx)
    - FLAGS=$(root-config --cflags --libs)
-  script:
    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
-  ...
+
 ~~~
 {: .language-yaml}
 
-and we're ready for a coffee break. -->
+and we're ready for a coffee break.
 
 > ## Building new image only on changes?
 >
 > Sometimes you might find that certain jobs don't need to be run when unrelated files change. For example, in this example, our job depends only on `skim.cxx`. While there is no native `Makefile`-like solution (with targets) for GitLab CI/CD (or CI/CD in general), you can emulate this with the `:job:only:changes` flag like so
 > ~~~
 > build_skim:
->   script:
+>   before_script:
 >    - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
 >    - bash ~/miniconda.sh -b -p $HOME/miniconda
 >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
 >    - conda init
+>   script:
 >    - conda install root=6.28 --yes
 >    - COMPILER=$(root-config --cxx)
 >    - FLAGS=$(root-config --cflags --libs)
