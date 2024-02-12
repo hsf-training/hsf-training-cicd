@@ -50,12 +50,12 @@ We should fix this. If you click through again on the red `x` on the left for th
 
 > ## Validating CI/CD YAML Configuration
 >
-> Every single project you make on GitLab comes with a linter for the YAML you write. This linter can be found at `<project-url>/-/ci/lint`. For example, if I have a project at [https://gitlab.cern.ch/MultiBJets/MBJ_Analysis](https://gitlab.cern.ch/MultiBJets/MBJ_Analysis), then the linter is at [https://gitlab.cern.ch/MultiBJets/MBJ_Analysis/-/ci/lint](https://gitlab.cern.ch/MultiBJets/MBJ_Analysis/-/ci/lint).
+> Every single project you make on GitLab comes with a linter for the YAML you write. This linter can be found at `<project-url>/-/ci/lint`. For example, if I have a project at <https://gitlab.cern.ch/gfidalgo/ci-testing>, then the linter is at <https://gitlab.cern.ch/gfidalgo/ci-testing/-/ci/lint>.
 >
 > This can also be found by going to `CI/CD -> Pipelines` or `CI/CD -> Jobs` page and clicking the `CI Lint` button at the top right.
 {: .callout}
 
-> ### But what's a linter?
+> ## But what's a linter?
 >
 > From [wikipedia](https://en.wikipedia.org/wiki/Lint_(software)): `lint`, or a linter, is a tool that analyzes source code to flag programming errors, bugs, stylistic errors, and suspicious constructs. The term originates from a Unix utility that examined C language source code.
 {: .callout}

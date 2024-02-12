@@ -80,28 +80,51 @@ ERROR: Job failed: command terminated with exit code 1
 
 > ## Broken Build
 >
-> What happened?
+> Initialized empty Git repository in /builds/sharmari/virtual-pipelines-eventselection/.git/
 >
-> > ## Answer
-> > It turns out we didn't have ROOT installed.
-> > How do we fix it? We need to download and install the miniforge installer. The -b -p options specify a batch mode installation without user interaction, and the installation path is set to $HOME/miniconda. Setup the conda environment and initialize conda. Then install ROOT with conda and verify the installation with a python script.
-> > ## Solution
-> > ~~~
-> > hello_world:
-> >   script:
-> >     - echo "Hello World"
-> > build_skim:
-> >   script:
-> >     - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
-> >     - bash ~/miniconda.sh -b -p $HOME/miniconda
-> >     - eval "$(~/miniconda/bin/conda shell.bash hook)"
-> >     - conda init
-> >     - conda install root
-> >     - COMPILER=$(root-config --cxx)
-> >     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
-> > ~~~
-> {: .solution}
-{: .challenge}
+> Created fresh repository.
+>
+> Checking out a38a66ae as detached HEAD (ref is master)...
+>
+> Skipping Git submodules setup
+>
+> Executing "step_script" stage of the job script 00:00
+>
+> $ # INFO: Lowering limit of file descriptors for backwards compatibility. ffi: https://cern.ch/gitlab-runners-limit-file-descriptors # collapsed multi-line command
+>
+> $ COMPILER=$(root-config --cxx)
+>
+> /scripts-178677-36000934/step_script: line 152: root-config: command not found
+>
+> Cleaning up project directory and file based variables 00:01
+>
+> ERROR: Job failed: command terminated with exit code 1
+> ```
+> {: .output}
+{: .solution}
+
+ We have a broken build. What happened?
+
+> ## Answer
+>  It turns out we didn't have ROOT installed.
+>  How do we fix it? We need to download and install the miniforge installer. The `-b -p` options specify a batch mode installation without user interaction, and the installation path is set to `$HOME/miniconda`. Setup the conda environment and initialize conda. Then install ROOT with conda and verify the installation with a python script.
+>
+> ```yml
+> hello_world:
+>   script:
+>     - echo "Hello World"
+> build_skim:
+>   script:
+>     - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
+>     - bash ~/miniconda.sh -b -p $HOME/miniconda
+>     - eval "$(~/miniconda/bin/conda shell.bash hook)"
+>     - conda init
+>     - conda install root
+>     - COMPILER=$(root-config --cxx)
+>     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
+> ```
+{: .solution}
+
 
 > ## Still failed??? What the hell.
 >
@@ -145,7 +168,7 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 > >    - bash ~/miniconda.sh -b -p $HOME/miniconda
 > >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
 > >    - conda init
-> >    - conda install root=6.28
+> >    - conda install root=6.28 --yes
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
@@ -156,7 +179,7 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 > >    - bash ~/miniconda.sh -b -p $HOME/miniconda
 > >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
 > >    - conda init
-> >    - conda install root
+> >    - conda install root --yes
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
@@ -169,13 +192,13 @@ However, we probably don't want our CI/CD to crash if one of the jobs fails. So 
 
 ~~~
 build_skim_latest:
-  image: ...
+
   script: [....]
   allow_failure: true
 ~~~
 {: .language-yaml}
 
-Finally, we want to clean up the two jobs a little by separating out the environment variables being set like `COMPILER=$(root-config --cxx)` into a `before_script` parameter since this is actually preparation for setting up our environment -- rather than part of the script we want to test! For example,
+<!-- Finally, we want to clean up the two jobs a little by separating out the environment variables being set like `COMPILER=$(root-config --cxx)` into a `before_script` parameter since this is actually preparation for setting up our environment -- rather than part of the script we want to test! For example,
 
 ~~~
 build_skim_latest:
@@ -188,7 +211,7 @@ build_skim_latest:
 ~~~
 {: .language-yaml}
 
-and we're ready for a coffee break.
+and we're ready for a coffee break. -->
 
 > ## Building new image only on changes?
 >
@@ -200,8 +223,7 @@ and we're ready for a coffee break.
 >    - bash ~/miniconda.sh -b -p $HOME/miniconda
 >    - eval "$(~/miniconda/bin/conda shell.bash hook)"
 >    - conda init
->    - conda install conda-forge::root
->    - python -c "import ROOT; print(ROOT.__version__); print(ROOT.TH1F('meow', '', 10, -5, 5))"
+>    - conda install root=6.28 --yes
 >    - COMPILER=$(root-config --cxx)
 >    - FLAGS=$(root-config --cflags --libs)
 >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
