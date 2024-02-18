@@ -17,9 +17,9 @@ keypoints:
 From the last session, we're starting with
 
 ~~~
-hello world:
+hello_world:
   script:
-   - echo "Hello World"
+    - echo "Hello World"
 
 .build_template:
   before_script:
@@ -28,14 +28,12 @@ hello world:
   script:
    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 
-build_skim:
+multi_build:
   extends: .build_template
-  image: rootproject/root:6.26.10-conda
-
-build_skim_latest:
-  extends: .build_template
-  image: rootproject/root:latest
-  allow_failure: yes
+  image: $ROOT_IMAGE
+  parallel:
+    matrix:
+      - ROOT_IMAGE: ["rootproject/root:6.28.10-ubuntu22.04","rootproject/root:latest"]
 ~~~
 {: .language-yaml}
 
@@ -86,14 +84,12 @@ Stages allow us to categorize jobs by functionality, such as `build`, or `test`,
 > >   script:
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > >
-> > build_skim:
+> > multi_build:
 > >   extends: .build_template
-> >   image: rootproject/root:6.26.10-conda
-> >
-> > build_skim_latest:
-> >   extends: .build_template
-> >   image: rootproject/root:latest
-> >   allow_failure: yes
+> >   image: $ROOT_IMAGE
+> >   parallel:
+> >     matrix:
+> >       - ROOT_IMAGE: ["rootproject/root:6.28.10-ubuntu22.04","rootproject/root:latest"]
 > > ~~~
 > > {: .language-yaml}
 > {: .solution}

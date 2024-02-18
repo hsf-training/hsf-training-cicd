@@ -35,14 +35,12 @@ hello world:
   script:
    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 
-build_skim:
+multi_build:
   extends: .build_template
-  image: rootproject/root:6.26.10-conda
-
-build_skim_latest:
-  extends: .build_template
-  image: rootproject/root:latest
-  allow_failure: yes
+  image: $ROOT_IMAGE
+  parallel:
+    matrix:
+      - ROOT_IMAGE: ["rootproject/root:6.28.10-ubuntu22.04","rootproject/root:latest"]
 ~~~
 {: .language-yaml}
 
@@ -166,7 +164,7 @@ Ok, it looks like the CI failed because it couldn't find the shared libraries. W
 > >   stage: run
 > >   dependencies:
 > >     - build_skim
-> >   image: rootproject/root:6.26.10-conda
+> >   image: rootproject/root:6.28.10-ubuntu22.04
 > >   script:
 > >     - ./skim
 > > ~~~
@@ -229,6 +227,12 @@ Nicely enough, `TFile::Open` takes in, not only local paths (`file://`), but xro
 script:
   - ...
   - ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
+
+or (if you don't have CERN accounts)
+
+script:
+  - ...
+  - ./skim root://eospublic.cern.ch//eos/root-eos/HiggsTauTauReduced/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
 ~~~
 {: .language-yaml}
 
