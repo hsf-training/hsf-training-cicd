@@ -175,17 +175,17 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 
 However, we probably don't want our CI/CD to crash if one of the jobs fails. So let's also add `:build_skim_latest:allow_failure = true` to our job as well. This allows the job to fail without crashing the CI/CD -- that is, it's an acceptable failure. This indicates to us when we do something in the code that might potentially break the latest release; or indicate when our code will not build in a new release.
 
-~~~
+~~~yml
 build_skim_latest:
 
   script: [....]
   allow_failure: true
 ~~~
-{: .language-yaml}
+
 
 Finally, we want to clean up the two jobs a little by separating out the  miniconda download into a `before_script` and initialization  since this is actually preparation for setting up our environment -- rather than part of the script we want to test! For example,
 
-~~~
+~~~yml
 build_skim_latest:
   before_script:
    - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
@@ -198,11 +198,8 @@ build_skim_latest:
    - COMPILER=$(root-config --cxx)
    - FLAGS=$(root-config --cflags --libs)
    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
-
+  allow_failure: yes
 ~~~
-{: .language-yaml}
-
-and we're ready for a coffee break.
 
 > ## Building new image only on changes?
 >

@@ -169,7 +169,7 @@ Let's try implementing this with the config file we've been developing so far.
 >    - COMPILER=$(root-config --cxx)
 >    - FLAGS=$(root-config --cflags --libs)
 >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
->
+>   allow_failure: yes
 >
 > ```
 {: .solution}
@@ -198,4 +198,7 @@ multi_build:
 ```
 
 
-Note that we have only defined a `ROOT_VERS` list and we use this in the `before_script` section to setup the intalation of ROOT.  After testing it we can see that this works and we've been able to reduce the amount of text a lot more.
+> ## Note
+> 1. We have only defined a `ROOT_VERS` list and we use this in the `before_script` section to setup the intalation of ROOT.  After testing it we can see that this works and we've been able to reduce the amount of text a lot more.
+> 2. We have dropped the `allow_failure: yes`.
+{: .callout}

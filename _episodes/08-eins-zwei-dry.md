@@ -200,6 +200,7 @@ Note how `.in-docker` overrides `:rspec:tags` because it's "closest in scope".
 > >    - COMPILER=$(root-config --cxx)
 > >    - FLAGS=$(root-config --cflags --libs)
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+> >   allow_failure: yes
 > > ~~~
 > > {: .language-yaml}
 > {: .solution}
