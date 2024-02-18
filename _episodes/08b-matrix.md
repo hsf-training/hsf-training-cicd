@@ -181,7 +181,7 @@ hello_world:
   script:
     - echo "Hello World"
 
-multi_build:
+.template_build:
   before_script:
     - wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O ~/miniconda.sh
     - bash ~/miniconda.sh -b -p $HOME/miniconda
@@ -192,6 +192,9 @@ multi_build:
     - FLAGS=$(root-config --cflags --libs)
   script:
     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+
+multi_build:
+  extends: .template_build
   parallel:
     matrix:
       - ROOT_VERS: ["root=6.28","root"]
@@ -200,5 +203,6 @@ multi_build:
 
 > ## Note
 > 1. We have only defined a `ROOT_VERS` list and we use this in the `before_script` section to setup the intalation of ROOT.  After testing it we can see that this works and we've been able to reduce the amount of text a lot more.
-> 2. We have dropped the `allow_failure: yes`.
+> 2. We have dropped the `allow_failure: yes` for now because we're feeling confident.
+> 3. We have factored out the `before_script` and the `script` into our `.build_template`.
 {: .callout}

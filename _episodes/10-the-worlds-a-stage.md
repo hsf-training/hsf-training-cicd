@@ -16,40 +16,28 @@ keypoints:
 
 From the last session, we're starting with
 
-~~~
+```yml
 hello_world:
   script:
     - echo "Hello World"
 
-.build_template:
+.template_build:
   before_script:
-   - COMPILER=$(root-config --cxx)
-   - FLAGS=$(root-config --cflags --libs)
+    - COMPILER=$(root-config --cxx)
+    - FLAGS=$(root-config --cflags --libs)
   script:
-   - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 
 multi_build:
-  extends: .build_template
+  extends: .template_build
   image: $ROOT_IMAGE
   parallel:
     matrix:
       - ROOT_IMAGE: ["rootproject/root:6.28.10-ubuntu22.04","rootproject/root:latest"]
-~~~
-{: .language-yaml}
+```
+
 
 We're going to talk about another global parameter `:stages` (and the associated per-job parameter `:job:stage`. Stages allow us to group up parallel jobs with each group running after the other in the order you define. What have our jobs looked like so far in the pipelines we've been running?
-
-> ## Understanding the Reference
->
-> One will notice that the reference uses colons like `:job:image:name` to refer to parameter names. This is represented in yaml like:
-> ~~~
-> job:
->   image:
->     name: rikorose/gcc-cmake:gcc-6
-> ~~~
-> {: .language-yaml}
-> where the colon refers to a child key.
-{: .callout}
 
 
 ![CI/CD Default Stages in Pipeline]({{site.baseurl}}/fig/ci-cd-default-stages.png)
@@ -76,7 +64,7 @@ Stages allow us to categorize jobs by functionality, such as `build`, or `test`,
 > >   script:
 > >    - echo "Hello World"
 > >
-> > .build_template:
+> > .template_build:
 > >   stage: build
 > >   before_script:
 > >    - COMPILER=$(root-config --cxx)
@@ -85,7 +73,7 @@ Stages allow us to categorize jobs by functionality, such as `build`, or `test`,
 > >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 > >
 > > multi_build:
-> >   extends: .build_template
+> >   extends: .template_build
 > >   image: $ROOT_IMAGE
 > >   parallel:
 > >     matrix:
