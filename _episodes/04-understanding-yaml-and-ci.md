@@ -121,7 +121,7 @@ where `stages` is the global parameter being used.
 >
 > Additionally, note that all jobs are defined with a default (unnamed) stage unless explicitly specified. Therefore, all jobs you define will run in parallel by default. When you care about execution order (such as building before you test), then we need to consider multiple stages and job dependencies.
 {: .callout}
-where `stages` is the global parameter being used.
+where `stages` is the global parameter being used. We will talk about stages later on.
 
 ## Job Parameters
 

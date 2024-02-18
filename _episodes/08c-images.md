@@ -45,26 +45,33 @@ tests:
 
 # Back to our CI file
 
-Let's add `image: $ROOT_IMAGE` because we can still use `parallel:matrix:` to make various builds easily.
+Go to the ROOT docker hub page <https://hub.docker.com/r/rootproject/root> and choose a version any version you wish to try.
 
+Let's add `image: $ROOT_IMAGE` because we can still use `parallel:matrix:` to make various builds easily.
 Since we're going to use a docker image to have a working version of ROOT, we can omit the lines that install and set up conda and ROOT.
 Again, taking the yml file we've been working on, we can further reduce the text using Docker images as follows.
-```yaml
+
+```yml
 hello_world:
   script:
     - echo "Hello World"
 
-multi_build:
-  image: $ROOT_IMAGE
+.template_build:
   before_script:
-   - COMPILER=$(root-config --cxx)
-   - FLAGS=$(root-config --cflags --libs)
+    - COMPILER=$(root-config --cxx)
+    - FLAGS=$(root-config --cflags --libs)
   script:
-   - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+
+multi_build:
+  extends: .template_build
+  image: $ROOT_IMAGE
   parallel:
     matrix:
-      - ROOT_IMAGE: ["rootproject/root:latest", "rootproject/root:6.28.10-ubuntu22.04"]
+      - ROOT_IMAGE: ["rootproject/root:6.28.10-ubuntu22.04","rootproject/root:latest"]
 ```
+
+
 > ## Note
 >  We used the `latest` docker image and an `ubuntu` image in this particular example but the script remains the same
 >  regardless if you wish to use the conda build or an ubuntu build of ROOT.
