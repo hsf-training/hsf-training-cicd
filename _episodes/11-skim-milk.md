@@ -70,8 +70,8 @@ skim_ggH:
 {: .language-yaml}
 
 ~~~
- $ skim
- /usr/bin/bash: line 87: skim: command not found
+ $ ./skim
+ /scripts-178677-36237303/step_script: line 154: ./skim: No such file or directory
 ~~~
 {: .output}
 
@@ -120,7 +120,7 @@ Since the build artifacts don't need to exist for more than a day, let's add art
 
 > ### Adding Artifacts
 >
-> Let's add `artifacts` to our jobs to save the `build/` directory. We'll also make sure the `skim_ggH` job has the right `dependencies` as well.
+> Let's add `artifacts` to our jobs to save the `build/` directory. We'll also make sure the `skim_ggH` job has the right `dependencies` as well. In this case the job multi_build is actually running two parallel jobs: one for the root version 6.28 and the other for the latest version of root. So we have to make sure we specify the right dependency as "multi_build: [rootproject/root:6.28.10-ubuntu22.04]".
 >
 > > ## Solution
 > > ~~~
@@ -142,7 +142,7 @@ Since the build artifacts don't need to exist for more than a day, let's add art
 > > skim_ggH:
 > >   stage: run
 > >   dependencies:
-> >     - build_skim
+> >     - "multi_build: [rootproject/root:6.28.10-ubuntu22.04]"
 > >   script:
 > >     - ./skim
 > > ~~~
@@ -163,7 +163,7 @@ Ok, it looks like the CI failed because it couldn't find the shared libraries. W
 > > skim_ggH:
 > >   stage: run
 > >   dependencies:
-> >     - build_skim
+> >     - "multi_build: [rootproject/root:6.28.10-ubuntu22.04]"
 > >   image: rootproject/root:6.28.10-ubuntu22.04
 > >   script:
 > >     - ./skim
