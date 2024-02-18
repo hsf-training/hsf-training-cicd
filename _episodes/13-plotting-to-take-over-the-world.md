@@ -46,24 +46,20 @@ hello world:
       - skim
     expire_in: 1 day
 
-build_skim:
+multi_build:
   extends: .build_template
-  image: rootproject/root:6.26.10-conda
-
-build_skim_latest:
-  extends: .build_template
-  image: rootproject/root:latest
-  allow_failure: yes
+  image: $ROOT_IMAGE
+  parallel:
+    matrix:
+      - ROOT_IMAGE: ["rootproject/root:6.28.10-ubuntu22.04","rootproject/root:latest"]
 
 skim_ggH:
   stage: run
   dependencies:
-    - build_skim
-  image: rootproject/root:6.26.10-conda
-  before_script:
-    - printf $SERVICE_PASS | base64 -d | kinit $CERN_USER@CERN.CH
+    - "multi_build: [rootproject/root:6.28.10-ubuntu22.04]"
+  image: rootproject/root:6.28.10-ubuntu22.04
   script:
-    - ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
+    - ./skim root://eospublic.cern.ch//eos/root-eos/HiggsTauTauReduced/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
   artifacts:
     paths:
       - skim_ggH.root
@@ -94,7 +90,7 @@ skim_ggH:
 > >   stage: plot
 > >   dependencies:
 > >     - skim_ggH
-> >   image: rootproject/root:6.26.10-conda
+> >   image: rootproject/root:6.28.10-ubuntu22.04
 > >   script:
 > >     - python histograms.py skim_ggH.root ggH hist_ggH.root
 > >   artifacts:

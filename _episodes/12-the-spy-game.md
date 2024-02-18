@@ -1,5 +1,5 @@
 ---
-title: "Getting into the Spy Game"
+title: "Getting into the Spy Game (Optional)"
 teaching: 5
 exercises: 10
 objectives:
@@ -13,6 +13,8 @@ keypoints:
   - Environment variables in GitLab CI/CD allow you to hide protected information from others who can see your code
 ---
 <iframe width="420" height="263" src="https://www.youtube.com/embed/XNhi1dw6jxI?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Note that you need to follow the steps in this chapter only if you are trying to use the file in CERN restricted space. If you used the file in public space you can skip to the next chapter.
 
 So we're nearly done with getting the merge request for the CI/CD up and running but we need to deal with this error:
 
@@ -36,7 +38,7 @@ ERROR: Job failed: exit code 1
 
 # Access Control
 
-So we need to give our CI/CD access to our data. This is actually a good thing. It means CMS can't just grab it! Anyhow, this is done by pretty much done by executing `printf $SERVICE_PASS | base64 -d | kinit $CERN_USER` assuming that we've set the corresponding environment variables by safely encoding them (`printf "hunter42" | base64`).
+So we need to give our CI/CD access to our data. This is actually a good thing. It means CMS can't just grab it! Anyhow, this is pretty much done by executing `printf $SERVICE_PASS | base64 -d | kinit $CERN_USER` assuming that we've set the corresponding environment variables by safely encoding them (`printf "hunter42" | base64`).
 
 > ## Running examples with variables
 >
@@ -97,6 +99,8 @@ Let's go ahead and add some custom variables to fix up our access control.
 
 Now it's time to update your CI/CD to use the environment variables you defined by adding `printf $SERVICE_PASS | base64 -d | kinit $CERN_USER@CERN.CH` as part of the `before_script` to the `skim_ggH` job as that's the job that requires access.
 
+At this point it's also important to note that we will need a root container which has kerberos tools installed. So just for this exercise we will switch to another docker image, root:6.26.10-conda, which has those tools. In the rest of the chapters we use examples with files in public space, so you won't need kerberos tools.
+
 # Adding Artifacts on Success
 
 As it seems like we have a complete CI/CD that does physics - we should see what came out. We just need to add artifacts for the `skim_ggH` job. This is left as an exercise to you.
@@ -107,10 +111,39 @@ As it seems like we have a complete CI/CD that does physics - we should see what
 >
 > > ## Solution
 > > ~~~
+> > stages:
+> > - greeting
+> > - build
+> > - run
+> >
+> > hello world:
+> >   stage: greeting
+> >   script:
+> >     - echo "Hello World"
+> >
+> > .build_template:
+> >   stage: build
+> >   before_script:
+> >    - COMPILER=$(root-config --cxx)
+> >    - FLAGS=$(root-config --cflags --libs)
+> >   script:
+> >    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
+> >   artifacts:
+> >     paths:
+> >      - skim
+> >     expire_in: 1 day
+> >
+> > multi_build:
+> >   extends: .build_template
+> >   image: $ROOT_IMAGE
+> >   parallel:
+> >     matrix:
+> >       - ROOT_IMAGE: ["rootproject/root:6.26.10-conda","rootproject/root:latest"]
+> >
 > > skim_ggH:
 > >   stage: run
 > >   dependencies:
-> >    - build_skim
+> >     - build_skim
 > >   image: rootproject/root:6.26.10-conda
 > >   before_script:
 > >     - printf $SERVICE_PASS | base64 -d | kinit $CERN_USER@CERN.CH
@@ -125,7 +158,7 @@ As it seems like we have a complete CI/CD that does physics - we should see what
 > {: .solution}
 {: .challenge}
 
-And this allows us to download artifacts from the successfully run job
+And this allows us to download artifacts from the successfully run job.
 
 ![CI/CD Artifacts Download]({{site.baseurl}}/fig/ci-cd-artifacts-download.png)
 
