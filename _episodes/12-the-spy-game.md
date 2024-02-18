@@ -121,7 +121,7 @@ As it seems like we have a complete CI/CD that does physics - we should see what
 > >   script:
 > >     - echo "Hello World"
 > >
-> > .build_template:
+> > .template_build:
 > >   stage: build
 > >   before_script:
 > >    - COMPILER=$(root-config --cxx)
@@ -134,7 +134,7 @@ As it seems like we have a complete CI/CD that does physics - we should see what
 > >     expire_in: 1 day
 > >
 > > multi_build:
-> >   extends: .build_template
+> >   extends: .template_build
 > >   image: $ROOT_IMAGE
 > >   parallel:
 > >     matrix:

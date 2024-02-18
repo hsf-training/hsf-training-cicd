@@ -22,7 +22,7 @@ stages:
   - run
   - plot
 
-.build_template:
+.template_build:
   stage: build
   before_script:
    - COMPILER=$(root-config --cxx)
@@ -35,7 +35,7 @@ stages:
     expire_in: 1 day
 
 multi_build:
-  extends: .build_template
+  extends: .template_build
   image: $ROOT_IMAGE
   parallel:
     matrix:

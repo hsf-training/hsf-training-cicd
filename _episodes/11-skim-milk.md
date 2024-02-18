@@ -27,7 +27,7 @@ hello world:
   script:
    - echo "Hello World"
 
-.build_template:
+.template_build:
   stage: build
   before_script:
    - COMPILER=$(root-config --cxx)
@@ -36,7 +36,7 @@ hello world:
    - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx $FLAGS
 
 multi_build:
-  extends: .build_template
+  extends: .template_build
   image: $ROOT_IMAGE
   parallel:
     matrix:
@@ -126,7 +126,7 @@ Since the build artifacts don't need to exist for more than a day, let's add art
 > > ~~~
 > > ...
 > > ...
-> > .build_template:
+> > .template_build:
 > >   stage: build
 > >   before_script:
 > >    - COMPILER=$(root-config --cxx)
