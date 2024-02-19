@@ -206,6 +206,6 @@ Note how `.in-docker` overrides `:rspec:tags` because it's "closest in scope".
 > {: .solution}
 {: .challenge}
 
-Look how much cleaner you've made the code. You should now see that it's pretty easy to start adding more build jobs for other images in a relatively clean way, as you've now abstracted the actual building from the definitions.
+Look how much cleaner you've made the code. You should now see that it's pretty easy to start adding more build jobs for other versions in a relatively clean way, as you've now abstracted the actual building from the definitions.
 
 {% include links.md %}
