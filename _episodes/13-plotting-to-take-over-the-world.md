@@ -15,14 +15,14 @@ keypoints:
 
 So in order to make plots, we just need to take the skimmed file `skim_ggH.root` and pass it through the `histograms.py` code that exists. This can be run with the following code
 
-```
+```bash
 python histograms.py skim_ggH.root ggH hist_ggH.root
 ```
-{: .language-bash}
+
 
 This needs to be added to your `.gitlab-ci.yml` which should look like the following:
 
-```
+```yml
 stages:
   - greeting
   - build
@@ -64,7 +64,7 @@ skim_ggH:
       - skim_ggH.root
     expire_in: 1 week
 ```
-{: .language-yaml}
+
 
 > ## Adding Artifacts
 >
