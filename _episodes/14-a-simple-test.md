@@ -16,7 +16,7 @@ keypoints:
 
 So at this point, I'm going to be very hands-off, and just explain what you will be doing. Here's where you should be starting from:
 
-~~~
+~~~yml
 stages:
   - build
   - run
@@ -66,9 +66,9 @@ plot_ggH:
       - hist_ggH.root
     expire_in: 1 week
 ~~~
-{: .language-yaml}
 
-> # Adding a regression test
+
+> ## Adding a regression test
 >
 > 1. Add a `test` stage after the `plot` stage.
 > 2. Add a test job, `test_ggH`, part of the `test` stage, and has the right `dependencies`
