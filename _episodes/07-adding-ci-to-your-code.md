@@ -104,7 +104,7 @@ Ok, so maybe we were a little naive here. Let's start debugging. You got this er
 >     - bash ~/miniconda.sh -b -p $HOME/miniconda
 >     - eval "$(~/miniconda/bin/conda shell.bash hook)"
 >     - conda init
->     - conda install root
+>     - conda install root --yes
 >     - COMPILER=$(root-config --cxx)
 >     - $COMPILER -g -O3 -Wall -Wextra -Wpedantic -o skim skim.cxx
 > ```
