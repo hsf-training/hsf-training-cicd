@@ -143,7 +143,7 @@ As it seems like we have a complete CI/CD that does physics - we should see what
 > > skim_ggH:
 > >   stage: run
 > >   dependencies:
-> >     - build_skim
+> >     - "multi_build: [rootproject/root:6.26.10-conda]"
 > >   image: rootproject/root:6.26.10-conda
 > >   before_script:
 > >     - printf $SERVICE_PASS | base64 -d | kinit $CERN_USER@CERN.CH
@@ -169,8 +169,8 @@ or if you click through to a `skim_ggH` job, you can browse the artifacts
 which should just be the `skim_ggH.root` file you just made.
 
 > ## Further Reading
-> - [https://gitlab.cern.ch/help/ci/variables/README#variables](https://gitlab.cern.ch/help/ci/variables/README#variables)
-> - [https://gitlab.cern.ch/help/ci/variables/predefined_variables.md](https://gitlab.cern.ch/help/ci/variables/predefined_variables.md)
+> - <https://gitlab.cern.ch/help/ci/variables/README#variables>
+> - <https://gitlab.cern.ch/help/ci/variables/predefined_variables.md>
 {: .checklist}
 
 {% include links.md %}

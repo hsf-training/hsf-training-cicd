@@ -135,7 +135,7 @@ Ok, let's go ahead and update our `.gitlab-ci.yml` again. It works!
 
 # Building multiple versions
 
-Great, so we finally got it working... CI/CD isn't obviously powerful when you're only building one thing. Let's build the code both with the latest ROOT image and also with a specific root version. Let's name the two jobs `build_skim` and `build_skim_latest`.
+Great, so we finally got it working... CI/CD isn't obviously powerful when you're only building one thing. Let's build the code both with the latest ROOT image and also with a specific ROOT version. Let's name the two jobs `build_skim` and `build_skim_latest`.
 
 > ## Adding the `build_skim_latest` job
 >
@@ -201,7 +201,7 @@ build_skim_latest:
   allow_failure: yes
 ~~~
 
-> ## Building new image only on changes?
+> ## Building only on changes?
 >
 > Sometimes you might find that certain jobs don't need to be run when unrelated files change. For example, in this example, our job depends only on `skim.cxx`. While there is no native `Makefile`-like solution (with targets) for GitLab CI/CD (or CI/CD in general), you can emulate this with the `:job:only:changes` flag like so
 > ~~~
@@ -222,7 +222,7 @@ build_skim_latest:
 > ~~~
 > {: .language-yaml}
 >
-> and this will build a new image with `./skim` only if the `skim.cxx` file changes. In this case, it works since downstream jobs rely on the docker image that exists in the GitLab registry. There's plenty more one can do with this that doesn't fit in the limited time for the sessions today, so feel free to try it out on your own time.
+> and this will build a new version with `./skim` only if the `skim.cxx` file changes. There's plenty more one can do with this that doesn't fit in the limited time for the sessions today, so feel free to try it out on your own time.
 {: .callout}
 
 

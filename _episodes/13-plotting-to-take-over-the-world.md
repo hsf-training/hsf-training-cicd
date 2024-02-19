@@ -15,19 +15,18 @@ keypoints:
 
 So in order to make plots, we just need to take the skimmed file `skim_ggH.root` and pass it through the `histograms.py` code that exists. This can be run with the following code
 
-~~~
+```
 python histograms.py skim_ggH.root ggH hist_ggH.root
-~~~
+```
 {: .language-bash}
 
 This needs to be added to your `.gitlab-ci.yml` which should look like the following:
 
-~~~
+```
 stages:
   - greeting
   - build
   - run
-  - plot
 
 hello world:
   stage: greeting
@@ -64,7 +63,7 @@ skim_ggH:
     paths:
       - skim_ggH.root
     expire_in: 1 week
-~~~
+```
 {: .language-yaml}
 
 > ## Adding Artifacts
@@ -78,7 +77,7 @@ skim_ggH:
 > You know what? While you're at it, why not delete the `greeting` stage and `hello_world` job too? There's no need for it anymore 🙂.
 >
 > > ## Solution
-> > ~~~
+> > ```
 > > stages:
 > >   - build
 > >   - run
@@ -97,7 +96,7 @@ skim_ggH:
 > >     paths:
 > >       - hist_ggH.root
 > >     expire_in: 1 week
-> > ~~~
+> > ```
 > > {: .language-yaml}
 > {: .solution}
 {: .challenge}
