@@ -10,7 +10,7 @@ hidden: false
 keypoints:
   - Another script, another job, another stage, another artifact.
 ---
-<iframe width="420" height="263" src="https://www.youtube.com/embed/BDpqN3nVVVo?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!-- <iframe width="420" height="263" src="https://www.youtube.com/embed/BDpqN3nVVVo?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 # On Your Own
 
 So in order to make plots, we just need to take the skimmed file `skim_ggH.root` and pass it through the `histograms.py` code that exists. This can be run with the following code

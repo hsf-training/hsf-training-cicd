@@ -13,7 +13,7 @@ keypoints:
   - Using job templates allows you to stay DRY!
 ---
 <center>
-<iframe width="420" height="263" src="https://www.youtube.com/embed/_cKm7FUTzQs?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!-- <iframe width="420" height="263" src="https://www.youtube.com/embed/_cKm7FUTzQs?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 <iframe width="420" height="236" src="https://www.youtube.com/embed/dSy2DcATYUo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </center>
 
@@ -75,11 +75,11 @@ build_skim_latest:
 ~~~
 {: .language-yaml}
 
-We've already started to repeat ourselves. How can we combine the two into a single job template called `.build_template`? Let's refactor things a little bit.
+We've already started to repeat ourselves. How can we combine the two into a single job template called `.template_build`? Let's refactor things a little bit.
 
 > ## Refactoring the code
 >
-> Can you refactor the above code by adding a hidden job (named `.build_template`) containing parameters that `build_skim` and `build_skim_version` have in common?
+> Can you refactor the above code by adding a hidden job (named `.template_build`) containing parameters that `build_skim` and `build_skim_version` have in common?
 >
 > > ## Solution
 > > ~~~
