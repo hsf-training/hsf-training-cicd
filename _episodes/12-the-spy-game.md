@@ -12,7 +12,9 @@ keypoints:
   - Service accounts provide an extra layer of security between the outside world and your account
   - Environment variables in GitLab CI/CD allow you to hide protected information from others who can see your code
 ---
-<iframe width="420" height="263" src="https://www.youtube.com/embed/XNhi1dw6jxI?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!-- <iframe width="420" height="263" src="https://www.youtube.com/embed/XNhi1dw6jxI?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+
 
 Note that you need to follow the steps in this chapter only if you are trying to use the file in CERN restricted space. If you used the file in public space you can skip to the next chapter.
 
@@ -36,9 +38,11 @@ ERROR: Job failed: exit code 1
 ~~~
 {: .output}
 
+
 # Access Control
 
 So we need to give our CI/CD access to our data. This is actually a good thing. It means CMS can't just grab it! Anyhow, this is pretty much done by executing `printf $SERVICE_PASS | base64 -d | kinit $CERN_USER` assuming that we've set the corresponding environment variables by safely encoding them (`printf "hunter42" | base64`).
+
 
 > ## Running examples with variables
 >
@@ -83,12 +87,23 @@ There are quite a lot of [predefined variables](https://gitlab.cern.ch/help/ci/v
 Let's go ahead and add some custom variables to fix up our access control.
 
 1. Navigate to the `Settings -> CI/CD` of your repository
-  ![CI/CD Repo Settings]({{site.baseurl}}/fig/repo-settings-ci-cd.png)
+  ![CI/CD Repo Settings]({{site.baseurl}}/fig/repo-settings-ci-cd.png){:  .image-with-shadow}
 2. Expand the `Variables` section on this page by clicking `Expand`
-  ![CI/CD Variables Click Expand]({{site.baseurl}}/fig/repo-settings-ci-cd-variables-click-expand.png)
+  ![CI/CD Variables Click Expand]({{site.baseurl}}/fig/repo-settings-ci-cd-variables-click-expand.png){:  .image-with-shadow}
 3. Specify two environment variables, `SERVICE_PASS` and `CERN_USER`, and fill them in appropriately. (If possible, mask the password).
-  ![CI/CD Variables Specified]({{site.baseurl}}/fig/repo-settings-ci-cd-variables-specified.png)
-4. Click to save the variables.
+
+> ## Attention
+>
+> - This means that we should add our `CERN_USER` and our `SERVICE_PASS` to the Gitlab Variables under the CI/CD section of the setting tab.
+> - If your password is `hunter42` then do
+> ```bash
+> printf "hunter42" | base64
+> aHVudGVyNDI= # copy this as your SERVICE_PASS
+> ```
+{: .caution}
+
+  ![CI/CD Variables Specified]({{site.baseurl}}/fig/repo-settings-ci-cd-variables-specified.png){:  .image-with-shadow}
+1. Click to save the variables.
 
 > ## DON'T PEEK
 >
@@ -99,7 +114,7 @@ Let's go ahead and add some custom variables to fix up our access control.
 
 Now it's time to update your CI/CD to use the environment variables you defined by adding `printf $SERVICE_PASS | base64 -d | kinit $CERN_USER@CERN.CH` as part of the `before_script` to the `skim_ggH` job as that's the job that requires access.
 
-At this point it's also important to note that we will need a root container which has kerberos tools installed. So just for this exercise we will switch to another docker image, root:6.26.10-conda, which has those tools. In the rest of the chapters we use examples with files in public space, so you won't need kerberos tools.
+At this point it's also important to note that we will need a root container which has kerberos tools installed. So just for this exercise we will switch to another docker image, `root:6.26.10-conda`, which has those tools. In the rest of the chapters we use examples with files in public space, so you won't need kerberos tools.
 
 # Adding Artifacts on Success
 
@@ -160,11 +175,11 @@ As it seems like we have a complete CI/CD that does physics - we should see what
 
 And this allows us to download artifacts from the successfully run job.
 
-![CI/CD Artifacts Download]({{site.baseurl}}/fig/ci-cd-artifacts-download.png)
+![CI/CD Artifacts Download]({{site.baseurl}}/fig/ci-cd-artifacts-download.png){:  .image-with-shadow}
 
 or if you click through to a `skim_ggH` job, you can browse the artifacts
 
-![CI/CD Artifacts Browse]({{site.baseurl}}/fig/ci-cd-artifacts-browse.png)
+![CI/CD Artifacts Browse]({{site.baseurl}}/fig/ci-cd-artifacts-browse.png){:  .image-with-shadow}
 
 which should just be the `skim_ggH.root` file you just made.
 

@@ -12,7 +12,7 @@ keypoints:
   - Artifacts are pretty neat.
   - We're too naive.
 ---
-<iframe width="420" height="263" src="https://www.youtube.com/embed/omYX4uRxCKI?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!-- <iframe width="420" height="263" src="https://www.youtube.com/embed/omYX4uRxCKI?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
 # The First Naive Attempt
 
@@ -79,7 +79,7 @@ skim_ggH:
 
 Ok, fine. That was way too easy. It seems we have a few issues to deal with.
 
-1. The built code in the `build_skim` job (of the `build` stage) isn't in the `skim_ggH` job by default. We need to use GitLab `artifacts` to copy over this from the right job (and not from `build_skim_latest`).
+1. The code in the `multi_build` jobs (of the `build` stage) isn't in the `skim_ggH` job by default. We need to use GitLab `artifacts` to copy over this from the one of the jobs (let's choose as an example the `multi_build: [rootproject/root:6.28.10-ubuntu22.04]` job).
 2. The data (ROOT file) isn't available to the Runner yet.
 
 ## Artifacts
@@ -120,7 +120,7 @@ Since the build artifacts don't need to exist for more than a day, let's add art
 
 > ## Adding Artifacts
 >
-> Let's add `artifacts` to our jobs to save the `build/` directory. We'll also make sure the `skim_ggH` job has the right `dependencies` as well. In this case the job multi_build is actually running two parallel jobs: one for the root version 6.28 and the other for the latest version of root. So we have to make sure we specify the right dependency as "multi_build: [rootproject/root:6.28.10-ubuntu22.04]".
+> Let's add `artifacts` to our jobs to save the `skim` binary. We'll also make sure the `skim_ggH` job has the right `dependencies` as well. In this case the job `multi_build` is actually running two parallel jobs: one for the ROOT version 6.28 and the other for the latest version of ROOT. So we have to make sure we specify the right dependency as `"multi_build: [rootproject/root:6.28.10-ubuntu22.04]"`.
 >
 > > ## Solution
 > > ```
@@ -154,7 +154,7 @@ Ok, it looks like the CI failed because it couldn't find the shared libraries. W
 
 > ## Set The Right Image
 >
-> Update the `skim_ggH` job to use the same image as the `build_skim` job.
+> Update the `skim_ggH` job to use the same image as the `multi_build` job.
 >
 > > ## Solution
 > > ```
@@ -225,7 +225,7 @@ Now, the data file we're going to use via `xrdcp` is in a public `eos` space: `/
 
 Nicely enough, `TFile::Open` takes in, not only local paths (`file://`), but xrootd paths (`root://`) paths as well (also HTTP and others, but we won't cover that). Since we've modified the code we can now pass in files:
 
-```
+```yml
 script:
   - ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
 
@@ -234,7 +234,20 @@ script:
 script:
   - ./skim root://eospublic.cern.ch//eos/root-eos/HiggsTauTauReduced/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
 ```
-{: .language-yaml}
+## Get the output as an artifact
+Finally, let's retrieve the output as an artifact and have it expire in 1 week. (Remember that the output of this script is `skim_ggH.root`)
+
+```yml
+...
+skim_ggH:
+...
+  script: [...]
+
+  artifacts:
+    paths:
+      - skim_ggH.root
+    expire_in: 1 week
+```
 
 > ## How many events to run over?
 >
