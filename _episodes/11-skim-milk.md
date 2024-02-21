@@ -120,7 +120,7 @@ Since the build artifacts don't need to exist for more than a day, let's add art
 
 > ## Adding Artifacts
 >
-> Let's add `artifacts` to our jobs to save the `skim` binary. We'll also make sure the `skim_ggH` job has the right `dependencies` as well. In this case the job multi_build is actually running two parallel jobs: one for the ROOT version 6.28 and the other for the latest version of ROOT. So we have to make sure we specify the right dependency as `"multi_build: [rootproject/root:6.28.10-ubuntu22.04]"`.
+> Let's add `artifacts` to our jobs to save the `skim` binary. We'll also make sure the `skim_ggH` job has the right `dependencies` as well. In this case the job `multi_build` is actually running two parallel jobs: one for the ROOT version 6.28 and the other for the latest version of ROOT. So we have to make sure we specify the right dependency as `"multi_build: [rootproject/root:6.28.10-ubuntu22.04]"`.
 >
 > > ## Solution
 > > ```
