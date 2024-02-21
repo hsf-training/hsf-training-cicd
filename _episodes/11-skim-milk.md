@@ -154,7 +154,7 @@ Ok, it looks like the CI failed because it couldn't find the shared libraries. W
 
 > ## Set The Right Image
 >
-> Update the `skim_ggH` job to use the same image as the `build_skim` job.
+> Update the `skim_ggH` job to use the same image as the `multi_build` job.
 >
 > > ## Solution
 > > ```
