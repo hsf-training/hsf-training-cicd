@@ -235,7 +235,7 @@ script:
   - ./skim root://eospublic.cern.ch//eos/root-eos/HiggsTauTauReduced/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
 ```
 ## Get the output as an artifact
-Finally, let's retrieve the output as an artifact and let's have it experie in 1 week. (Remember that the output of this script is `skim_ggH.root`)
+Finally, let's retrieve the output as an artifact and have it expire in 1 week. (Remember that the output of this script is `skim_ggH.root`)
 
 ```yml
 ...
