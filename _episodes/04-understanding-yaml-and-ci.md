@@ -13,7 +13,8 @@ keypoints:
   - A job is defined by a name and a script, at minimum.
   - Other than job names, reserved keywords are the top-level parameters defined in a YAML file.
 ---
-<!-- <iframe width="420" height="263" src="https://www.youtube.com/embed/1Kz3VrzYHb0?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tiAwTKNzjSo?si=u4uQRkNmqLqH13cB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 # GitLab CI YAML
 
 The GitLab CI configurations are specified using a YAML file called `.gitlab-ci.yml`. Here is an example:

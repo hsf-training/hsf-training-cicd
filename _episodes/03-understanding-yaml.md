@@ -12,7 +12,8 @@ keypoints:
   - YAML is a superset of JSON, so it contains additional features like comments and anchors, while still supporting JSON.
 ---
 
-<!-- <iframe width="420" height="263" src="https://www.youtube.com/embed/c2sUhK3pDGo?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7DPDBeMWWkU?si=2ixLz8YfEo-3VlOc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 # YAML
 
 YAML (Yet Another Markup Language or sometimes popularly referred to as YAML Ain't Markup Language (a recursive acronym)) is a human-readable data-serialization language. It is commonly used for configuration files and in applications where data is being stored or transmitted. CI systems' modus operandi typically rely on YAML for configuration. We'll cover, briefly, some of the native types involved and what the structure looks like.
