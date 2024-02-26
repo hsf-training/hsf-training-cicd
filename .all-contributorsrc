@@ -7,6 +7,24 @@
   "commitConvention": "angular",
   "contributors": [
     {
+      "login": "richa2710",
+      "name": "Richa Sharma",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62288297?v=4",
+      "profile": "https://richa2710.github.io/",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
+      "login": "GuillermoFidalgo",
+      "name": "Guillermo Fidalgo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17858942?v=4",
+      "profile": "https://guillermofidalgo.github.io/",
+      "contributions": [
+        "content"
+      ]
+    },
+    {
       "login": "Saransh-cpp",
       "name": "Saransh Chopra",
       "avatar_url": "https://avatars.githubusercontent.com/u/74055102?v=4",
