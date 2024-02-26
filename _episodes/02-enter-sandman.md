@@ -19,7 +19,8 @@ keypoints:
 
 As we enter the first episode of the Continuous Integration / Continuous Deployment (CI/CD) session, we learn how to exit.
 
-<!-- <iframe width="420" height="263" src="https://www.youtube.com/embed/NpJcaQPvLC0?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z7aVq3DNH6U?si=QVvru9yRjsYkupA9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 # Start by Exiting
 
 How does a general task know whether or not a script finished correctly or not? You could parse (`grep`) the output:

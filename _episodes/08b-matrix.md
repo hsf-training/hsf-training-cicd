@@ -13,6 +13,7 @@ keypoints:
   - Use Variables whenever it's convenient
 ---
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pdV1nrOvMA8?si=I2nJwEDRGt3Hga4b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # Parallel and  Matrix jobs
 

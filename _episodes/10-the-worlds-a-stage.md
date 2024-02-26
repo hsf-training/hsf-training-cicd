@@ -11,7 +11,8 @@ keypoints:
   - Stages allow for a mix of parallel/serial execution.
   - Stages help define job dependencies.
 ---
-<!-- <iframe width="420" height="263" src="https://www.youtube.com/embed/PBkO3TsdDUA?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kytbf15fwyA?si=47hr5x3s9WohvQvG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 # Defining Stages
 
 From the last session, we're starting with

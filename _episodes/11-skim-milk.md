@@ -12,7 +12,7 @@ keypoints:
   - Artifacts are pretty neat.
   - We're too naive.
 ---
-<!-- <iframe width="420" height="263" src="https://www.youtube.com/embed/omYX4uRxCKI?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e2XiBHiSe-U?si=XS-XL6OMFU8LUlWG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # The First Naive Attempt
 

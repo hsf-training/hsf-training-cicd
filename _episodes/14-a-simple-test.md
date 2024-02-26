@@ -12,7 +12,7 @@ keypoints:
   - This kind of test is a regression test, as we're testing assuming the code up to this point was correct.
   - This is not a unit test. Unit tests would be testing individual pieces of the `atlas/athena` or `CMSSW` code-base, or specific functionality you wrote into your algorithms.
 ---
-<!-- <iframe width="420" height="263" src="https://www.youtube.com/embed/C9auGFgIHns?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/skHqk7pA2cY?si=_wJCZTm6DdzJm62I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 So at this point, I'm going to be very hands-off, and just explain what you will be doing. Here's where you should be starting from:
 
@@ -73,7 +73,7 @@ plot_ggH:
 > 1. Add a `test` stage after the `plot` stage.
 > 2. Add a test job, `test_ggH`, part of the `test` stage, and has the right `dependencies`
 >   - Note: `./skim` needs to be updated to produce a `skim_ggH.log` (hint: `./skim .... > skim_ggH.log`)
->   - We also need the hist_ggH.root file produced by the plot job
+>   - We also need the `hist_ggH.root` file produced by the plot job
 > 3. Create a directory called `tests/` and make two python files in it named `test_cutflow_ggH.py` and `test_plot_ggH.py` that uses `PyROOT` and `python3`
 >   - you might find the following lines (below) helpful to set up the tests
 > 4. Write a few different tests of your choosing that tests (and asserts) something about `hist_ggH.root`. Some ideas are:

@@ -22,7 +22,7 @@ If you're having issues, **please let us know immediately**
 since you won't be able to follow this lesson without access to a GitLab
 instance.
 
-<!-- <iframe width="420" height="263" src="https://www.youtube.com/embed/NcVGX8zWzQY?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Pz1gtlQDVyo?si=LcG6YVteCQ38SZ12" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Creating a New Project
 

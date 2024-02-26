@@ -13,7 +13,8 @@ keypoints:
   - All defined jobs run in parallel by default
   - Jobs can be allowed to fail without breaking your CI/CD
 ---
-<!-- <iframe width="420" height="263" src="https://www.youtube.com/embed/GiwtSwtMYzg?list=PLKZ9c4ONm-VmmTObyNWpz4hB3Hgx8ZWSb" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/F21FprczK4c?si=JC-wpc-135p7nbp6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 # Time To Skim
 
 ## The Naive Attempt
