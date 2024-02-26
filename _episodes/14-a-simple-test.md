@@ -73,7 +73,7 @@ plot_ggH:
 > 1. Add a `test` stage after the `plot` stage.
 > 2. Add a test job, `test_ggH`, part of the `test` stage, and has the right `dependencies`
 >   - Note: `./skim` needs to be updated to produce a `skim_ggH.log` (hint: `./skim .... > skim_ggH.log`)
->   - We also need the hist_ggH.root file produced by the plot job
+>   - We also need the `hist_ggH.root` file produced by the plot job
 > 3. Create a directory called `tests/` and make two python files in it named `test_cutflow_ggH.py` and `test_plot_ggH.py` that uses `PyROOT` and `python3`
 >   - you might find the following lines (below) helpful to set up the tests
 > 4. Write a few different tests of your choosing that tests (and asserts) something about `hist_ggH.root`. Some ideas are:
