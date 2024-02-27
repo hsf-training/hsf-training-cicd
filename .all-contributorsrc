@@ -23,6 +23,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "me",
+      "name": "Ivan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9734?v=4",
+      "profile": "https://github.com/me",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -30,5 +39,6 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "projectName": "hsf-training-cicd",
-  "projectOwner": "hsf-training"
+  "projectOwner": "hsf-training",
+  "commitType": "docs"
 }
