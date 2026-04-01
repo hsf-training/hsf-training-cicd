@@ -13,7 +13,7 @@ baseurl: /hsf-training-cicd
 carpentry: "hsf"
 
 # Overall title for pages.
-title: "Continuous Integration / Continuous Development (CI/CD)"
+title: "Continuous Integration / Continuous Deployment (CI/CD)"
 
 # Life cycle stage of the lesson
 # possible values: "pre-alpha", "alpha", "beta", "stable"
