@@ -3,8 +3,8 @@ title: "Eins Zwei DRY"
 teaching: 5
 exercises: 10
 objectives:
-  - Don't Repeat Yourself (DRY)
-  - Making reusable/flexible CI/CD jobs
+  - Don't Repeat Yourself (DRY).
+  - Make reusable/flexible CI/CD jobs.
 questions:
   - How can we make job templates?
 hidden: false
@@ -19,7 +19,7 @@ keypoints:
 
 # Hidden (keys) Jobs
 
-A fun [feature](https://docs.gitlab.com/ee/ci/yaml/README.html#special-yaml-features) about GitLab's CI YAML is the ability to disable entire jobs simply by prefixing the job name with a period (`.`). Naively, we could just comment it out
+A fun [feature](https://docs.gitlab.com/ee/ci/yaml/README.html#special-yaml-features) about GitLab's CI YAML is the ability to disable entire jobs simply by prefixing the job name with a period (`.`). Naively, we could just comment it out.
 
 ~~~
 #hidden job:

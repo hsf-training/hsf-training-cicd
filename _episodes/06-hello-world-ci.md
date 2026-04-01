@@ -16,7 +16,7 @@ keypoints:
 
 # Adding CI/CD to a project
 
-We've been working on the analysis code which has a lot of work done, but we should be good physicists (and people) by adding tests and CI/CD. The first thing we'll do is create a `.gitlab-ci.yml` file in the project.
+We've been working on the analysis code, which has a lot of work done, but we should be good physicists (and people) by adding tests and CI/CD. The first thing we'll do is create a `.gitlab-ci.yml` file in the project.
 
 ~~~
 cd virtual-pipelines-eventselection/
@@ -81,7 +81,7 @@ hello world:
 ~~~
 {: .language-yaml}
 
-Before we commit it, since we're still new to CI/CD, let's copy/paste it into the CI linter and make sure it lints correctly
+Before we commit it, since we're still new to CI/CD, let's copy/paste it into the CI linter and make sure it lints correctly.
 
 ![CI/CD Hello World Lint]({{site.baseurl}}/fig/ci-cd-hello-world-lint.png)
 
@@ -100,7 +100,7 @@ Now we want to make sure that this worked. How can we check the status of commit
 
 ## Checking Job's Output
 
-From any of these pages, click through until you can find the output for the successful job run which should look like the following
+From any of these pages, click through until you can find the output for the successful job run, which should look like the following:
 
 ![CI/CD Hello World Success Output]({{site.baseurl}}/fig/ci-cd-hello-world-success-output.png)
 

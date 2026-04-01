@@ -3,15 +3,15 @@ title: "Adding CI to Your Existing Code"
 teaching: 5
 exercises: 10
 objectives:
-  - Learn how to get your CI/CD Runners to build your code
+  - Learn how to get your CI/CD Runners to build your code.
   - Try and see if the CI/CD can catch problems with our code.
 questions:
   - I have code already in GitLab, how can I add CI to it?
 hidden: false
 keypoints:
-  - Setting up CI/CD shouldn't be mind-numbing
-  - All defined jobs run in parallel by default
-  - Jobs can be allowed to fail without breaking your CI/CD
+  - Setting up CI/CD shouldn't be mind-numbing.
+  - All defined jobs run in parallel by default.
+  - Jobs can be allowed to fail without breaking your CI/CD.
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F21FprczK4c?si=JC-wpc-135p7nbp6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -93,7 +93,7 @@ Ok, so maybe we were a little naive here. Let's start debugging. You got this er
 
 > ## Answer
 >  It turns out we didn't have ROOT installed.
->  How do we fix it? We need to download and install the miniforge installer. The `-b -p` options specify a batch mode installation without user interaction, and the installation path is set to `$HOME/miniconda`. Setup the conda environment and initialize conda. Then install ROOT with conda and verify the installation with a python script.
+>  How do we fix it? We need to download and install the miniforge installer. The `-b -p` options specify a batch mode installation without user interaction, and the installation path is set to `$HOME/miniconda`. Set up the conda environment and initialize conda. Then install ROOT with conda and verify the installation with a Python script.
 >
 > ```yml
 > hello_world:
@@ -174,7 +174,7 @@ Great, so we finally got it working... CI/CD isn't obviously powerful when you'r
 > {: .solution}
 {: .challenge}
 
-However, we probably don't want our CI/CD to crash if one of the jobs fails. So let's also add `:build_skim_latest:allow_failure = true` to our job as well. This allows the job to fail without crashing the CI/CD -- that is, it's an acceptable failure. This indicates to us when we do something in the code that might potentially break the latest release; or indicate when our code will not build in a new release.
+However, we probably don't want our CI/CD to crash if one of the jobs fails. So let's also add `:build_skim_latest:allow_failure = true` to our job as well. This allows the job to fail without crashing the CI/CD -- that is, it's an acceptable failure. This indicates to us when we do something in the code that might potentially break the latest release, or indicate when our code will not build in a new release.
 
 ~~~yml
 build_skim_latest:
@@ -184,7 +184,7 @@ build_skim_latest:
 ~~~
 
 
-Finally, we want to clean up the two jobs a little by separating out the  miniconda download into a `before_script` and initialization  since this is actually preparation for setting up our environment -- rather than part of the script we want to test! For example,
+Finally, we want to clean up the two jobs a little by separating out the  miniconda download into a `before_script` and initialization, since this is actually preparation for setting up our environment -- rather than part of the script we want to test! For example,
 
 ~~~yml
 build_skim_latest:

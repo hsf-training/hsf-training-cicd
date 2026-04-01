@@ -7,7 +7,7 @@ questions:
 objectives:
 - "Refresh your mind."
 keypoints:
-- Stupid mistakes happen, but telling a computer to do what you mean versus what you say is hard
+- Stupid mistakes happen, but telling a computer to do what you mean versus what you say is hard.
 ---
 
 <center>

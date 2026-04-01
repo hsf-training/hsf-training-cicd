@@ -5,12 +5,12 @@ exercises: 0
 questions:
 - What is continuous integration / continuous deployment?
 objectives:
-- Understand why CI/CD is important
-- Learn what can be possible with CI/CD
-- Find resources to explore in more depthg
+- Understand why CI/CD is important.
+- Learn what is possible with CI/CD.
+- Find resources to explore in more depth.
 keypoints:
-- CI/CD is crucial for any reproducibility and testing
-- Take advantage of automation to reduce your workload
+- CI/CD is crucial for any reproducibility and testing.
+- Take advantage of automation to reduce your workload.
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6gQTE2djdr4?si=PSlNzYPdkwZc1bot" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -26,7 +26,7 @@ Continuous Integration (CI) is the concept of literal continuous integration of 
 
 ## Breaking Changes
 
-What does it even mean to "break" something? The idea of "breaking" something is pretty contextual. If you're working on C++ code, then you probably want to make sure things compile and run without segfaulting at the bare minimum. If it's python code, maybe you have some tests with `pytest` that you want to make sure pass ("exit successfully"). Or if you're working on a paper draft, you might check for grammar, misspellings, and that the document compiles from LaTeX. Whatever the use-case is, integration is about **catching** breaking changes.
+What does it even mean to "break" something? The idea of "breaking" something is pretty contextual. If you're working on C++ code, then you probably want to make sure things compile and run without segfaulting at the bare minimum. If it's Python code, maybe you have some tests with `pytest` that you want to make sure pass ("exit successfully"). Or if you're working on a paper draft, you might check for grammar, misspellings, and that the document compiles from LaTeX. Whatever the use-case is, integration is about **catching** breaking changes.
 
 > ## Don't know `pytest` ?
 > To learn more about `pytest` visit [its documentation](https://pytest.org/) or follow [this training module](http://carpentries-incubator.github.io/python-testing/).
@@ -35,7 +35,7 @@ What does it even mean to "break" something? The idea of "breaking" something is
 
 ## Deployment
 
-Similarly, "deployment" can mean a lot of things. Perhaps you have a Curriculum Vitae (CV) that is automatically built from LaTeX and uploaded to your website. Another case is to release docker images of your framework that others depend on. Maybe it's just uploading documentation. Or to even upload a new tag of your python package on `pypi`. Whatever the use-case is, deployment is about **releasing** changes.
+Similarly, "deployment" can mean a lot of things. Perhaps you have a Curriculum Vitae (CV) that is automatically built from LaTeX and uploaded to your website. Another case is to release Docker images of your framework that others depend on. Maybe it's just uploading documentation. Or to even upload a new tag of your Python package on `pypi`. Whatever the use-case is, deployment is about **releasing** changes.
 
 ## Workflow Automation
 
@@ -47,7 +47,7 @@ CI/CD is the first step to automating your entire workflow. Imagine everything y
 > Any command you run on your computer can be equivalently run in a CI job.
 {: .callout}
 
-Don't just limit yourself to thinking of CI/CD as primarily for testing changes, but as one part of automating an entire development cycle. You can trigger notifications to your cellphone, fetch/download new data, execute cron jobs, and so much more. However, for the lessons you'll be going through today and that you've just recently learned about python testing with `pytest`, we'll focus primarily on setting up CI/CD with tests for code that you've written already.
+Don't just limit yourself to thinking of CI/CD as primarily for testing changes, but as one part of automating an entire development cycle. You can trigger notifications to your cellphone, fetch/download new data, execute cron jobs, and so much more. However, for the lessons you'll be going through today and that you've just recently learned about Python testing with `pytest`, we'll focus primarily on setting up CI/CD with tests for code that you've written already.
 
 # CI/CD Solutions
 

@@ -3,21 +3,21 @@ title: "Getting into the Spy Game (Optional)"
 teaching: 5
 exercises: 10
 objectives:
-  - Add custom environment variables
-  - Learn how to give your CI/CD Runners access to private information
+  - Add custom environment variables.
+  - Learn how to give your CI/CD Runners access to private information.
 questions:
   - How can I give my GitLab CI job private information?
 hidden: false
 keypoints:
-  - Service accounts provide an extra layer of security between the outside world and your account
-  - Environment variables in GitLab CI/CD allow you to hide protected information from others who can see your code
+  - Service accounts provide an extra layer of security between the outside world and your account.
+  - Environment variables in GitLab CI/CD allow you to hide protected information from others who can see your code.
 ---
 
 
 
-Note that you need to follow the steps in this chapter only if you are trying to use the file in CERN restricted space. If you used the file in public space you can skip to the next chapter.
+Note that you need to follow the steps in this chapter only if you are trying to use the file in the CERN restricted space. If you used the file in a public space, you can skip to the next chapter.
 
-So we're nearly done with getting the merge request for the CI/CD up and running but we need to deal with this error:
+So we're nearly done with getting the merge request for the CI/CD up and running, but we need to deal with this error:
 
 ~~~
 $ ./skim root://eosuser.cern.ch//eos/user/g/gstark/AwesomeWorkshopFeb2020/GluGluToHToTauTau.root skim_ggH.root 19.6 11467.0 0.1
@@ -59,7 +59,7 @@ So we need to give our CI/CD access to our data. This is actually a good thing. 
 
 > ## Service Account or Not?
 >
-> When you're dealing with a personal repository (project) that nobody else has administrative access to, e.g. the settings, then it's *ok* to use your CERN account/password in the environment variables for the settings...
+> When you're dealing with a personal repository (project) that nobody else has administrative access to, e.g., the settings, then it's *ok* to use your CERN account/password in the environment variables for the settings...
 >
 > However, when you're sharing or part of a group, it is much better to use a group's service account or a user's (maybe yours) service account for authentication instead. For today's lesson however, we'll be using your account and show pictures of how to set these environment variables.
 {: .callout}
@@ -111,13 +111,13 @@ Let's go ahead and add some custom variables to fix up our access control.
 
 # Adding `kinit` for access control
 
-Now it's time to update your CI/CD to use the environment variables you defined by adding `printf $SERVICE_PASS | base64 -d | kinit $CERN_USER@CERN.CH` as part of the `before_script` to the `skim_ggH` job as that's the job that requires access.
+Now it's time to update your CI/CD to use the environment variables you defined by adding `printf $SERVICE_PASS | base64 -d | kinit $CERN_USER@CERN.CH` as part of the `before_script` to the `skim_ggH` job, as that's the job that requires access.
 
-At this point it's also important to note that we will need a root container which has kerberos tools installed. So just for this exercise we will switch to another docker image, `root:6.26.10-conda`, which has those tools. In the rest of the chapters we use examples with files in public space, so you won't need kerberos tools.
+At this point, it's also important to note that we will need a root container which has kerberos tools installed. So just for this exercise we will switch to another Docker image, `root:6.26.10-conda`, which has those tools. In the rest of the chapters we use examples with files in public space, so you won't need kerberos tools.
 
 # Adding Artifacts on Success
 
-As it seems like we have a complete CI/CD that does physics - we should see what came out. We just need to add artifacts for the `skim_ggH` job. This is left as an exercise to you.
+As it seems like we have a complete CI/CD that does physics, we should see what came out. We just need to add artifacts for the `skim_ggH` job. This is left as an exercise to you.
 
 > ## Adding Artifacts
 >

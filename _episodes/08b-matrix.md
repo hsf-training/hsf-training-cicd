@@ -3,21 +3,21 @@ title: "Even more builds"
 teaching: 10
 exercises: 5
 objectives:
-  - Matrix workflows
-  - Making reusable/flexible CI/CD jobs
+  - Matrix workflows.
+  - Make reusable/flexible CI/CD jobs.
 questions:
   - How can we make variations of our builds?
 hidden: false
 keypoints:
-  - Matrices can help make many builds with variations
-  - Use Variables whenever it's convenient
+  - Matrices can help make many builds with variations.
+  - Use Variables whenever it's convenient.
 ---
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pdV1nrOvMA8?si=I2nJwEDRGt3Hga4b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # Parallel and  Matrix jobs
 
-Matrices are one of the fundamental concepts of CIs. They allow for flexible workflows that involve building or running scripts with many variations in a few lines. In Gitlab, we need to use the `parallel` keyword to run a job multiple times in parallel in a single pipeline.
+Matrices are one of the fundamental concepts of CIs. They allow for flexible workflows that involve building or running scripts with many variations in a few lines. In GitLab, we need to use the `parallel` keyword to run a job multiple times in parallel in a single pipeline.
 
 This example creates 5 jobs that run in parallel, named `test 1/5` to `test 5/5`.
 
@@ -37,10 +37,10 @@ A pipeline with jobs that use parallel might:
 
 ## Matrices
 
-It's not really useful to simply repeat the same exact job, it is far more useful if each job can be different.
+It's not really useful to simply repeat the same exact job; it is far more useful if each job can be different.
 Use `parallel:matrix` to run a job multiple times in parallel in a single pipeline, but with different variable values for each instance of the job. Some conditions on the possible inputs are:
 - The variable names can use only numbers, letters, and underscores `_`.
-- The values must be either a string, or an array of strings.
+- The values must be either a string or an array of strings.
 - The number of permutations cannot exceed 200.
 
 In order to make use of `parallel:matrix` let's give a list of dictionaries that simulate a build running on Windows, Linux or MacOS.
@@ -77,7 +77,7 @@ test_build:
 ![Parallel OS with versions]({{site.baseurl}}/fig/parallel-versions.png){: width="60%"}
 
 
-If you want to specify different OS and version pairs you can do that as well.
+If you want to specify different OS and version pairs, you can do that as well.
 ```yml
 test_build:
   script:
@@ -97,7 +97,7 @@ test_build:
 
 ## Variables
 
-You might have noticed that we use `$my_os` in the script above. If we take a look at one of the logs it shows that we have obtained the following output
+You might have noticed that we use `$my_os` in the script above. If we take a look at one of the logs it shows that we have obtained the following output.
 ```
 Executing "step_script" stage of the job script 00:00
 $ # INFO: Lowering limit of file descriptors for backwards compatibility. ffi: https://cern.ch/gitlab-runners-limit-file-descriptors # collapsed multi-line command
@@ -109,7 +109,7 @@ Job succeeded
 {: .output}
 
 
-What this means is that we can access the values from the variable `my_os` and do something with it! This is very handy as you will see. Not only can we access values from the yml but we can create global variables that remain constant for the entire process.
+What this means is that we can access the values from the variable `my_os` and do something with it! This is very handy, as you will see. Not only can we access values from the yml but we can create global variables that remain constant for the entire process.
 
 > ## Example
 > ```yml
@@ -137,7 +137,7 @@ What this means is that we can access the values from the variable `my_os` and d
 
 # Mix it all up and write less code!
 
-Let's now mix the usage of parallel jobs and the the fact that we can exctrat values from variables we defined.
+Let's now mix the usage of parallel jobs and the fact that we can extract values from variables we defined.
 Let's try implementing this with the config file we've been developing so far.
 
 > ## Remember what we have so far
@@ -175,7 +175,7 @@ Let's try implementing this with the config file we've been developing so far.
 > ```
 {: .solution}
 
-Now let's apply what we learned to refactor and reduce the code all into a single job named `multi_build`.
+Now let's apply what we learned to refactor and reduce the code into a single job named `multi_build`.
 
 ```yml
 hello_world:
@@ -203,7 +203,7 @@ multi_build:
 
 
 > ## Note
-> 1. We have only defined a `ROOT_VERS` list and we use this in the `before_script` section to setup the intalation of ROOT.  After testing it we can see that this works and we've been able to reduce the amount of text a lot more.
+> 1. We have only defined a `ROOT_VERS` list, and we use this in the `before_script` section to set up the instalation of ROOT.  After testing it we can see that this works and we've been able to reduce the amount of text a lot more.
 > 2. We have dropped the `allow_failure: yes` for now because we're feeling confident.
 > 3. We have factored out the `before_script` and the `script` into our `.build_template`.
 {: .callout}

@@ -22,7 +22,7 @@ GitLab is a git platform used for code hosting and collaboration. It can be used
 > This assumes that you'll have some basic background with your command line, for example:
 >
 > 1. How to execute custom shell scripts (if you are not familiar with the shell, click [here](https://swcarpentry.github.io/shell-novice/))
-> 2. How to run python scripts (if you are not familiar with python, click [here](https://swcarpentry.github.io/python-novice-inflammation/))
+> 2. How to run Python scripts (if you are not familiar with Python, click [here](https://swcarpentry.github.io/python-novice-inflammation/))
 > 3. How to interact with remotes in git (if you are not familiar with git, click [here](https://swcarpentry.github.io/git-novice/))
 {: .prereq}
 

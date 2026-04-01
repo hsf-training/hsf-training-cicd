@@ -38,7 +38,7 @@ multi_build:
 ```
 
 
-We're going to talk about another global parameter `:stages` (and the associated per-job parameter `:job:stage`. Stages allow us to group up parallel jobs with each group running after the other in the order you define. What have our jobs looked like so far in the pipelines we've been running?
+We're going to talk about another global parameter `:stages` (and the associated per-job parameter `:job:stage`. Stages allow us to group up parallel jobs, with each group running after the other in the order you define. What have our jobs looked like so far in the pipelines we've been running?
 
 
 ![CI/CD Default Stages in Pipeline]({{site.baseurl}}/fig/ci-cd-default-stages.png)
@@ -48,7 +48,7 @@ We're going to talk about another global parameter `:stages` (and the associated
 > You'll note that the default stage is `test`. Of course, for CI/CD, this is likely the most obvious choice.
 {: .callout}
 
-Stages allow us to categorize jobs by functionality, such as `build`, or `test`, or `deploy` -- with job names being the next level of specification such as `test_cpp`, `build_current`, `build_latest`, or `deploy_pages`. Remember that two jobs cannot have the same name (globally), no matter what stage they're in. Like the other global parameter `variables`, we keep `stages` towards the top of our `.gitlab-ci.yml` file.
+Stages allow us to categorize jobs by functionality, such as `build`, `test`, or `deploy` -- with job names being the next level of specification, such as `test_cpp`, `build_current`, `build_latest`, or `deploy_pages`. Remember that two jobs cannot have the same name (globally), no matter what stage they're in. Like the other global parameter `variables`, we keep `stages` towards the top of our `.gitlab-ci.yml` file.
 
 > ## Adding Stages
 >
@@ -84,7 +84,7 @@ Stages allow us to categorize jobs by functionality, such as `build`, or `test`,
 > {: .solution}
 {: .challenge}
 
-If you do it correctly, you should see a pipeline graph with two stages
+If you do it correctly, you should see a pipeline graph with two stages.
 
 ![CI/CD Pipeline Two Stages]({{site.baseurl}}/fig/ci-cd-pipeline-two-stages.png)
 

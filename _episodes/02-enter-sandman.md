@@ -3,17 +3,17 @@ title: "Exit Codes"
 teaching: 10
 exercises: 10
 objectives:
-  - Understand exit codes
-  - How to print exit codes
-  - How to set exit codes in a script
-  - How to ignore exit codes
-  - Create a script that terminates in success/error
+  - Understand exit codes.
+  - Learn how to print exit codes.
+  - Learn how to set exit codes in a script.
+  - Learn how to ignore exit codes.
+  - Create a script that terminates in success/error.
 questions:
   - What is an exit code?
 hidden: false
 keypoints:
-  - Exit codes are used to identify if a command or script executed with errors or not
-  - Not everyone respects exit codes
+  - Exit codes are used to identify if a command or script executed with errors or not.
+  - Not everyone respects exit codes.
 
 ---
 
@@ -91,7 +91,7 @@ Try out some other commands on your system, and see what things look like.
 
 # Printing Exit Codes
 
-As you've seen above, the exit code from the last executed command is stored in the `$?` environment variable. Accessing from a shell is easy `echo $?`. What about from python? There are many different ways depending on which library you use. Using similar examples above, we can use the (note: deprecated) `os.system` call:
+As you've seen above, the exit code from the last executed command is stored in the `$?` environment variable. Accessing from a shell is easy `echo $?`. What about from Python? There are many different ways depending on which library you use. Using similar examples above, we can use the (note: deprecated) `os.system` call:
 
 > ## Snake Charming
 >
@@ -161,7 +161,7 @@ To finish up this section, one thing you'll notice sometimes (in ATLAS or CMS) i
 ~~~
 {: .language-bash}
 
-The `command_1 || command_2` operator means to execute `command_2` only if `command_1` has failed (non-zero exit code). Similarly, the `command_1 && command_2` operator means to execute `command_2` only if `command_1` has succeeded. Try this out using one of scripts you made in the previous session:
+The `command_1 || command_2` operator means to execute `command_2` only if `command_1` has failed (non-zero exit code). Similarly, the `command_1 && command_2` operator means to execute `command_2` only if `command_1` has succeeded. Try this out using one of the scripts you made in the previous session:
 
 ~~~
 > ./python_exit.py goodbye || echo ignore
@@ -172,7 +172,7 @@ What does that give you?
 
 > ## Overriding Exit Codes
 >
-> It's not really recommended to 'hack' the exit codes like this, but this example is provided so that you are aware of how to do it, if you ever run into this situation. Assume that scripts respect exit codes, until you run into one that does not.
+> It's not really recommended to 'hack' the exit codes like this, but this example is provided so that you are aware of how to do it if you ever run into this situation. Assume that scripts respect exit codes, until you run into one that does not.
 {: .callout}
 
 {% include links.md %}
