@@ -5,7 +5,8 @@ permalink: index.html  # Is the only page that doesn't follow the pattern /:path
 ---
 {% include gh_variables.html %}
 
-GitLab is a git platform used for code hosting and collaboration. It can be used to automatically run checks and other code or workflows on GitLab’s servers. We’ll learn how to use this to make our code robust to errors, preserved, and reproducible.
+GitLab is a git platform used for code hosting and collaboration. It can be used to automatically run checks and other code or workflows on GitLab’s servers. 
+The aim of this module is to introduce CI/CD workflows and how they ensure code is robust, reproducible, and preserved.
 
 > ## The skills we'll focus on:
 >
