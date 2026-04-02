@@ -1,4 +1,4 @@
-# HSF Training CI/CD - GitLab Edition
+# Continuous Integration and Deployment (CI/CD) with GitLab
 [![HSF Training Center][training-center-badge]][hsf-training-center]
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
