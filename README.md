@@ -1,9 +1,10 @@
+# HSF Training CI/CD - GitLab Edition
 [![HSF Training Center][training-center-badge]][hsf-training-center]
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![Upcoming Events][schools-badge]][schools]
-[![Twitter Follow][twitter-badge]][twitter]
+<!--[![Twitter Follow][twitter-badge]][twitter]
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -11,21 +12,21 @@
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/hsf-training/hsf-training-cicd/gh-pages.svg)](https://results.pre-commit.ci/latest/github/hsf-training/hsf-training-cicd/gh-pages)
 [![pages-build-deployment](https://github.com/hsf-training/hsf-training-cicd/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/hsf-training/hsf-training-cicd/actions/workflows/pages/pages-build-deployment)
 
-# HSF Training CI/CD -- GitLab Edition
+This repository generates the corresponding lesson website from [The Carpentries](https://carpentries.org/) repertoire of lessons.
 
 > **Note**
 > Click [here](https://hsf-training.github.io/hsf-training-cicd/) for the training website!
 
 The aim of this module is to explore what it means to build a CI/CD workflow and expand on concepts unique to GitLab’s CI/CD.
 
-## 📅 Past events and videos
+## Past events and videos
 
 * [June 2020](https://indico.cern.ch/event/904759/)
 * [Feb 2020](https://indico.cern.ch/event/854880/)
 
 Emoji key: 🎥 (full video recordings availabile), ⛏️ (hackathon)
 
-## 🤗 Contributing
+## Contributing
 <!-- CENTRALLY MAINTAINED SECTION -->
 <!-- Remove the above marker to disable having this section be overwritten -->
 
@@ -63,7 +64,7 @@ by Scott Chacon.
 Look for the tag [![good_first_issue]][gfi-badge], which marks particularly simple issues to get you started.
 
 <!-- END CENTRALLY MAINTAINED SECTION -->
-## 💖 Authors
+## Authors
 
 This lesson was written by
 
