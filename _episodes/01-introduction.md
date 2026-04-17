@@ -61,7 +61,6 @@ Now, obviously, we're not going to make our own fully-fledged CI/CD solution. Pl
 - [Bamboo](https://www.atlassian.com/software/bamboo)
 - [Jenkins](https://jenkins.io/)
 - [Buddy](https://buddy.works/)
-- [CodeShip](https://codeship.com/)
 - [CodeFresh](https://g.codefresh.io/)
 
 For today's lesson, we'll only focus on GitLab's solution. However, be aware that all the concepts you'll be taught today: including pipelines, stages, jobs, artifacts; all exist in other solutions by similar/different names. For example, GitLab supports two features known as caching and artifacts; but Travis doesn't quite implement the same thing for caching and has no native support for artifacts. Therefore, while we don't discourage you from trying out other solutions, there's no "one size fits all" when designing your own CI/CD workflow.

@@ -41,7 +41,7 @@ multi_build:
   image: $ROOT_IMAGE
   parallel:
     matrix:
-      - ROOT_IMAGE: ["rootproject/root:6.28.10-ubuntu22.04","rootproject/root:latest"]
+      - ROOT_IMAGE: ["rootproject/root:6.28.10-ubuntu22.04", "rootproject/root:latest"]
 ```
 
 So we need to do two things:

@@ -152,7 +152,7 @@ As it seems like we have a complete CI/CD that does physics, we should see what 
 > >   image: $ROOT_IMAGE
 > >   parallel:
 > >     matrix:
-> >       - ROOT_IMAGE: ["rootproject/root:6.26.10-conda","rootproject/root:latest"]
+> >       - ROOT_IMAGE: ["rootproject/root:6.26.10-conda", "rootproject/root:latest"]
 > >
 > > skim_ggH:
 > >   stage: run
@@ -183,7 +183,6 @@ or if you click through to a `skim_ggH` job, you can browse the artifacts
 which should just be the `skim_ggH.root` file you just made.
 
 > ## Further Reading
-> - <https://gitlab.cern.ch/help/ci/variables/README#variables>
 > - <https://gitlab.cern.ch/help/ci/variables/predefined_variables.md>
 {: .checklist}
 

@@ -32,7 +32,7 @@ test:
 A pipeline with jobs that use parallel might:
 
 - Create more jobs running in parallel than available runners. Excess jobs are queued and marked pending while waiting for an available runner.
-- Create too many jobs, and the pipeline fails with a `job_activity_limit_exceeded` error. The maximum number of jobs that can exist in active pipelines is [limited at the instance-level](https://docs.gitlab.com/ee/administration/instance_limits.html#number-of-jobs-in-active-pipelines).
+- Create too many jobs, and the pipeline fails with a `job_activity_limit_exceeded` error. The maximum number of jobs that can exist in active pipelines is [limited at the GitLab-instance level](https://docs.gitlab.com/ee/administration/instance_limits.html#number-of-jobs-in-active-pipelines).
 
 
 ## Matrices
@@ -54,7 +54,7 @@ test_build:
     - echo "My $my_os build"
   parallel:
     matrix:
-      - my_os: [Windows,Linux,MacOS]
+      - my_os: [Windows, Linux, MacOS]
 
 ```
 
@@ -70,8 +70,8 @@ test_build:
     - echo "My $my_os build"
   parallel:
     matrix:
-      - my_os: [Windows,Linux,MacOS]
-        version: ["12.0","14.2"]
+      - my_os: [Windows, Linux, MacOS]
+        version: ["12.0", "14.2"]
 ```
 
 ![Parallel OS with versions]({{site.baseurl}}/fig/parallel-versions.png){: width="60%"}
@@ -85,11 +85,11 @@ test_build:
   parallel:
     matrix:
       - my_os: Windows
-        version: ["10","11"]
+        version: ["10", "11"]
       - my_os: Linux
         version: "Ubuntu-22.04LTS"
       - my_os: MacOS
-        version: ["Sonoma","Ventura"]
+        version: ["Sonoma", "Ventura"]
 ```
 
 ![Specified OS and version pairs]({{site.baseurl}}/fig/parallel-specified.png){: width="60%"}
@@ -126,11 +126,11 @@ What this means is that we can access the values from the variable `my_os` and d
 >   parallel:
 >     matrix:
 >       - my_os: Windows
->         version: ["10","11"]
+>         version: ["10", "11"]
 >       - my_os: Linux
 >         version: "Ubuntu-22.04LTS"
 >       - my_os: MacOS
->         version: ["Sonoma","Ventura"]
+>         version: ["Sonoma", "Ventura"]
 > ```
 {: .callout}
 
@@ -198,7 +198,7 @@ multi_build:
   extends: .template_build
   parallel:
     matrix:
-      - ROOT_VERS: ["root=6.28","root"]
+      - ROOT_VERS: ["root=6.28", "root"]
 ```
 
 
