@@ -6,9 +6,6 @@ questions:
 ---
 > ## Prerequisites
 >
-> Most of the prerequisites should have been covered if you did the
-> pre-workshop material.
->
 > At a bare minimum:
 > - You should have git working on your laptop
 > - We assume that you already have a CERN account or access to a GitLab instance
@@ -17,10 +14,6 @@ questions:
 
 You should find your way to your very own GitLab homepage!
 For CERN this is [gitlab.cern.ch](https://gitlab.cern.ch).
-
-If you're having issues, **please let us know immediately**
-since you won't be able to follow this lesson without access to a GitLab
-instance.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Pz1gtlQDVyo?si=LcG6YVteCQ38SZ12" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

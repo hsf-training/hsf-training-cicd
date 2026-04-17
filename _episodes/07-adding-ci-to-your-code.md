@@ -223,7 +223,7 @@ build_skim_latest:
 > ~~~
 > {: .language-yaml}
 >
-> and this will build a new version with `./skim` only if the `skim.cxx` file changes. There's plenty more one can do with this that doesn't fit in the limited time for the sessions today, so feel free to try it out on your own time.
+> and this will build a new version with `./skim` only if the `skim.cxx` file changes. There's plenty more one can do with this that doesn't fit into this lesson, so feel free to try it out on your own time.
 {: .callout}
 
 

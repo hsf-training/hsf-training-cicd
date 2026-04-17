@@ -61,7 +61,7 @@ So we need to give our CI/CD access to our data. This is actually a good thing. 
 >
 > When you're dealing with a personal repository (project) that nobody else has administrative access to, e.g., the settings, then it's *ok* to use your CERN account/password in the environment variables for the settings...
 >
-> However, when you're sharing or part of a group, it is much better to use a group's service account or a user's (maybe yours) service account for authentication instead. For today's lesson however, we'll be using your account and show pictures of how to set these environment variables.
+> However, when you're sharing or part of a group, it is much better to use a group's service account or a user's (maybe yours) service account for authentication instead. For this lesson however, we'll be using your account and show pictures of how to set these environment variables.
 {: .callout}
 
 > ## How to make a service account?

@@ -16,7 +16,7 @@ keypoints:
 
 # Adding CI/CD to a project
 
-We've been working on the analysis code, which has a lot of work done, but we should be good physicists (and people) by adding tests and CI/CD. The first thing we'll do is create a `.gitlab-ci.yml` file in the project.
+The first thing we'll do is create a `.gitlab-ci.yml` file in the project.
 
 ~~~
 cd virtual-pipelines-eventselection/

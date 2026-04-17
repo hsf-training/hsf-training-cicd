@@ -47,7 +47,7 @@ CI/CD is the first step to automating your entire workflow. Imagine everything y
 > Any command you run on your computer can be equivalently run in a CI job.
 {: .callout}
 
-Don't just limit yourself to thinking of CI/CD as primarily for testing changes, but as one part of automating an entire development cycle. You can trigger notifications to your cellphone, fetch/download new data, execute cron jobs, and so much more. However, for the lessons you'll be going through today and that you've just recently learned about Python testing with `pytest`, we'll focus primarily on setting up CI/CD with tests for code that you've written already.
+Don't just limit yourself to thinking of CI/CD as primarily for testing changes, but as one part of automating an entire development cycle. You can trigger notifications to your cellphone, fetch/download new data, execute cron jobs, and so much more. However, for this lesson, we'll focus primarily on setting up CI/CD with tests for existing code.
 
 # CI/CD Solutions
 
@@ -63,7 +63,7 @@ Now, obviously, we're not going to make our own fully-fledged CI/CD solution. Pl
 - [Buddy](https://buddy.works/)
 - [CodeFresh](https://g.codefresh.io/)
 
-For today's lesson, we'll only focus on GitLab's solution. However, be aware that all the concepts you'll be taught today: including pipelines, stages, jobs, artifacts; all exist in other solutions by similar/different names. For example, GitLab supports two features known as caching and artifacts; but Travis doesn't quite implement the same thing for caching and has no native support for artifacts. Therefore, while we don't discourage you from trying out other solutions, there's no "one size fits all" when designing your own CI/CD workflow.
+For this lesson, we'll only focus on GitLab's solution. However, be aware that all the concepts you'll be taught today: including pipelines, stages, jobs, artifacts; all exist in other solutions by similar/different names. For example, GitLab supports two features known as caching and artifacts; but Travis doesn't quite implement the same thing for caching and has no native support for artifacts. Therefore, while we don't discourage you from trying out other solutions, there's no "one size fits all" when designing your own CI/CD workflow.
 
 > ## Parallel lesson on GitHub CI/CD
 > We also have a [training on GitHub actions, the CI/CD system of GitHub](https://hsf-training.github.io/hsf-training-cicd-github/)

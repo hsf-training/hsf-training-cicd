@@ -4,8 +4,6 @@ teaching: 0
 exercises: 30
 objectives:
   - Add more testing, perhaps to statistics.
-questions:
-  - If you have any, ask on Mattermost!
 hidden: false
 keypoints:
   - Use everything you've learned to write your own CI/CD!
