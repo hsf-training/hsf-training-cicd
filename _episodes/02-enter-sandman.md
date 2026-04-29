@@ -164,9 +164,18 @@ and then make it executable `chmod +x python_exit.py`. Now, try running it with 
 To finish up this section, one thing you'll notice sometimes (in ATLAS or CMS) is that a script you run doesn't seem to respect exit codes. A notable example in ATLAS is the use of `setupATLAS` which returns non-zero exit status codes even though it runs successfully! This can be very annoying when you start development with the assumption that exit status codes are meaningful (such as with CI). In these cases, you'll need to ignore the exit code. An easy way to do this is to execute a second command that always gives `exit 0` if the first command doesn't, like so:
 
 ~~~
-> :(){ return 1; };: || echo ignore failure
+> false || echo "ignore failure"
+> echo $?
 ~~~
 {: .language-bash}
+
+~~~
+ignore failure
+0
+~~~
+{: .output}
+
+Where `false` is just a simple command that always returns a non-zero exit code.
 
 The `command_1 || command_2` OR-operator means to execute `command_2` only if `command_1` has failed (non-zero exit code).
 Similarly, the `command_1 && command_2` AND-operator means to execute `command_2` only if `command_1` has succeeded.
@@ -184,7 +193,7 @@ Try this out using one of the scripts you made in the previous session:
 
 What does that give you?
 
-It's possible to ignore an exit code quietly by running `command_1 || true`, where `true` is a simple shell command whose only job is to return an exit code of `0`.
+It's possible to ignore an exit code quietly by running `command_1 || true`, where `true` always returns an exit code of `0`.
 
 
 > ## Overriding Exit Codes
