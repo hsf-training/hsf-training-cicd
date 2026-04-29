@@ -168,7 +168,14 @@ To finish up this section, one thing you'll notice sometimes (in ATLAS or CMS) i
 ~~~
 {: .language-bash}
 
-The `command_1 || command_2` operator means to execute `command_2` only if `command_1` has failed (non-zero exit code). Similarly, the `command_1 && command_2` operator means to execute `command_2` only if `command_1` has succeeded. Try this out using one of the scripts you made in the previous session:
+The `command_1 || command_2` OR-operator means to execute `command_2` only if `command_1` has failed (non-zero exit code).
+Similarly, the `command_1 && command_2` AND-operator means to execute `command_2` only if `command_1` has succeeded.
+
+These are both examples of [short-ciruited](https://en.wikipedia.org/wiki/Short-circuit_evaluation) boolean expressions.
+Short-circuited expressions return the result of the boolean expression as soon as the minimal information necessary for the result is computed: the operands are executed from left to right, and the right operand only evaluates if the left operand doesn't determine the answer.
+
+
+Try this out using one of the scripts you made in the previous session:
 
 ~~~
 > ./python_exit.py goodbye || echo ignore
