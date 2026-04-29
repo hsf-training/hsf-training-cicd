@@ -184,6 +184,9 @@ Try this out using one of the scripts you made in the previous session:
 
 What does that give you?
 
+It's possible to ignore an exit code quietly by running `command_1 || true`, where `true` is a simple shell command whose only job is to return an exit code of `0`.
+
+
 > ## Overriding Exit Codes
 >
 > It's not really recommended to 'hack' the exit codes like this, but this example is provided so that you are aware of how to do it if you ever run into this situation. Assume that scripts respect exit codes, until you run into one that does not.
