@@ -19,6 +19,10 @@ keypoints:
 
 As we enter the first episode of the Continuous Integration / Continuous Deployment (CI/CD) session, we learn how to exit.
 
+Exit codes communicate the outcome of a script with (in this case) the CI/CD pipline.
+We generally want a CI/CD pipeline to fail if one of its components fails.
+For example, you would not usually want to run CD to deploy a custom Docker image if the CI tests fail for the code in that image.
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Z7aVq3DNH6U?si=QVvru9yRjsYkupA9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 # Start by Exiting
