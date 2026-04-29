@@ -175,7 +175,7 @@ ignore failure
 ~~~
 {: .output}
 
-Where `false` is just a simple command that always returns a non-zero exit code.
+where `false` is just a simple command that always returns a non-zero exit code.
 
 The `command_1 || command_2` OR-operator means to execute `command_2` only if `command_1` has failed (non-zero exit code).
 Similarly, the `command_1 && command_2` AND-operator means to execute `command_2` only if `command_1` has succeeded.
