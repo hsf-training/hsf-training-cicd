@@ -93,6 +93,9 @@ and there, the exit code is non-zero -- a failure.
 
 Try out some other commands on your system, and see what things look like.
 
+Some exit codes are recommended to have [special meanings](https://tldp.org/LDP/abs/html/exitcodes.html#EXITCODESREF) by convention, although there is nothing stopping someone from overriding them in their script.
+
+
 # Printing Exit Codes
 
 As you've seen above, the exit code from the last executed command is stored in the `$?` environment variable. Accessing from a shell is easy `echo $?`. What about from Python? There are many different ways depending on which library you use. Using similar examples above, we can use the (note: deprecated) `os.system` call:
