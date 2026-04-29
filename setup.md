@@ -39,10 +39,3 @@ git push -u origin main
 
 
 Alternatively, you could follow the [setup for the payload](https://hsf-training.github.io/hsf-training-cms-analysis-webpage/setup.html) to download a tarball of the repository files and push them to yours.
-
-> ## Visibility Level
->
-> Make sure you click Public for the visibility level of the new project so that everyone can see your awesome work
-> (and it will also make things easier when we get to working with containers).
-> ![example of a properly-filled-in blank project form for gitlab]({{site.baseurl}}/fig/blank-project-form.png)
-{: .callout}
