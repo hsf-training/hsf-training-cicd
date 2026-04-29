@@ -30,7 +30,7 @@ For example, you would not usually want to run CD to deploy a custom Docker imag
 How does a general task know whether or not a script finished correctly or not? You could parse (`grep`) the output:
 
 ~~~
-> ls nonexistent-file
+ls nonexistent-file
 ~~~
 {: .language-bash}
 
@@ -42,8 +42,8 @@ ls: cannot access 'nonexistent-file': No such file or directory
 But every command outputs something differently. Instead, scripts also have an (invisible) exit code:
 
 ~~~
-> ls nonexistent-file
-> echo $?
+ls nonexistent-file
+echo $?
 ~~~
 {: .language-bash}
 
@@ -51,13 +51,13 @@ But every command outputs something differently. Instead, scripts also have an (
 ls: cannot access 'nonexistent-file': No such file or directory
 2
 ~~~
-{: .language-bash}
+{: .output}
 
 The exit code is `2` indicating failure. What about on success? The exit code is `0` like so:
 
 ~~~
-> echo
-> echo $?
+echo
+echo $?
 ~~~
 {: .language-bash}
 
@@ -70,8 +70,8 @@ The exit code is `2` indicating failure. What about on success? The exit code is
 But this works for any command you run on the command line! For example, if I mistyped `git status`:
 
 ~~~
-> git stauts
-> echo $?
+git stauts
+echo $?
 ~~~
 {: .language-bash}
 
@@ -164,8 +164,8 @@ and then make it executable `chmod +x python_exit.py`. Now, try running it with 
 To finish up this section, one thing you'll notice sometimes (in ATLAS or CMS) is that a script you run doesn't seem to respect exit codes. A notable example in ATLAS is the use of `setupATLAS` which returns non-zero exit status codes even though it runs successfully! This can be very annoying when you start development with the assumption that exit status codes are meaningful (such as with CI). In these cases, you'll need to ignore the exit code. An easy way to do this is to execute a second command that always gives `exit 0` if the first command doesn't, like so:
 
 ~~~
-> false || echo "ignore failure"
-> echo $?
+false || echo "ignore failure"
+echo $?
 ~~~
 {: .language-bash}
 
@@ -187,7 +187,7 @@ Short-circuited expressions return the result of the boolean expression as soon 
 Try this out using one of the scripts you made in the previous session:
 
 ~~~
-> ./python_exit.py goodbye || echo ignore
+./python_exit.py goodbye || echo ignore
 ~~~
 {: .language-bash}
 
