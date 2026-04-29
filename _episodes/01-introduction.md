@@ -16,7 +16,20 @@ keypoints:
 
 # What is CI/CD?
 
-Continuous Integration (CI) is the concept of literal continuous integration of code changes. That is, every time a contributor (student, colleague, random bystander) provides new changes to your codebase, those changes are tested to make sure they don't "break" anything. Continuous Deployment (CD), similarly, is the literal continuous deployment of code changes. That means that, assuming the CI passes, you'd like to automatically deploy those changes.
+Continuous Integration ([CI](en.wikipedia.org/wiki/Continuous_integration)), and Continuous Deployment ([CD](https://en.wikipedia.org/wiki/Continuous_deployment)) are two related concepts in the field of [DevOps](https://en.wikipedia.org/wiki/DevOps), a sub-domain of software engineering.
+
+
+<dl>
+  <dt>CI</dt>
+  <dd>Continuously integrates source code changes into your repository while testing to ensure the changes do not "break" anything.</dd>
+  <dt>CD</dt>
+  <dd>Continuously deploys a service based on your code.</dd>
+</dl>
+
+A common example of a CI/CD workflow or pipeline in a repository would be one which&mdash;after each push of a set of commits&mdash;tests the codebase (via CI) and deploys documentation (via CD) on a website.
+
+CI/CD workflows can be configured to run after a push, after a merge-request, or on a schedule. The broader puprose of CI/CD is to automate anything repetitive that doesn't need to be done manually, and can be thought of a labour-based manifestation of the [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (don't repeat yourself) principle in programming.
+
 
 > ## Catch and Release
 >
