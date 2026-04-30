@@ -19,13 +19,6 @@ This repository generates the corresponding lesson website from [The Carpentries
 
 The aim of this module is to explore what it means to build a CI/CD workflow and expand on concepts unique to GitLab’s CI/CD.
 
-## Past events and videos
-
-* [June 2020](https://indico.cern.ch/event/904759/)
-* [Feb 2020](https://indico.cern.ch/event/854880/)
-
-Emoji key: 🎥 (full video recordings availabile), ⛏️ (hackathon)
-
 ## Contributing
 <!-- CENTRALLY MAINTAINED SECTION -->
 <!-- Remove the above marker to disable having this section be overwritten -->
