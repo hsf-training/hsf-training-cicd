@@ -94,6 +94,10 @@ the content of the lesson:
 Even more people contributed to the framework, but they are too many to list!
 Instead, all regular contributors are listed on our [HSF Training Community page][hsf-training-community].
 
+## Citation
+
+To cite this lesson, please consult with [CITATION](CITATION)
+
 ## Open Educational Resources (OER) on Zenodo
 
 This lesson is included in the ETH Domain Open Educational Resources for Research Data Management (RDM) community on Zenodo. These resources support researchers, students, and RDM staff in implementing best practices across the research data lifecycle. The materials developed here are published under open licenses (CC BY 4.0) and can be freely reused and adapted for teaching and training initiatives worldwide.
