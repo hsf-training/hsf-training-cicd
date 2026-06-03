@@ -203,7 +203,7 @@ multi_build:
 
 
 > ## Note
-> 1. We have only defined a `ROOT_VERS` list, and we use this in the `before_script` section to set up the instalation of ROOT.  After testing it we can see that this works and we've been able to reduce the amount of text a lot more.
+> 1. We have only defined a `ROOT_VERS` list, and we use this in the `before_script` section to set up the installation of ROOT.  After testing it we can see that this works and we've been able to reduce the amount of text a lot more.
 > 2. We have dropped the `allow_failure: yes` for now because we're feeling confident.
 > 3. We have factored out the `before_script` and the `script` into our `.build_template`.
 {: .callout}

@@ -98,7 +98,7 @@ Now all jobs in `greeting` run first, before all jobs in `build` (as this is the
 > - `test`
 > - `deploy`
 > - `.post`
-> 
+>
 > When you define your own `stages`, as we've done above by adding `greetings` and `build`, the `.pre` and  `.post` stages remain, while the others are overwritten. So, in our example above, the stages available are
 > - `.pre`
 > - `greetings`

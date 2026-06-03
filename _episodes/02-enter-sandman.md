@@ -19,7 +19,7 @@ keypoints:
 
 As we enter the first episode of the Continuous Integration / Continuous Deployment (CI/CD) session, we learn how to exit.
 
-Exit codes communicate the outcome of a script with (in this case) the CI/CD pipline.
+Exit codes communicate the outcome of a script with (in this case) the CI/CD pipeline.
 We generally want a CI/CD pipeline to fail if one of its components fails.
 For example, you would not usually want to run CD to deploy a custom Docker image if the CI tests fail for the code in that image.
 
@@ -70,7 +70,7 @@ echo $?
 But this works for any command you run on the command line! For example, if I mistyped `git status`:
 
 ~~~
-git stauts
+git status
 echo $?
 ~~~
 {: .language-bash}
