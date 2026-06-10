@@ -70,7 +70,7 @@ echo $?
 But this works for any command you run on the command line! For example, if I mistyped `git status`:
 
 ~~~
-git status
+git stauts
 echo $?
 ~~~
 {: .language-bash}
