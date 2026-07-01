@@ -16,7 +16,7 @@ keypoints:
 
 # The First Naive Attempt
 
-Let's just attempt to try and get the code working as it is. Since it worked for us already locally, surely the CI/CD must be able to run it??? As a reminder of what we've ended with from the last session:
+Let's just attempt to try and get the code working as it is. Since it worked for us already locally, surely the CI/CD must be able to run it??? As a reminder of what we ended with from the last session:
 
 ```yml
 stages:
@@ -41,15 +41,15 @@ multi_build:
   image: $ROOT_IMAGE
   parallel:
     matrix:
-      - ROOT_IMAGE: ["rootproject/root:6.28.10-ubuntu22.04","rootproject/root:latest"]
+      - ROOT_IMAGE: ["rootproject/root:6.28.10-ubuntu22.04", "rootproject/root:latest"]
 ```
 
 So we need to do two things:
 
-1. add a `run` stage
-2. add a `skim_ggH` job to this stage
+1. Add a `run` stage
+2. Add a `skim_ggH` job to this stage
 
-Let's go ahead and do that, so we now have three stages
+Let's go ahead and do that, so we now have three stages.
 
 ```
 stages:
@@ -79,12 +79,12 @@ skim_ggH:
 
 Ok, fine. That was way too easy. It seems we have a few issues to deal with.
 
-1. The code in the `multi_build` jobs (of the `build` stage) isn't in the `skim_ggH` job by default. We need to use GitLab `artifacts` to copy over this from the one of the jobs (let's choose as an example the `multi_build: [rootproject/root:6.28.10-ubuntu22.04]` job).
+1. The code in the `multi_build` jobs (of the `build` stage) isn't in the `skim_ggH` job by default. We need to use GitLab `artifacts` to copy over this from one of the jobs (let's choose as an example the `multi_build: [rootproject/root:6.28.10-ubuntu22.04]` job).
 2. The data (ROOT file) isn't available to the Runner yet.
 
 ## Artifacts
 
-`artifacts` is used to specify a list of files and directories which should be attached to the job when it succeeds, fails, or always. The artifacts will be sent to GitLab after the job finishes and will be available for download in the GitLab UI.
+`artifacts` is used to specify a list of files and directories that should be attached to the job when it succeeds, fails, or always. The artifacts will be sent to GitLab after the job finishes and will be available for download in the GitLab UI.
 
 > ## More Reading
 > - [https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html](https://docs.gitlab.com/ee/ci/pipelines/job_artifacts.html)
@@ -99,7 +99,7 @@ Artifacts are the way to transfer files between jobs of different stages. In ord
 
 > ## Using Dependencies
 >
-> To use this feature, define `dependencies` in context of the job and pass a list of all previous jobs from which the artifacts should be downloaded. You can only define jobs from stages that are executed before the current one. An error will be shown if you define jobs from the current stage or next ones. Defining an empty array will skip downloading any artifacts for that job. The status of the previous job is not considered when using `dependencies`, so if it failed or it is a manual job that was not run, no error occurs.
+> To use this feature, define `dependencies` in the context of the job and pass a list of all previous jobs from which the artifacts should be downloaded. You can only define jobs from stages that are executed before the current one. An error will be shown if you define jobs from the current stage or the next ones. Defining an empty array will skip downloading any artifacts for that job. The status of the previous job is not considered when using `dependencies`, so if it failed or is a manual job that was not run, no error occurs.
 {: .callout}
 
 > ## Don't want to use dependencies?
@@ -120,7 +120,7 @@ Since the build artifacts don't need to exist for more than a day, let's add art
 
 > ## Adding Artifacts
 >
-> Let's add `artifacts` to our jobs to save the `skim` binary. We'll also make sure the `skim_ggH` job has the right `dependencies` as well. In this case the job `multi_build` is actually running two parallel jobs: one for the ROOT version 6.28 and the other for the latest version of ROOT. So we have to make sure we specify the right dependency as `"multi_build: [rootproject/root:6.28.10-ubuntu22.04]"`.
+> Let's add `artifacts` to our jobs to save the `skim` binary. We'll also make sure the `skim_ggH` job has the right `dependencies` as well. In this case, the job `multi_build` is actually running two parallel jobs: one for the ROOT version 6.28 and the other for the latest version of ROOT. So we have to make sure we specify the right dependency as `"multi_build: [rootproject/root:6.28.10-ubuntu22.04]"`.
 >
 > > ## Solution
 > > ```
@@ -177,17 +177,17 @@ Ok, it looks like the CI failed because it couldn't find the shared libraries. W
 
 So now we've dealt with the first problem of getting the built code available to the `skim_ggH` job via `artifacts` and `dependencies`. Now we need to think about how to get the data in. We could:
 
-- `wget` the entire ROOT file every time
-- `git commit` the ROOT file into the repo
-  - ok, maybe not our repo, but another repo that you can add as a submodule so you don't have to clone it every time
-- fine, maybe we can make a smaller ROOT file
-- what? we don't have time to cover that? ok, can we use `xrdcp`?
-- yes, I realize it's a big ROOT file but still...
+- `wget` the entire ROOT file every time.
+- `git commit` the ROOT file into the repo.
+  - ok, maybe not our repo, but another repo that you can add as a submodule so you don't have to clone it every time.
+- Fine, maybe we can make a smaller ROOT file.
+- What? don't we have time to cover that? ok, can we use `xrdcp`?
+- Yes, I realize it's a big ROOT file, but still...
 
-Anyway, there's lots of options. For large (ROOT) files, it's usually preferable to either
+Anyway, there are lots of options. For large (ROOT) files, it's usually preferable to either.
 
-- stream the file event-by-event (or chunks of events at a time) and only process a small number of events
-- download a small file that you process entirely
+- Stream the file event-by-event (or chunks of events at a time) and only process a small number of events.
+- Download a small file that you process entirely.
 
 The `xrdcp` option is going to be much easier to deal with in the long run, especially as the data file is on eos.
 
@@ -251,7 +251,7 @@ skim_ggH:
 
 > ## How many events to run over?
 >
-> For CI jobs, we want things to run fast and have fast turnaround time. More especially since everyone at CERN shares a pool of runners for most CI jobs, so we should be courteous about the run time of our CI jobs. I generally suggest running over just enough events for you to be able to test what you want to test - whether cutflow or weights.
+> For CI jobs, we want things to run fast and have a fast turnaround time. More especially since everyone at CERN shares a pool of runners for most CI jobs, so we should be courteous about the run time of our CI jobs. I generally suggest running over just enough events for you to be able to test what you want to test - whether cutflow or weights.
 {: .callout}
 
 Let's go ahead and commit those changes and see if the run job succeeded or not.

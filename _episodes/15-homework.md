@@ -4,8 +4,6 @@ teaching: 0
 exercises: 30
 objectives:
   - Add more testing, perhaps to statistics.
-questions:
-  - If you have any, ask on mattermost!
 hidden: false
 keypoints:
   - Use everything you've learned to write your own CI/CD!
@@ -37,7 +35,7 @@ multi_build:
   image: $ROOT_IMAGE
   parallel:
     matrix:
-      - ROOT_IMAGE: ["rootproject/root:6.28.10-ubuntu22.04","rootproject/root:latest"]
+      - ROOT_IMAGE: ["rootproject/root:6.28.10-ubuntu22.04", "rootproject/root:latest"]
 
 skim_ggH:
   stage: run
@@ -78,7 +76,7 @@ test_ggH:
 
 In your `virtual-pipelines-eventselection` repository, you need to:
 
-1. Add more tests for physics
+1. Add more tests for physics.
 2. Go wild!
 
 {% include links.md %}

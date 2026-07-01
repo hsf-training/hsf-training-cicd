@@ -3,13 +3,13 @@ title: "Building with Images"
 teaching: 10
 exercises: 5
 objectives:
-  - Use docker images
-  - Making reusable/flexible CI/CD jobs
+  - Use Docker images.
+  - Make reusable/flexible CI/CD jobs.
 questions:
-  - Can we use docker images to ease our setup?
+  - Can we use Docker images to ease our setup?
 hidden: false
 keypoints:
-  - We can shorten a lot of the setup with Docker images
+  - We can shorten a lot of the setup with Docker images.
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mWUyoFwjxto?si=TGVrpH2BZzsS-f80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -17,7 +17,7 @@ keypoints:
 
 While we won't be going into detail about containers (for that check [our Docker lesson](https://hsf-training.github.io/hsf-training-docker/)), we've been using them all this time with Gitlab. Gitlab runners are working within a barebones virtual environment that runs Linux, and is itself an image.
 
-Naturally, we can leverage the fact that Gitlab runners can run Docker to further simplify setting up the working environment. This is done using the `image` keyword. The input for `image` is the name of the image, including the registry path if needed, in one of these formats:
+Naturally, we can leverage the fact that GitLab runners can run Docker to further simplify setting up the working environment. This is done using the `image` keyword. The input for `image` is the name of the image, including the registry path if needed, in one of these formats:
 
 - `<image-name>` (Same as using `<image-name>` with the latest tag)
 - `<image-name>:<tag>`
@@ -45,7 +45,7 @@ tests:
 
 # Back to our CI file
 
-Go to the ROOT docker hub page <https://hub.docker.com/r/rootproject/root> and choose a version any version you wish to try.
+Go to the ROOT Docker Hub page <https://hub.docker.com/r/rootproject/root> and choose a version any version you wish to try.
 
 Let's add `image: $ROOT_IMAGE` because we can still use `parallel:matrix:` to make various builds easily.
 Since we're going to use a docker image to have a working version of ROOT, we can omit the lines that install and set up conda and ROOT.
@@ -73,9 +73,9 @@ multi_build:
 
 
 > ## Note
->  We used the `latest` docker image and an `ubuntu` image in this particular example but the script remains the same
->  regardless if you wish to use the conda build or an ubuntu build of ROOT.
+>  We used the `latest` Docker image and an `Ubuntu` image in this particular example but the script remains the same
+>  regardless if you wish to use the conda build or an Ubuntu build of ROOT.
 >
-> Make sure your image works with the CI, not all images listed in the [rootproject's docker hub](https://hub.docker.com/r/rootproject/root) work 100% of the time.
+> Make sure your image works with the CI; not all images listed in the [rootproject's Docker Hub](https://hub.docker.com/r/rootproject/root) work 100% of the time.
 >
 {: .callout}

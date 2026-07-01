@@ -3,12 +3,12 @@ title: "Understanding Yet Another Markup Language"
 teaching: 5
 exercises: 0
 objectives:
-  - Learn about YAML
+  - Learn about YAML.
 questions:
   - What is YAML?
 hidden: false
 keypoints:
-  - YAML is a plain-text format, similar to JSON, useful for configuration
+  - YAML is a plain-text format, similar to JSON, useful for configuration.
   - YAML is a superset of JSON, so it contains additional features like comments and anchors, while still supporting JSON.
 ---
 
@@ -153,7 +153,7 @@ foo: bar # this is a comment, too
 
 > ## Anchors
 >
-> YAML also has a handy feature called 'anchors', which let you easily duplicate content across your document. Anchors look like references `&` in C/C++ and named anchors can be dereferenced using `*`.
+> YAML also has a handy feature called 'anchors', which lets you easily duplicate content across your document. Anchors look like references `&` in C/C++ and named anchors can be dereferenced using `*`.
 >
 > ~~~
 > anchored_content: &anchor_name This string will appear as the value of two keys.

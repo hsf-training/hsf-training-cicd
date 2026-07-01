@@ -1,9 +1,10 @@
+# Continuous Integration and Deployment (CI/CD) with GitLab
 [![HSF Training Center][training-center-badge]][hsf-training-center]
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 [![Upcoming Events][schools-badge]][schools]
-[![Twitter Follow][twitter-badge]][twitter]
+<!--[![Twitter Follow][twitter-badge]][twitter]
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -11,21 +12,14 @@
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/hsf-training/hsf-training-cicd/gh-pages.svg)](https://results.pre-commit.ci/latest/github/hsf-training/hsf-training-cicd/gh-pages)
 [![pages-build-deployment](https://github.com/hsf-training/hsf-training-cicd/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/hsf-training/hsf-training-cicd/actions/workflows/pages/pages-build-deployment)
 
-# HSF Training CI/CD -- GitLab Edition
+This repository generates the corresponding lesson website from [The Carpentries](https://carpentries.org/) repertoire of lessons.
 
 > **Note**
 > Click [here](https://hsf-training.github.io/hsf-training-cicd/) for the training website!
 
 The aim of this module is to explore what it means to build a CI/CD workflow and expand on concepts unique to GitLab’s CI/CD.
 
-## 📅 Past events and videos
-
-* [June 2020](https://indico.cern.ch/event/904759/)
-* [Feb 2020](https://indico.cern.ch/event/854880/)
-
-Emoji key: 🎥 (full video recordings availabile), ⛏️ (hackathon)
-
-## 🤗 Contributing
+## Contributing
 <!-- CENTRALLY MAINTAINED SECTION -->
 <!-- Remove the above marker to disable having this section be overwritten -->
 
@@ -63,7 +57,7 @@ by Scott Chacon.
 Look for the tag [![good_first_issue]][gfi-badge], which marks particularly simple issues to get you started.
 
 <!-- END CENTRALLY MAINTAINED SECTION -->
-## 💖 Authors
+## Authors
 
 This lesson was written by
 
@@ -99,6 +93,14 @@ the content of the lesson:
 
 Even more people contributed to the framework, but they are too many to list!
 Instead, all regular contributors are listed on our [HSF Training Community page][hsf-training-community].
+
+## Citation
+
+To cite this lesson, please consult with [CITATION](CITATION)
+
+## Open Educational Resources (OER) on Zenodo
+
+This lesson is included in the ETH Domain Open Educational Resources for Research Data Management (RDM) community on Zenodo. These resources support researchers, students, and RDM staff in implementing best practices across the research data lifecycle. The materials developed here are published under open licenses (CC BY 4.0) and can be freely reused and adapted for teaching and training initiatives worldwide.
 
 
 [lesson-example]: https://carpentries.github.io/lesson-example

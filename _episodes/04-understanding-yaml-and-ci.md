@@ -115,7 +115,7 @@ job_2:
 
 ## Job Parameters
 
-What are some of the parameters that can be used in a job? Rather than copy/pasting from the reference (linked below in this session), we'll go to the [Configuration parameters](https://docs.gitlab.com/ee/ci/yaml/#configuration-parameters) section in the GitLab docs. The most important parameter, and the only one needed to define a job, is `script`
+What are some of the parameters that can be used in a job? Rather than copy/pasting from the [documentation](#documentation), we'll go to the [Configuration parameters](https://docs.gitlab.com/ee/ci/yaml/#configuration-parameters) section in the GitLab docs. The most important parameter, and the only one needed to define a job, is `script`
 
 ```yml
 job one:

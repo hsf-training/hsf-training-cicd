@@ -5,26 +5,29 @@ permalink: index.html  # Is the only page that doesn't follow the pattern /:path
 ---
 {% include gh_variables.html %}
 
-GitLab is a git platform used for code hosting and collaboration. It can be used to automatically run checks and other code or workflows on GitLab’s servers. We’ll learn how to use this to make our code robust to errors, preserved, and reproducible.
-
-> ## The skills we'll focus on:
->
-> 1.  Making scripts exit correctly
-> 2.  Building a CI/CD workflow of unlimited potential
-> 3.  Understanding how job runners work (and get access to your clones)
-> 4.  The GitLab permissions model
-> 5.  Protecting secret information while allowing jobs to run
-{: .checklist}
-
+GitLab is a git platform used for code hosting and collaboration. It can be used to automatically run checks and other code or workflows on GitLab’s servers. 
+The aim of this module is to introduce CI/CD workflows and how to use them to ensure code is robust, reproducible, and preserved.
 
 > ## Prerequisites
 >
 > This assumes that you'll have some basic background with your command line, for example:
 >
 > 1. How to execute custom shell scripts (if you are not familiar with the shell, click [here](https://swcarpentry.github.io/shell-novice/))
-> 2. How to run python scripts (if you are not familiar with python, click [here](https://swcarpentry.github.io/python-novice-inflammation/))
+> 2. How to run Python scripts (if you are not familiar with Python, click [here](https://swcarpentry.github.io/python-novice-inflammation/))
 > 3. How to interact with remotes in git (if you are not familiar with git, click [here](https://swcarpentry.github.io/git-novice/))
 {: .prereq}
+
+> ## Learning Objectives
+>
+> After completing this module, participants will be able to:
+>
+> - Understand the core concepts of continuous integration and continuous deployment (CI/CD). 
+> - Explain how scripts and exit codes control execution in automated workflows.
+> - Design and implement flexible and extendable CI/CD pipelines using GitLab.  
+> - Understand how CI runners operate and interact with repository code.  
+> - Apply best practices for building reusable and reproducible CI/CD pipelines.  
+> - Manage GitLab permissions and securely handle sensitive information. 
+{: .objectives}
 
 {% include curriculum.html %}
 

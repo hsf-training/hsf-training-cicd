@@ -3,7 +3,7 @@ title: "Let's Actually Make A Test (For Real)"
 teaching: 5
 exercises: 20
 objectives:
-  - Actually add a test on the output of running physics
+  - Actually add a test on the output of running physics.
 questions:
   - I'm out of questions.
   - I've been here too long. Mr. Stark, I don't feel too good.
@@ -14,7 +14,7 @@ keypoints:
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/skHqk7pA2cY?si=_wJCZTm6DdzJm62I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-So at this point, I'm going to be very hands-off, and just explain what you will be doing. Here's where you should be starting from:
+So at this point, I'm going to be very hands-off and just explain what you will be doing. Here's where you should be starting from:
 
 ~~~yml
 stages:
@@ -39,7 +39,7 @@ multi_build:
   image: $ROOT_IMAGE
   parallel:
     matrix:
-      - ROOT_IMAGE: ["rootproject/root:6.28.10-ubuntu22.04","rootproject/root:latest"]
+      - ROOT_IMAGE: ["rootproject/root:6.28.10-ubuntu22.04", "rootproject/root:latest"]
 
 skim_ggH:
   stage: run
@@ -71,21 +71,21 @@ plot_ggH:
 > ## Adding a regression test
 >
 > 1. Add a `test` stage after the `plot` stage.
-> 2. Add a test job, `test_ggH`, part of the `test` stage, and has the right `dependencies`
->   - Note: `./skim` needs to be updated to produce a `skim_ggH.log` (hint: `./skim .... > skim_ggH.log`)
->   - We also need the `hist_ggH.root` file produced by the plot job
-> 3. Create a directory called `tests/` and make two python files in it named `test_cutflow_ggH.py` and `test_plot_ggH.py` that uses `PyROOT` and `python3`
->   - you might find the following lines (below) helpful to set up the tests
-> 4. Write a few different tests of your choosing that tests (and asserts) something about `hist_ggH.root`. Some ideas are:
->   - check the structure (does `ggH_pt_1` exist?)
->   - check that the integral of a histogram matches a value you expect
->   - check that the bins of a histogram matches the values you expect
-> 5. Update your `test_ggH` job to execute the regression tests
-> 6. Try causing your CI/CD to fail on the `test_ggH` job
+> 2. Add a test job, `test_ggH`, part of the `test` stage, and has the right `dependencies`.
+>   - Note: `./skim` needs to be updated to produce a `skim_ggH.log` (hint: `./skim .... > skim_ggH.log`).
+>   - We also need the `hist_ggH.root` file produced by the plot job.
+> 3. Create a directory called `tests/` and make two Python files in it named `test_cutflow_ggH.py` and `test_plot_ggH.py` that use `PyROOT` and `python3`.
+>   - You might find the following lines (below) helpful to set up the tests.
+> 4. Write a few different tests of your choosing that test (and assert) something about `hist_ggH.root`. Some ideas are:
+>   - Check the structure (does `ggH_pt_1` exist?).
+>   - Check that the integral of a histogram matches a value you expect.
+>   - Check that the bins of a histogram match the values you expect.
+> 5. Update your `test_ggH` job to execute the regression tests.
+> 6. Try causing your CI/CD to fail on the `test_ggH` job.
 >
 > > ## Done?
 > >
-> > Once you're happy with setting up the regression test, mark your merge request as ready by clicking the `Resolve WIP Status` button, and then merge it in to master.
+> > Once you're happy with setting up the regression test, mark your merge request as ready by clicking the `Resolve WIP Status` button, and then merge it into master.
 > {: .solution}
 {: .challenge}
 
