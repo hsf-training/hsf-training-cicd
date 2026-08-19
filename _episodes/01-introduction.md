@@ -28,7 +28,7 @@ Continuous Integration ([CI](en.wikipedia.org/wiki/Continuous_integration)), and
 
 A common example of a CI/CD workflow or pipeline in a repository would be one which&mdash;after each push of a set of commits&mdash;tests the codebase (via CI) and deploys documentation (via CD) on a website.
 
-CI/CD workflows can be configured to run after a push, after a merge-request, or on a schedule. The broader puprose of CI/CD is to automate anything repetitive that doesn't need to be done manually, and can be thought of a labour-based manifestation of the [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (don't repeat yourself) principle in programming.
+CI/CD workflows can be configured to run after a push, after a merge-request, or on a schedule. The broader purpose of CI/CD is to automate anything repetitive that doesn't need to be done manually, and can be thought of a labour-based manifestation of the [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) (don't repeat yourself) principle in programming.
 
 
 > ## Catch and Release
