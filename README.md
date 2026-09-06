@@ -17,7 +17,7 @@ This repository generates the corresponding lesson website from [The Carpentries
 > **Note**
 > Click [here](https://hsf-training.github.io/hsf-training-cicd/) for the training website!
 
-The aim of this module is to explore what it means to build a CI/CD workflow and expand on concepts unique to GitLab’s CI/CD.
+This learning module explores how to build CI/CD workflows and introduces key GitLab CI/CD concepts, with a focus on ensuring that code remains robust, reproducible, and well preserved.
 
 ## Contributing
 <!-- CENTRALLY MAINTAINED SECTION -->
@@ -69,7 +69,7 @@ This lesson was written by
   </tbody>
 </table>
 
-Additional thanks goes to these wonderful people ([emoji key][allcontrib-emoji-key]) who contributed to
+Additional thanks goes to these wonderful people who contributed to
 the content of the lesson:
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -96,12 +96,15 @@ Instead, all regular contributors are listed on our [HSF Training Community page
 
 ## Citation
 
-To cite this lesson, please consult with [CITATION](CITATION)
+To cite this lesson, please consult with [CITATION](CITATION.cff)
 
 ## Open Educational Resources (OER) on Zenodo
 
-This lesson is included in the ETH Domain Open Educational Resources for Research Data Management (RDM) community on Zenodo. These resources support researchers, students, and RDM staff in implementing best practices across the research data lifecycle. The materials developed here are published under open licenses (CC BY 4.0) and can be freely reused and adapted for teaching and training initiatives worldwide.
+This lesson is included in the [HEP Software Foundation Training Material](https://zenodo.org/communities/hsf-training/records) and in the [ETH Domain Open Educational Resources for Research Data Management](https://zenodo.org/communities/eth-domain-oer-rdm/records) communities on Zenodo.                                    
 
+The materials developed here are published under open licenses (CC BY 4.0) and can be freely reused and adapted for teaching and training initiatives worldwide.
+
+See the Zenodo record [here](https://doi.org/10.5281/zenodo.22016961).
 
 [lesson-example]: https://carpentries.github.io/lesson-example
 [pre-commit]: https://pre-commit.com/
