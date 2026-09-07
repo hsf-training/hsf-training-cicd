@@ -26,8 +26,84 @@ authors:
   - given-names: Laura
     family-names: Marqués
     orcid: https://orcid.org/0000-0002-3593-5557
+  - given-names: Raniere
+    family-names: Silva
+    orcid:
+  - given-names: François
+    family-names: Michonneau
+    orcid: https://orcid.org/0000-0002-9092-966X
+  - given-names: Maxim
+    family-names: Belkin
+    orcid:
+  - given-names: W. Trevor
+    family-names: King
+    orcid:
+  - given-names: Kilian
+    family-names: Lieret
+    orcid: https://orcid.org/0000-0003-2792-7511
+  - given-names: Samuel
+    family-names: Meehan
+    orcid:
+  - given-names: Abby Cabunoc
+    family-names: Mayes
+    orcid: https://orcid.org/0000-0003-4959-3049
+  - given-names: Katrin
+    family-names: Leinweber
+    orcid:
+  - given-names: Aleksandra
+    family-names: Nenadic
+    orcid: https://orcid.org/0000-0002-2269-3894
+  - given-names: Carol
+    family-names: Willing
+    orcid: https://orcid.org/0000-0002-9817-8485
+  - given-names: Maneesha
+    family-names: Sane
+    orcid:
+  - given-names: Tracy
+    family-names: Teal
+    orcid:
+  - given-names: Lex
+    family-names: Nederbragt
+    orcid:
+  - given-names: Piotr
+    family-names: Banaszkiewicz
+    orcid:
+  - given-names: João
+    family-names: Rodrigues
+    orcid:
+  - given-names: Gabriel A.
+    family-names: Devenyi
+    orcid: https://orcid.org/0000-0002-7766-1187
+  - given-names: Jonah
+    family-names: Duckles
+    orcid:
+  - given-names: Toby
+    family-names: Hodges
+    orcid: https://orcid.org/0000-0003-1766-456X
+  - given-names: Marianne
+    family-names: Corvellec
+    orcid:
+  - given-names: Aman
+    family-names: Desai
+    orcid:
+  - given-names: Brian
+    family-names: Ballsun-Stanton
+    orcid: https://orcid.org/0000-0003-4932-7912
+  - given-names: Erin
+    family-names: Becker
+    orcid: https://orcid.org/0000-0002-6832-0233
+  - given-names: Ethan
+    family-names: White
+    orcid:
+  - given-names: Jeramia
+    family-names: Ory
+    orcid: https://orcid.org/0000-0002-5867-007X
+  - given-names: Lauren
+    family-names: Michael
+    orcid:
 abstract: >-
   Explore what it means to build a CI/CD workflow and expand on concepts unique to GitLab’s CI/CD.
 repository-code: https://github.com/hsf-training/hsf-training-cicd
 url: https://hsf-training.github.io/hsf-training-cicd/
+doi: 10.5281/zenodo.22016961
 license: CC-BY-4.0
