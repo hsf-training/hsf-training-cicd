@@ -5,8 +5,8 @@ permalink: index.html  # Is the only page that doesn't follow the pattern /:path
 ---
 {% include gh_variables.html %}
 
-This learning module explores how to build CI/CD workflows and introduces key GitLab CI/CD concepts, with a focus on ensuring that code remains robust, reproducible, and well preserved.    
-GitLab is a git platform used for code hosting and collaboration. It can be used to automatically run checks and other code or workflows on GitLab’s servers. 
+This learning module explores how to build CI/CD workflows and introduces key GitLab CI/CD concepts, with a focus on ensuring that code remains robust, reproducible, and well preserved.
+GitLab is a git platform used for code hosting and collaboration. It can be used to automatically run checks and other code or workflows on GitLab’s servers.
 
 > ## Prerequisites
 >
@@ -21,12 +21,12 @@ GitLab is a git platform used for code hosting and collaboration. It can be used
 >
 > After completing this module, participants will be able to:
 >
-> - Understand the core concepts of continuous integration and continuous deployment (CI/CD). 
+> - Understand the core concepts of continuous integration and continuous deployment (CI/CD).
 > - Explain how scripts and exit codes control execution in automated workflows.
-> - Design and implement flexible and extendable CI/CD pipelines using GitLab.  
-> - Understand how CI runners operate and interact with repository code.  
-> - Apply best practices for building reusable and reproducible CI/CD pipelines.  
-> - Manage GitLab permissions and securely handle sensitive information. 
+> - Design and implement flexible and extendable CI/CD pipelines using GitLab.
+> - Understand how CI runners operate and interact with repository code.
+> - Apply best practices for building reusable and reproducible CI/CD pipelines.
+> - Manage GitLab permissions and securely handle sensitive information.
 {: .objectives}
 
 {% include curriculum.html %}

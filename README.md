@@ -100,7 +100,7 @@ To cite this lesson, please consult with [CITATION](CITATION.cff)
 
 ## Open Educational Resources (OER) on Zenodo
 
-This lesson is included in the [HEP Software Foundation Training Material](https://zenodo.org/communities/hsf-training/records) and in the [ETH Domain Open Educational Resources for Research Data Management](https://zenodo.org/communities/eth-domain-oer-rdm/records) communities on Zenodo.                                    
+This lesson is included in the [HEP Software Foundation Training Material](https://zenodo.org/communities/hsf-training/records) and in the [ETH Domain Open Educational Resources for Research Data Management](https://zenodo.org/communities/eth-domain-oer-rdm/records) communities on Zenodo.
 
 The materials developed here are published under open licenses (CC BY 4.0) and can be freely reused and adapted for teaching and training initiatives worldwide.
 
