@@ -26,7 +26,7 @@ authors:
   - given-names: Richa
     family-names: Sharma
     orcid: https://orcid.org/0000-0002-4656-4683
-abstract: >-
+abstract: |-
   This learning module, developed by the High Energy Physics Software Foundation (HSF), explores how to build CI/CD workflows and introduces key GitLab CI/CD concepts, with a focus on ensuring that code remains robust, reproducible, and well preserved.
   
   After completing this module, participants will be able to:
@@ -48,4 +48,6 @@ keywords:
 repository-code: https://github.com/hsf-training/hsf-training-cicd
 url: https://hsf-training.github.io/hsf-training-cicd/
 doi: 10.5281/zenodo.22016961
-license: CC-BY-4.0
+license:
+  - CC-BY-4.0
+  - MIT
