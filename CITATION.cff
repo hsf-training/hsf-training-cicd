@@ -56,6 +56,4 @@ keywords:
   - "Exit Codes"
 repository-code: https://github.com/hsf-training/hsf-training-cicd
 url: https://hsf-training.github.io/hsf-training-cicd/
-license:
-  - CC-BY-4.0
-  - MIT
+license: CC-BY-4.0
