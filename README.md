@@ -69,7 +69,7 @@ This lesson was written by
   </tbody>
 </table>
 
-Additional thanks goes to these wonderful people who contributed to
+Additional thanks goes to these wonderful people ([emoji key][allcontrib-emoji-key]) who contributed to
 the content of the lesson:
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
