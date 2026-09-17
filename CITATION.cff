@@ -11,15 +11,24 @@ authors:
   - given-names: Saransh
     family-names: Chopra
     orcid: https://orcid.org/0000-0003-3046-7675
+  - given-names: Aman
+    family-names: Desai
+    orcid: https://orcid.org/0000-0003-2631-9696
   - given-names: Max
     family-names: Fatouros
     orcid: https://orcid.org/0000-0002-7438-652X
   - given-names: Guillermo A.
     family-names: Fidalgo-Rodríguez
     orcid: https://orcid.org/0000-0001-8605-9772
+  - given-names: Michel
+    family-names: Hernández Villanueva
+    orcid: https://orcid.org/0000-0002-6322-5587
   - given-names: Clemens
     family-names: Lange
     orcid: https://orcid.org/0000-0002-3632-3157
+  - given-names: Kilian
+    family-names: Lieret
+    orcid: https://orcid.org/0000-0003-2792-7511
   - given-names: Laura
     family-names: Marqués
     orcid: https://orcid.org/0000-0002-3593-5557
@@ -27,8 +36,8 @@ authors:
     family-names: Sharma
     orcid: https://orcid.org/0000-0002-4656-4683
 abstract: |-
-  This learning module, developed by the High Energy Physics Software Foundation (HSF), explores how to build CI/CD workflows and introduces key GitLab CI/CD concepts, with a focus on ensuring that code remains robust, reproducible, and well preserved.
-  
+  This learning module, developed by the HEP Software Foundation (HSF), explores how to build CI/CD workflows and introduces key GitLab CI/CD concepts, with a focus on ensuring that code remains robust, reproducible, and well preserved.
+
   After completing this module, participants will be able to:
   - Understand the core concepts of continuous integration and continuous deployment (CI/CD).
   - Explain how scripts and exit codes control execution in automated workflows.
@@ -47,7 +56,6 @@ keywords:
   - "Exit Codes"
 repository-code: https://github.com/hsf-training/hsf-training-cicd
 url: https://hsf-training.github.io/hsf-training-cicd/
-doi: 10.5281/zenodo.22016961
 license:
   - CC-BY-4.0
   - MIT
