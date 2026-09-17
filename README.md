@@ -96,7 +96,7 @@ Instead, all regular contributors are listed on our [HSF Training Community page
 
 ## Citation
 
-To cite this lesson, please consult with [CITATION](CITATION.cff)
+To cite this lesson, please consult with [CITATION.cff](CITATION.cff)
 
 ## Open Educational Resources (OER) on Zenodo
 
@@ -104,7 +104,7 @@ This lesson is included in the [HEP Software Foundation Training Material](https
 
 The materials developed here are published under open licenses (CC BY 4.0) and can be freely reused and adapted for teaching and training initiatives worldwide.
 
-See the Zenodo record [here](https://doi.org/10.5281/zenodo.22016961).
+See the Zenodo record [here](https://doi.org/10.5281/zenodo.22016960).
 
 [lesson-example]: https://carpentries.github.io/lesson-example
 [pre-commit]: https://pre-commit.com/
