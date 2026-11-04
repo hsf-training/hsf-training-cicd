@@ -1,0 +1,4 @@
+# Liquid templates such as {{site.baseurl}} are only resolved when Jekyll builds the site.
+%7B%7Bsite\.
+# GitLab's CI lint page in 06-hello-world-ci.md is an example URL that requires a CERN login.
+https://gitlab\.cern\.ch/gfidalgo/ci-testing/-/ci/lint

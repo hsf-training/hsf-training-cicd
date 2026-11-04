@@ -20,9 +20,6 @@ This repository generates the corresponding lesson website from [The Carpentries
 This learning module explores how to build CI/CD workflows and introduces key GitLab CI/CD concepts, with a focus on ensuring that code remains robust, reproducible, and well preserved.
 
 ## Contributing
-<!-- CENTRALLY MAINTAINED SECTION -->
-<!-- Remove the above marker to disable having this section be overwritten -->
-
 We welcome all contributions to improve the lesson! Maintainers will do their best to help you if you have any
 questions, concerns, or experience any difficulties along the way.
 
@@ -56,7 +53,6 @@ nicely explained in the chapter [Contributing to a Project][progit] in Pro Git
 by Scott Chacon.
 Look for the tag [![good_first_issue]][gfi-badge], which marks particularly simple issues to get you started.
 
-<!-- END CENTRALLY MAINTAINED SECTION -->
 ## Authors
 
 This lesson was written by
