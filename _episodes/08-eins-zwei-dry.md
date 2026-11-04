@@ -19,7 +19,7 @@ keypoints:
 
 # Hidden (keys) Jobs
 
-A fun [feature](https://docs.gitlab.com/ee/ci/yaml/README.html#special-yaml-features) about GitLab's CI YAML is the ability to disable entire jobs simply by prefixing the job name with a period (`.`). Naively, we could just comment it out.
+A fun [feature](https://docs.gitlab.com/ci/jobs/#hide-a-job) about GitLab's CI YAML is the ability to disable entire jobs simply by prefixing the job name with a period (`.`). Naively, we could just comment it out.
 
 ~~~
 #hidden job:

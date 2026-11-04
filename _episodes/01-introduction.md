@@ -16,7 +16,7 @@ keypoints:
 
 # What is CI/CD?
 
-Continuous Integration ([CI](en.wikipedia.org/wiki/Continuous_integration)), and Continuous Deployment ([CD](https://en.wikipedia.org/wiki/Continuous_deployment)) are two related concepts in the field of [DevOps](https://en.wikipedia.org/wiki/DevOps), a sub-domain of software engineering.
+Continuous Integration ([CI](https://en.wikipedia.org/wiki/Continuous_integration)), and Continuous Deployment ([CD](https://en.wikipedia.org/wiki/Continuous_deployment)) are two related concepts in the field of [DevOps](https://en.wikipedia.org/wiki/DevOps), a sub-domain of software engineering.
 
 
 <dl>
